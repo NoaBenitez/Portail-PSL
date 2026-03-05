@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#b00020" />
-  <title>Portail</title>
+  <link rel="icon" href="logopsl_-_original_-_Copie-removebg-preview.ico" type="image/x-icon" />
+  <title>PSL - Portail Outils</title>
   <style>
     :root{
       --bg0:#07070a; --bg1:#0b0b10;
@@ -39,16 +40,11 @@
     }
     .brand{display:flex; align-items:center; gap:10px;}
     .logo{
-      width:38px; height:38px; border-radius:14px;
-      background: linear-gradient(135deg, var(--red), var(--red2));
+      width:52px; height:52px; border-radius:14px;
       position:relative; overflow:hidden;
     }
-    .logo:after{
-      content:""; position:absolute; inset:-50%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.22), transparent);
-      transform: rotate(20deg);
-      animation: shine 3.8s ease-in-out infinite;
-      opacity:.7;
+    .logo img{
+      width:100%; height:100%; object-fit:contain;
     }
     @keyframes shine{
       0%{ transform: translateX(-35%) rotate(20deg); opacity:0;}
@@ -186,6 +182,80 @@
       font-size: 12.5px;
     }
 
+    /* Status badges */
+    .status{
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:11px; font-weight:700; letter-spacing:.3px;
+      padding:4px 10px; border-radius:999px;
+      text-transform:uppercase;
+      flex-shrink:0;
+    }
+    .status-dot{
+      width:8px; height:8px; border-radius:50%;
+      flex-shrink:0;
+      position:relative;
+    }
+    .status-dot::after{
+      content:""; position:absolute; inset:0;
+      border-radius:50%;
+    }
+
+    /* Actif — green steady pulse */
+    .status-actif{
+      background:rgba(34,197,94,.12); color:#4ade80;
+      border:1px solid rgba(34,197,94,.25);
+    }
+    .status-actif .status-dot{
+      background:#4ade80;
+      box-shadow:0 0 6px rgba(74,222,128,.6);
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    .status-actif .status-dot::after{
+      background:rgba(74,222,128,.35);
+      animation: ring-green 2s ease-out infinite;
+    }
+
+    /* En modification — amber blink + sweep */
+    .status-modif{
+      background:rgba(251,191,36,.10); color:#fbbf24;
+      border:1px solid rgba(251,191,36,.22);
+      position:relative; overflow:hidden;
+    }
+    .status-modif::before{
+      content:""; position:absolute; top:0; left:-100%; width:100%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(251,191,36,.18), transparent);
+      animation: sweep-yellow 2.5s linear infinite;
+    }
+    .status-modif .status-dot{
+      background:#fbbf24;
+      animation: blink-yellow 1.2s steps(1) infinite;
+    }
+    .status-modif .status-dot::after{
+      background:rgba(251,191,36,.35);
+      animation: ring-yellow 1.8s ease-out infinite;
+    }
+
+    @keyframes pulse-green{
+      0%,100%{ box-shadow:0 0 4px rgba(74,222,128,.4); }
+      50%{ box-shadow:0 0 14px rgba(74,222,128,.9); }
+    }
+    @keyframes ring-green{
+      0%{ transform:scale(1); opacity:.7; }
+      100%{ transform:scale(2.8); opacity:0; }
+    }
+    @keyframes blink-yellow{
+      0%,50%{ opacity:1; box-shadow:0 0 8px rgba(251,191,36,.8); }
+      50.1%,100%{ opacity:.3; box-shadow:0 0 2px rgba(251,191,36,.3); }
+    }
+    @keyframes ring-yellow{
+      0%{ transform:scale(1); opacity:.6; }
+      100%{ transform:scale(2.8); opacity:0; }
+    }
+    @keyframes sweep-yellow{
+      0%{ left:-100%; }
+      100%{ left:200%; }
+    }
+
     /* Reveal */
     .reveal{opacity:0; transform: translateY(10px); animation: in .5s ease forwards;}
     .d2{animation-delay:.08s}
@@ -209,9 +279,9 @@
   <main class="wrap">
     <header class="reveal">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logo"><img src="logopsl_-_blanc_fond_noir-removebg-preview.png" alt="PSL Logo" /></div>
         <div>
-          <h1>Portail</h1>
+          <h1>PSL - Portail Outils</h1>
           <div class="muted">Accès rapide aux outils</div>
         </div>
       </div>
@@ -235,7 +305,10 @@
         <div class="grid">
           <article class="card" data-keywords="plannificateur planning planification agenda flask">
             <a href="https://URL-PLANNIFICATEUR.example.com" data-tool="Plannificateur">
-              <h3>Plannificateur</h3>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <h3>Plannificateur</h3>
+                <span class="status status-modif"><span class="status-dot"></span>En modification</span>
+              </div>
               <p>Planning & suivi.</p>
               <div class="go"><span>Ouvrir</span><span class="arrow" aria-hidden="true">→</span></div>
             </a>
@@ -252,7 +325,10 @@
         <div class="grid">
           <article class="card" data-keywords="rentabilite analyse chiffrage devis pricing marge react ts">
             <a href="https://URL-ANALYSE-CHIFFRAGE.example.com" data-tool="Rentabilité — Analyse chiffrage">
-              <h3>Analyse chiffrage</h3>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <h3>Analyse chiffrage</h3>
+                <span class="status status-actif"><span class="status-dot"></span>Actif</span>
+              </div>
               <p>Devis, marges, impacts.</p>
               <div class="go"><span>Ouvrir</span><span class="arrow" aria-hidden="true">→</span></div>
             </a>
@@ -260,7 +336,10 @@
 
           <article class="card" data-keywords="rentabilite client portefeuille ltv marge react ts">
             <a href="https://URL-RENTABILITE-CLIENT.example.com" data-tool="Rentabilité — Rentabilité client">
-              <h3>Rentabilité client</h3>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <h3>Rentabilité client</h3>
+                <span class="status status-actif"><span class="status-dot"></span>Actif</span>
+              </div>
               <p>Clients & portefeuille.</p>
               <div class="go"><span>Ouvrir</span><span class="arrow" aria-hidden="true">→</span></div>
             </a>
