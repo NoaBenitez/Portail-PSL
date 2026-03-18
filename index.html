@@ -256,18 +256,270 @@
       100%{ left:200%; }
     }
 
+    /* Modal overlay */
+    .modal-overlay{
+      position:fixed; inset:0; z-index:1000;
+      background:rgba(0,0,0,.65);
+      backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    .modal-overlay.open{
+      opacity:1; visibility:visible;
+    }
+    .modal{
+      width:min(880px, 94vw);
+      max-height:92vh;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(18,18,26,.98), rgba(11,11,16,.98));
+      border-radius:20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06);
+      transform: translateY(20px) scale(.96);
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+      overflow:hidden;
+      display:flex; flex-direction:column;
+    }
+    .modal-overlay.open .modal{
+      transform: translateY(0) scale(1);
+    }
+    .modal-header{
+      padding:20px 22px 16px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .modal-header h3{
+      margin:0; font-size:16px; font-weight:850; letter-spacing:-.2px;
+    }
+    .modal-header p{
+      margin:4px 0 0; font-size:12.5px; color:var(--muted); line-height:1.35;
+    }
+    .modal-close{
+      width:32px; height:32px; border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--muted); font-size:16px;
+      display:grid; place-items:center;
+      cursor:pointer; flex-shrink:0;
+      transition: background .15s, border-color .15s;
+    }
+    .modal-close:hover{
+      background:rgba(255,255,255,.10);
+      border-color:rgba(255,255,255,.20);
+    }
+    .modal-body{
+      padding:16px 22px 22px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .modal-btn{
+      display:flex; align-items:center; gap:14px;
+      padding:16px 18px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:var(--text); text-decoration:none;
+      cursor:pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      position:relative; overflow:hidden;
+    }
+    .modal-btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.20);
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+    .modal-btn-icon{
+      width:44px; height:44px; border-radius:12px;
+      display:grid; place-items:center;
+      font-size:20px; flex-shrink:0;
+    }
+    .modal-btn-icon.prereq{
+      background:linear-gradient(135deg, rgba(99,102,241,.25), rgba(139,92,246,.25));
+      border:1px solid rgba(139,92,246,.3);
+    }
+    .modal-btn-icon.access{
+      background:linear-gradient(135deg, rgba(226,13,44,.25), rgba(255,45,85,.25));
+      border:1px solid rgba(255,45,85,.3);
+    }
+    .modal-btn-text strong{
+      display:block; font-size:14px; font-weight:800; letter-spacing:-.1px;
+    }
+    .modal-btn-text span{
+      display:block; margin-top:2px; font-size:12px; color:var(--muted); line-height:1.3;
+    }
+    .modal-btn-arrow{
+      margin-left:auto; font-size:18px; color:var(--muted);
+      transition: transform .18s ease, color .18s ease;
+    }
+    .modal-btn:hover .modal-btn-arrow{
+      transform:translateX(3px); color:var(--text);
+    }
+
+    /* SOP / Prérequis panel inside modal */
+    .sop-panel{
+      display:none;
+    }
+    .sop-panel.open{
+      display:block;
+      animation: sop-in .35s ease forwards;
+    }
+    @keyframes sop-in{
+      from{ opacity:0; transform:translateX(20px); }
+      to{ opacity:1; transform:translateX(0); }
+    }
+    .sop-back{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--muted); font-size:12px; font-weight:600;
+      cursor:pointer; margin-bottom:14px;
+      transition: background .15s, color .15s;
+    }
+    .sop-back:hover{ background:rgba(255,255,255,.10); color:var(--text); }
+    .sop-content{
+      max-height:75vh; overflow-y:auto;
+      padding-right:6px;
+    }
+    .sop-content::-webkit-scrollbar{ width:4px; }
+    .sop-content::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.15); border-radius:4px; }
+    .sop-step{
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .sop-step:last-child{ border-bottom:none; }
+    .sop-step-num{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:24px; height:24px; border-radius:8px;
+      background:linear-gradient(135deg, var(--red), var(--red2));
+      font-size:12px; font-weight:800; margin-right:10px;
+      flex-shrink:0;
+    }
+    .sop-step strong{
+      font-size:13px; font-weight:800;
+    }
+    .sop-step p{
+      margin:6px 0 0; font-size:12.5px; color:var(--muted); line-height:1.45;
+    }
+    .sop-step img{
+      margin-top:10px; width:100%; border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    /* SOP section dividers */
+    .sop-group{
+      margin:6px 0 10px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid;
+      display:flex; align-items:center; gap:10px;
+    }
+    .sop-group-icon{
+      width:32px; height:32px; border-radius:10px;
+      display:grid; place-items:center;
+      font-size:16px; flex-shrink:0;
+    }
+    .sop-group-text strong{
+      display:block; font-size:13px; font-weight:800;
+    }
+    .sop-group-text span{
+      display:block; font-size:11.5px; line-height:1.3; margin-top:1px;
+    }
+    .sop-group.once{
+      background:rgba(99,102,241,.08);
+      border-color:rgba(99,102,241,.20);
+      color:#a5b4fc;
+    }
+    .sop-group.once .sop-group-icon{
+      background:rgba(99,102,241,.18);
+      border:1px solid rgba(99,102,241,.28);
+    }
+    .sop-group.once .sop-group-text span{ color:rgba(165,180,252,.7); }
+    .sop-group.every{
+      background:rgba(34,197,94,.08);
+      border-color:rgba(34,197,94,.20);
+      color:#86efac;
+    }
+    .sop-group.every .sop-group-icon{
+      background:rgba(34,197,94,.18);
+      border:1px solid rgba(34,197,94,.28);
+    }
+    .sop-group.every .sop-group-text span{ color:rgba(134,239,172,.7); }
+
+    .sop-step.once-step .sop-step-num{
+      background:linear-gradient(135deg, rgba(99,102,241,.9), rgba(139,92,246,.9));
+    }
+    .sop-step.every-step .sop-step-num{
+      background:linear-gradient(135deg, var(--red), var(--red2));
+    }
+    .sop-divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      margin:8px 0;
+    }
+
     /* Reveal */
     .reveal{opacity:0; transform: translateY(10px); animation: in .5s ease forwards;}
     .d2{animation-delay:.08s}
     .d3{animation-delay:.16s}
     @keyframes in{to{opacity:1; transform: translateY(0);}}
 
+    /* ---- Responsive ---- */
     @media (max-width: 900px){
-      .grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
       .search{ min-width: unset; width: 100%; }
-      header{ border-radius: 18px; }
+      header{ border-radius: 18px; flex-wrap: wrap; }
       .right{ width: 100%; }
-      header{ flex-wrap: wrap; }
+      .modal{ width:96vw; max-height:94vh; border-radius:16px; }
+      .modal-header{ padding:16px 16px 12px; }
+      .modal-header h3{ font-size:15px; }
+      .modal-body{ padding:12px 16px 16px; }
+      .sop-content{ max-height:68vh; }
+      .sop-group{ padding:8px 12px; gap:8px; }
+      .sop-group-icon{ width:28px; height:28px; font-size:14px; }
+      .sop-group-text strong{ font-size:12px; }
+      .sop-group-text span{ font-size:11px; }
+    }
+    @media (max-width: 600px){
+      .wrap{ width:96vw; padding:16px 0 36px; }
+      .grid{ grid-template-columns: 1fr; gap:10px; padding:10px; }
+      .section-head{ padding:12px 12px; flex-wrap:wrap; gap:8px; }
+      .section-title{ font-size:12px; }
+      .card a{ padding:12px; }
+      .card h3{ font-size:13px; }
+      .card p{ font-size:11.5px; }
+      .status{ font-size:10px; padding:3px 8px; }
+      h1{ font-size:13px; }
+      .logo{ width:42px; height:42px; }
+      header{ padding:10px 12px; border-radius:14px; }
+
+      /* Modal mobile full-screen */
+      .modal-overlay{ align-items:flex-end; }
+      .modal{
+        width:100vw; max-height:96vh;
+        border-radius:18px 18px 0 0;
+        margin:0;
+      }
+      .modal-overlay.open .modal{
+        transform: translateY(0) scale(1);
+      }
+      .modal-header{ padding:14px 14px 10px; }
+      .modal-header h3{ font-size:14px; }
+      .modal-header p{ font-size:11.5px; }
+      .modal-body{ padding:10px 14px 14px; gap:8px; }
+      .modal-btn{ padding:12px 14px; gap:10px; }
+      .modal-btn-icon{ width:38px; height:38px; font-size:17px; }
+      .modal-btn-text strong{ font-size:13px; }
+      .modal-btn-text span{ font-size:11px; }
+      .sop-content{ max-height:62vh; }
+      .sop-step strong{ font-size:12px; }
+      .sop-step p{ font-size:11.5px; }
+      .sop-step-num{ width:22px; height:22px; font-size:11px; }
+      .sop-group{ flex-direction:column; align-items:flex-start; gap:6px; padding:10px 12px; }
+
+      /* AI section */
+      .ai{ flex-direction:column; padding:12px; }
+      .ai-slot{ width:100%; }
     }
     @media (prefers-reduced-motion: reduce){
       *{animation:none !important; transition:none !important}
@@ -297,20 +549,30 @@
 
     <div class="sections">
       <!-- Catégorie 1 -->
-      <section class="section reveal d2" data-category="planification">
+      <section class="section reveal d2" data-category="support">
         <div class="section-head">
-          <h2 class="section-title"><span class="dot"></span> Planification</h2>
-          <span class="pill">Flask</span>
+          <h2 class="section-title"><span class="dot"></span> Support</h2>
+          <span class="pill">Outils internes</span>
         </div>
         <div class="grid">
-          <article class="card" data-keywords="plannificateur planning planification agenda flask">
+          <article class="card" data-keywords="plannificateur planning planification agenda flask support">
             <a href="https://planification.onrender.com/" data-tool="Plannificateur">
               <div style="display:flex;align-items:center;justify-content:space-between;">
                 <h3>Plannificateur</h3>
-               <!-- <span class="status status-modif"><span class="status-dot"></span>En modification</span> -->
                 <span class="status status-actif"><span class="status-dot"></span>En test</span>
               </div>
               <p>Planning & suivi.</p>
+              <div class="go"><span>Ouvrir</span><span class="arrow" aria-hidden="true">→</span></div>
+            </a>
+          </article>
+
+          <article class="card" data-keywords="export factures pdf renommage telechargement support python">
+            <a href="#" data-tool="Export Factures" onclick="openToolModal(event, 'export-factures')">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <h3>Export Factures</h3>
+                <span class="status status-actif"><span class="status-dot"></span>En test</span>
+              </div>
+              <p>Téléchargement PDF auto + renommage des factures</p>
               <div class="go"><span>Ouvrir</span><span class="arrow" aria-hidden="true">→</span></div>
             </a>
           </article>
@@ -370,6 +632,146 @@
     </section>
   </main>
 
+  <!-- Modal Export Factures -->
+  <div class="modal-overlay" id="modal-export-factures">
+    <div class="modal">
+      <!-- Vue choix -->
+      <div id="ef-choice">
+        <div class="modal-header">
+          <div>
+            <h3>Export Factures</h3>
+            <p>Téléchargement PDF auto + renommage des factures</p>
+          </div>
+          <button class="modal-close" onclick="closeModal('modal-export-factures')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-btn" onclick="showSop('export-factures')">
+            <div class="modal-btn-icon prereq">&#128218;</div>
+            <div class="modal-btn-text">
+              <strong>Prérequis</strong>
+              <span>Mode d'emploi et configuration avant utilisation</span>
+            </div>
+            <span class="modal-btn-arrow">&#8250;</span>
+          </div>
+          <a class="modal-btn" href="https://renommage-pdf-psl.lovable.app" target="_blank" rel="noopener">
+            <div class="modal-btn-icon access">&#9889;</div>
+            <div class="modal-btn-text">
+              <strong>Accéder à l'outil</strong>
+              <span>Ouvrir l'application dans un nouvel onglet</span>
+            </div>
+            <span class="modal-btn-arrow">&#8250;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Vue SOP / Prérequis -->
+      <div id="ef-sop" class="sop-panel">
+        <div class="modal-header">
+          <div>
+            <h3>Prérequis - Export Factures</h3>
+            <p>Suivez ces étapes avant d'utiliser l'outil</p>
+          </div>
+          <button class="modal-close" onclick="closeModal('modal-export-factures')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <button class="sop-back" onclick="hideSop('export-factures')">&#8249; Retour</button>
+          <div class="sop-content">
+
+            <!-- SECTION : Première fois uniquement -->
+            <div class="sop-group once">
+              <div class="sop-group-icon">&#9881;</div>
+              <div class="sop-group-text">
+                <strong>Installation (première fois uniquement)</strong>
+                <span>Ces 6 étapes ne sont à faire qu'une seule fois pour configurer votre poste</span>
+              </div>
+            </div>
+
+            <div class="sop-step once-step">
+              <span class="sop-step-num">1</span>
+              <strong>Télécharger PDF24</strong>
+              <p>Se rendre sur <a href="https://tools.pdf24.org/fr/creator#download" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline;">tools.pdf24.org/fr/creator</a> et cliquer sur <b>"PDF24 Creator Installer"</b> pour lancer le téléchargement.</p>
+            </div>
+            <div class="sop-step once-step">
+              <span class="sop-step-num">2</span>
+              <strong>Installer PDF24</strong>
+              <p>Ouvrir le fichier <b>.exe</b> téléchargé et cliquer sur <b>Suivant</b> à chaque étape jusqu'à la fin de l'installation.</p>
+            </div>
+            <div class="sop-step once-step">
+              <span class="sop-step-num">3</span>
+              <strong>Ouvrir PDF24</strong>
+              <p>Une fois l'installation terminée, taper <b>"PDF24"</b> dans la barre de recherche Windows et ouvrir l'application.</p>
+            </div>
+            <div class="sop-step once-step">
+              <span class="sop-step-num">4</span>
+              <strong>Ouvrir l'assistant d'impression PDF</strong>
+              <p>Dans PDF24, cliquer sur <b>"Ouvrir l'assistant d'impression PDF"</b>.</p>
+              <img src="SOP/PDF/4.png" alt="Étape 4 — Assistant d'impression" />
+            </div>
+            <div class="sop-step once-step">
+              <span class="sop-step-num">5</span>
+              <strong>Accéder aux paramètres</strong>
+              <p>Cliquer sur <b>"Paramètres"</b>.</p>
+              <img src="SOP/PDF/5.png" alt="Étape 5 — Paramètres" />
+            </div>
+            <div class="sop-step once-step">
+              <span class="sop-step-num">6</span>
+              <strong>Configurer l'imprimante PDF</strong>
+              <p>Cliquer sur <b>"Imprimante PDF"</b>, vérifier que les cases cochées correspondent à l'image ci-dessous, sélectionner le <b>dossier de destination</b> des PDF, puis cliquer sur <b>"Appliquer"</b>. Fermer PDF24 ensuite.</p>
+              <img src="SOP/PDF/6.png" alt="Étape 6 — Configuration imprimante" />
+            </div>
+
+            <div class="sop-divider"></div>
+
+            <!-- SECTION : À chaque utilisation -->
+            <div class="sop-group every">
+              <div class="sop-group-icon">&#9889;</div>
+              <div class="sop-group-text">
+                <strong>Utilisation (à chaque export)</strong>
+                <span>Suivez ces étapes à chaque fois que vous souhaitez exporter des factures</span>
+              </div>
+            </div>
+
+            <div class="sop-step every-step">
+              <span class="sop-step-num">7</span>
+              <strong>Imprimer depuis Sage</strong>
+              <p>Ouvrir <b>Sage</b>, aller dans <b>Pièces clients &rarr; Factures</b>. Renseigner les <b>dates souhaitées</b> (important), sélectionner <b>toutes les factures</b> puis cliquer sur <b>"Imprimante"</b>.</p>
+              <img src="SOP/PDF/7.png" alt="Étape 7 — Sage impression" />
+            </div>
+            <div class="sop-step every-step">
+              <span class="sop-step-num">8</span>
+              <strong>Sélectionner PDF24</strong>
+              <p>Dans la liste des imprimantes, sélectionner <b>"PDF24"</b>.</p>
+              <img src="SOP/PDF/8.png" alt="Étape 8 — Sélection PDF24" />
+            </div>
+            <div class="sop-step every-step">
+              <span class="sop-step-num">9</span>
+              <strong>Options avancées</strong>
+              <p>Cliquer sur <b>"Option avancée"</b> et cocher la case <b>"Générer une impression par document"</b>.</p>
+              <img src="SOP/PDF/9.png" alt="Étape 9 — Option avancée" />
+            </div>
+            <div class="sop-step every-step">
+              <span class="sop-step-num">10</span>
+              <strong>Modifier la mise à l'échelle</strong>
+              <p>Dans <b>Standard</b>, cliquer sur l'icône paramètres puis sur <b>"Avancé..."</b>. Modifier la mise à l'échelle : remplacer <b>100%</b> par <b>82%</b>, puis cliquer sur <b>OK</b>.</p>
+              <img src="SOP/PDF/10.png" alt="Étape 10 — Mise à l'échelle" />
+            </div>
+            <div class="sop-step every-step">
+              <span class="sop-step-num">11</span>
+              <strong>Attendre la génération</strong>
+              <p><b>Ne pas fermer Sage</b> ni les autres fenêtres qui s'ouvrent. Les PDF apparaîtront dans le répertoire choisi après quelques minutes.</p>
+            </div>
+            <div class="sop-step every-step">
+              <span class="sop-step-num">12</span>
+              <strong>Renommer avec l'outil</strong>
+              <p>Ouvrir l'outil <a href="https://renommage-pdf-psl.lovable.app" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline;">Renommage PDF</a>, glisser toutes les factures dedans, cliquer sur <b>"Analyser"</b>, attendre quelques minutes, puis descendre et cliquer sur <b>"Télécharger les PDF renommés"</b>. Pensez à <b>vérifier le nombre de PDF</b> tout au long du process. Vérifiez également les <b>noms des fichiers</b> : il est possible que 2 ou 3 PDF ne soient pas renommés automatiquement, il faudra les <b>renommer manuellement</b>.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const input = document.getElementById('q');
     const cards = Array.from(document.querySelectorAll('.card'));
@@ -408,6 +810,54 @@
     });
 
     applyFilter('');
+
+    /* ---- Modal logic ---- */
+    function openToolModal(e, toolId){
+      e.preventDefault();
+      const overlay = document.getElementById('modal-' + toolId);
+      if(!overlay) return;
+      // Reset to choice view
+      const choice = overlay.querySelector('[id$="-choice"]');
+      const sop = overlay.querySelector('[id$="-sop"]');
+      if(choice) choice.style.display = '';
+      if(sop) sop.classList.remove('open');
+      overlay.classList.add('open');
+    }
+
+    function closeModal(id){
+      const overlay = document.getElementById(id);
+      if(overlay) overlay.classList.remove('open');
+    }
+
+    function showSop(toolId){
+      const overlay = document.getElementById('modal-' + toolId);
+      const prefix = toolId === 'export-factures' ? 'ef' : toolId;
+      const choice = document.getElementById(prefix + '-choice');
+      const sop = document.getElementById(prefix + '-sop');
+      if(choice) choice.style.display = 'none';
+      if(sop) sop.classList.add('open');
+    }
+
+    function hideSop(toolId){
+      const overlay = document.getElementById('modal-' + toolId);
+      const prefix = toolId === 'export-factures' ? 'ef' : toolId;
+      const choice = document.getElementById(prefix + '-choice');
+      const sop = document.getElementById(prefix + '-sop');
+      if(sop) sop.classList.remove('open');
+      if(choice) choice.style.display = '';
+    }
+
+    // Close modal on overlay click or Escape
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if(e.target === overlay) overlay.classList.remove('open');
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+      }
+    });
   </script>
 </body>
 </html>
