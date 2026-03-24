@@ -216,6 +216,13 @@
       transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
       min-width:180px; flex:1; max-width:260px;
     }
+    button.shortcut{
+      appearance:none;
+      width:100%;
+      font:inherit;
+      text-align:left;
+      cursor:pointer;
+    }
     .shortcut:hover{
       transform:translateY(-2px);
       border-color:rgba(255,255,255,.20);
@@ -230,6 +237,21 @@
     }
     .shortcut-icon img{
       width:100%; height:100%; object-fit:cover;
+    }
+    .shortcut-icon-pair{
+      width:100px; height:40px;
+      border-radius:14px;
+      display:flex; align-items:center; justify-content:center; gap:6px;
+      padding:8px;
+    }
+    .shortcut-icon-pair img{
+      width:40px; height:40px; object-fit:contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
+    }
+    .shortcut-icon-pair span{
+      font-size:13px; font-weight:900;
+      color:rgba(244,244,246,.72);
+      letter-spacing:.08em;
     }
     .shortcut-text{
       display:flex; flex-direction:column; gap:1px;
@@ -367,6 +389,9 @@
       overflow:hidden;
       display:flex; flex-direction:column;
     }
+    .modal.modal-wide{
+      width:min(980px, 94vw);
+    }
     .modal-overlay.open .modal{
       transform: translateY(0) scale(1);
     }
@@ -397,6 +422,84 @@
     .modal-body{
       padding:16px 22px 22px;
       display:flex; flex-direction:column; gap:10px;
+    }
+    .modal-split{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    .modal-option{
+      display:flex; flex-direction:column; gap:12px;
+      min-height:250px;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    a.modal-option,
+    button.modal-option{
+      color:inherit;
+      text-decoration:none;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    button.modal-option{
+      appearance:none;
+      width:100%;
+      font:inherit;
+      text-align:left;
+      cursor:pointer;
+    }
+    a.modal-option:hover,
+    button.modal-option:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.04));
+      box-shadow: 0 18px 42px rgba(0,0,0,.34);
+    }
+    .modal-option.disabled{
+      border-style:dashed;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      opacity:.84;
+    }
+    .modal-option-top{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .modal-option-icon{
+      width:62px; height:62px; border-radius:16px;
+      display:flex; align-items:center; justify-content:center;
+      padding:12px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      flex-shrink:0;
+    }
+    .modal-option-icon img{
+      width:30px; height:30px; object-fit:contain;
+    }
+    .modal-option-badge{
+      display:inline-flex; align-items:center;
+      padding:5px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.20);
+      color:rgba(244,244,246,.82);
+      font-size:11px; font-weight:700; letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .modal-option h4{
+      margin:0;
+      font-size:15px; font-weight:850; line-height:1.3;
+    }
+    .modal-option p{
+      margin:0;
+      font-size:12.5px; color:var(--muted); line-height:1.5;
+    }
+    .modal-option-footer{
+      margin-top:auto;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .modal-option-meta{
+      font-size:11.5px;
+      color:rgba(244,244,246,.58);
     }
     .sop-content{
       max-height:75vh; overflow-y:auto;
@@ -495,6 +598,8 @@
       .modal-header{ padding:16px 16px 12px; }
       .modal-header h3{ font-size:15px; }
       .modal-body{ padding:12px 16px 16px; }
+      .modal-split{ grid-template-columns: 1fr; }
+      .modal-option{ min-height:220px; }
       .sop-content{ max-height:68vh; }
       .sop-group{ padding:8px 12px; gap:8px; }
       .sop-group-icon{ width:28px; height:28px; font-size:14px; }
@@ -529,6 +634,11 @@
       .modal-header h3{ font-size:14px; }
       .modal-header p{ font-size:11.5px; }
       .modal-body{ padding:10px 14px 14px; gap:8px; }
+      .modal-option{ min-height:auto; padding:14px; }
+      .modal-option h4{ font-size:14px; }
+      .modal-option p{ font-size:11.5px; }
+      .modal-option-icon{ width:52px; height:52px; }
+      .modal-option-icon img{ width:24px; height:24px; }
       .sop-content{ max-height:62vh; }
       .sop-step strong{ font-size:12px; }
       .sop-step p{ font-size:11.5px; }
@@ -683,6 +793,17 @@
             <span>Présentations & documents IA</span>
           </div>
         </a>
+        <button class="shortcut" type="button" onclick="openSopModal('appel-offre')">
+          <div class="shortcut-icon shortcut-icon-pair">
+            <img src="icon/figma-3d-logo-black-background-free-png.png" alt="Figma" />
+            <span>X</span>
+            <img src="icon/openai-chatgpt-logo-icon-free-png.png" alt="ChatGPT" />
+          </div>
+          <div class="shortcut-text">
+            <strong>Figma x ChatGPT</strong>
+            <span>Appel d'offre</span>
+          </div>
+        </button>
       </div>
     </section>
 
@@ -878,6 +999,147 @@
     </div>
   </div>
 
+  <!-- Modal Appel d'offre -->
+  <div class="modal-overlay" id="modal-appel-offre">
+    <div class="modal modal-wide">
+      <div class="modal-header">
+        <div>
+          <h3>Appel d'offre</h3>
+          <p>Choisissez l'&eacute;tape &agrave; lancer pour la r&eacute;daction ou la mise en forme du m&eacute;moire technique.<a href="https://www.ilovepdf.com/fr/fusionner_pdf">Fusionner les pdf</a></p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-appel-offre')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-split">
+          <a class="modal-option" href="https://chatgpt.com/g/g-69c151ecc1fc8191abfed4aa3e6a0a5a-memoire-technique" target="_blank" rel="noopener" >
+            <div class="modal-option-top">
+              <div class="modal-option-icon">
+                <img src="icon/openai-chatgpt-logo-icon-free-png.png" alt="ChatGPT" style="width: 50px; height: 50px; border-radius: 16px;" />
+              </div>
+              <span class="modal-option-badge">ChatGPT</span>
+            </div>
+            <h4>R&eacute;daction du m&eacute;moire technique</h4>
+            <p>Rentrez un cahier des charges et autres documents n&eacute;cessaires puis l'assistant va g&eacute;n&eacute;rer un m&eacute;moire technique sous forme de document Word brut (&agrave; utiliser tel quel pour la mise en forme).</p>
+            <div class="modal-option-footer">
+              <span class="modal-option-meta">G&eacute;n&eacute;ration du contenu</span>
+              <span class="card-btn card-btn-open">Ouvrir &rarr;</span>
+            </div>
+          </a>
+
+          <button class="modal-option" type="button" onclick="openAppelOffreFormatting()">
+            <div class="modal-option-top">
+              <div class="modal-option-icon">
+                <img src="icon/figma-3d-logo-black-background-free-png.png" alt="Figma" style="width: 55px; height: 55px;" />
+              </div>
+              <span class="modal-option-badge">Figma</span>
+            </div>
+            <h4>Mise en forme du m&eacute;moire technique</h4>
+            <p>Importez le HTML g&eacute;n&eacute;r&eacute; par ChatGPT dans Figma puis exportez les sous-pages en PDF pour produire la version finale du m&eacute;moire technique.</p>
+            <div class="modal-option-footer">
+              <span class="modal-option-meta">Assistant + SOP</span>
+              <span class="card-btn card-btn-open">Ouvrir &rarr;</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal SOP Mise en forme appel d'offre -->
+  <div class="modal-overlay" id="modal-appel-offre-forme">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Documentation - Mise en forme du m&eacute;moire technique</h3>
+          <p>Proc&eacute;dure compl&egrave;te pour transformer le contenu ChatGPT en document mis en forme via Figma.</p>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-appel-offre-forme')">&times;</button>
+      </div>
+      <div class="modal-body" style="overflow-y:auto;flex:1;">
+          <div class="sop-content">
+
+            <div class="sop-step">
+              <span class="sop-step-num">1</span>
+              <strong>G&eacute;n&eacute;rer le HTML depuis ChatGPT</strong>
+              <p>Ins&eacute;rer le Word brut du m&eacute;moire technique (juste le texte) et &eacute;crire <b>&quot;mets le en forme&quot;</b>, puis cliquer sur le fichier <b>.html</b> pour le t&eacute;l&eacute;charger.</p>
+              <img src="SOP/Forme%20appel%20offre/1.png" alt="Etape 1 - Generer le HTML" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">2</span>
+              <strong>Ouvrir le plugin Figma</strong>
+              <p>Ouvrir Figma via ce lien, c'est plus simple : <a href="https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline;">html.to.design sur Figma</a>, puis cliquer sur <b>&quot;essayez dans...&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/2.png" alt="Etape 2 - Ouvrir Figma" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">3</span>
+              <strong>S&eacute;lectionner le bon plugin</strong>
+              <p>S&eacute;lectionner <b>html.to.design</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/3.png" alt="Etape 3 - Selectionner html.to.design" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">4</span>
+              <strong>Lancer le plugin</strong>
+              <p>Cliquer sur <b>&quot;Executer&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/4.png" alt="Etape 4 - Executer" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">5</span>
+              <strong>Aller dans l'onglet File</strong>
+              <p>Cliquer sur l'onglet <b>&quot;File&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/5.png" alt="Etape 5 - Onglet File" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">6</span>
+              <strong>Importer le HTML</strong>
+              <p>Cliquer sur <b>&quot;Browse&quot;</b> et s&eacute;lectionner le fichier HTML t&eacute;l&eacute;charg&eacute; depuis ChatGPT.</p>
+              <img src="SOP/Forme%20appel%20offre/6.png" alt="Etape 6 - Importer le HTML" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">7</span>
+              <strong>V&eacute;rifier les options</strong>
+              <p>V&eacute;rifier que ces cases sont coch&eacute;es puis cliquer sur <b>&quot;Proceed&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/7.png" alt="Etape 7 - Verifier les options" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">8</span>
+              <strong>Confirmer</strong>
+              <p>Cliquer sur <b>&quot;Ok&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/8.png" alt="Etape 8 - Confirmer" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">9</span>
+              <strong>Fermer la fen&ecirc;tre du plugin</strong>
+              <p>Le document s'est charg&eacute; en arri&egrave;re-plan, fermer la petite fen&ecirc;tre <b>html.to.design</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/9.png" alt="Etape 9 - Fermer le plugin" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">10</span>
+              <strong>Exporter les sous-pages en PDF</strong>
+              <p>S&eacute;lectionner <b>uniquement chaque sous-page</b> (<b>Ctrl + clic</b> sur toutes les pages), puis descendre dans le menu de droite, s&eacute;lectionner <b>PDF</b>, cocher la case <b>&quot;Inclure la zone de d&eacute;limitation&quot;</b>, fermer le popup puis cliquer sur <b>&quot;Exporter les X calques&quot;</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/10.png" alt="Etape 10 - Export PDF" />
+            </div>
+
+            <div class="sop-step">
+              <span class="sop-step-num">11</span>
+              <strong>Fusionner les PDF</strong>
+              <p>Ouvrir le <b>.zip</b> t&eacute;l&eacute;charg&eacute; et mettre tous les PDF qu'il contient sur ce site : <a href="https://www.ilovepdf.com/fr/fusionner_pdf" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline;">ilovepdf.com/fr/fusionner_pdf</a>, puis cliquer sur <b>fusionner</b>.</p>
+              <img src="SOP/Forme%20appel%20offre/11.png" alt="Etape 11 - Fusionner les PDF" />
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const input = document.getElementById('q');
     const cards = Array.from(document.querySelectorAll('.card'));
@@ -918,6 +1180,14 @@
     applyFilter('');
 
     /* ---- Modal logic ---- */
+    function openAppelOffreFormatting(){
+      const url = 'https://chatgpt.com/g/g-69c151ecc1fc8191abfed4aa3e6a0a5a-memoire-technique';
+      const newWindow = window.open(url, '_blank', 'noopener');
+      if(newWindow) newWindow.opener = null;
+      closeModal('modal-appel-offre');
+      openSopModal('appel-offre-forme');
+    }
+
     function openSopModal(toolId){
       const overlay = document.getElementById('modal-' + toolId);
       if(overlay) overlay.classList.add('open');
