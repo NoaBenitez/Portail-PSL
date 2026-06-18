@@ -101,21 +101,41 @@
     highlightActive();
   }
 
+  /* ---------- Lien horodaté selon la plateforme ---------- */
+  // Construit l'URL qui démarre la lecture à "t" secondes, en s'adaptant
+  // automatiquement à la plateforme (YouTube ou SharePoint/Stream).
+  function videoUrlAt(base, t) {
+    if (/youtu\.be|youtube\.com/i.test(base)) {
+      // YouTube : ...?t=SECONDS  (ex. https://youtu.be/ID?t=424)
+      const sep = base.includes("?") ? "&" : "?";
+      return base + sep + "t=" + t;
+    }
+    // SharePoint/Stream : nav -> playbackOptions.startTimeInSeconds
+    const nav = encodeURIComponent(JSON.stringify({ playbackOptions: { startTimeInSeconds: t } }));
+    const sep = base.includes("?") ? "&" : "?";
+    return base + sep + "nav=" + nav;
+  }
+
+  // Formate des secondes en M:SS ou H:MM:SS (pour les minutages > 1 h).
+  function formatTime(t) {
+    const h = Math.floor(t / 3600);
+    const m = Math.floor((t % 3600) / 60);
+    const s = String(t % 60).padStart(2, "0");
+    return h > 0 ? h + ":" + String(m).padStart(2, "0") + ":" + s : m + ":" + s;
+  }
+
   /* ---------- Bouton « Voir la vidéo » ---------- */
   function videoButton(id) {
     const vid = (typeof VIDEOS !== "undefined") ? VIDEOS[id] : null;
     if (!vid || !vid.v) return "";
     const t = vid.t || 0;
-    // Lien horodaté SharePoint/Stream : démarre la lecture à "t" secondes.
-    const nav = encodeURIComponent(JSON.stringify({ playbackOptions: { startTimeInSeconds: t } }));
-    const url = vid.v + "&nav=" + nav;
-    const mm = Math.floor(t / 60);
-    const ss = String(t % 60).padStart(2, "0");
+    const url = videoUrlAt(vid.v, t);
+    const time = formatTime(t);
     return (
       '<a class="video-btn" href="' + url + '" target="_blank" rel="noopener">' +
         '<span class="video-ic">▶</span>' +
         '<span>Voir la vidéo de formation</span>' +
-        '<span class="video-time">' + mm + ":" + ss + "</span>" +
+        '<span class="video-time">' + time + "</span>" +
       "</a>"
     );
   }

@@ -40,9 +40,10 @@
 /* =========================================================================
    VIDÉOS DE FORMATION
    -------------------------------------------------------------------------
-   Deux enregistrements SharePoint/Stream :
-     VIDEO_S1 = Formation Commercial 1/2 (groupe 1)
-     VIDEO_S2 = Formation Commercial 2/2 (groupe 1)
+   Deux enregistrements de formation :
+     VIDEO_S1 = Formation Commercial 1/2 (groupe 1) — YouTube
+     VIDEO_S2 = Formation Commercial 2/2 (groupe 1) — SharePoint/Stream
+   (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
 
    VIDEOS associe chaque formation (par son "id") à sa vidéo et au
    MINUTAGE DE DÉPART (t, en secondes). Le bouton « Voir la vidéo » ouvre
@@ -57,7 +58,7 @@
    le début du sujet ; ajustez si besoin.
    ========================================================================= */
 
-const VIDEO_S1 = "https://cmiwipsos-my.sharepoint.com/personal/aelajjouri_cmiwipsos_onmicrosoft_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Faelajjouri%5Fcmiwipsos%5Fonmicrosoft%5Fcom%2FDocuments%2FEnregistrements%2FPSL%20SECURITE%20%2D%20W%27IPSOS%20%2D%20Formation%20Commercial%2012%20%2D%20groupe%201%2D20260610%5F135538%2DEnregistrement%20de%20la%20r%C3%A9union%2Emp4&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ef6d470e9%2D2e70%2D4c4b%2Db52a%2D883fea761c4f";
+const VIDEO_S1 = "https://youtu.be/xLE1T9bw86M";
 const VIDEO_S2 = "https://cmiwipsos-my.sharepoint.com/personal/aelajjouri_cmiwipsos_onmicrosoft_com/_layouts/15/stream.aspx?id=%2Fpersonal%2Faelajjouri%5Fcmiwipsos%5Fonmicrosoft%5Fcom%2FDocuments%2FEnregistrements%2FPSL%20SECURITE%20%2D%20W%27IPSOS%20%2D%20Formation%20Commercial%2022%20%2D%20groupe%201%2D20260612%5F135800%2DEnregistrement%20de%20la%20r%C3%A9union%2Emp4&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Ead57d466%2Dc187%2D4c29%2Db761%2D64dc2871a6ea";
 
 const VIDEOS = {
