@@ -69,7 +69,7 @@ const VIDEO_S2 = "https://youtu.be/dZ0JAOajzIw";
 /* === Endpoints vidéo à compléter (collez l'URL YouTube entre les guillemets) === */
 const VIDEO_S3 = "";  // Formation Appro-Logistique 1/2
 const VIDEO_S4 = "";  // Formation Suivi de chantier 2/2
-const VIDEO_S5 = "";  // Formation ADV (acceptation)
+const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
