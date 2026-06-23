@@ -40,10 +40,15 @@
 /* =========================================================================
    VIDÉOS DE FORMATION
    -------------------------------------------------------------------------
-   Deux enregistrements de formation :
+   Enregistrements de formation :
      VIDEO_S1 = Formation Commercial 1/2 (groupe 1) — YouTube
      VIDEO_S2 = Formation Commercial 2/2 (groupe 1) — YouTube
+     VIDEO_S3 = Formation Appro-Logistique 1/2 — (lien à venir)
+     VIDEO_S4 = Formation Suivi de chantier 2/2 — (lien à venir)
+     VIDEO_S5 = Formation ADV (acceptation) — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
+   Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
+   ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
 
    VIDEOS associe chaque formation (par son "id") à sa vidéo et au
    MINUTAGE DE DÉPART (t, en secondes). Le bouton « Voir la vidéo » ouvre
@@ -60,6 +65,11 @@
 
 const VIDEO_S1 = "https://youtu.be/xLE1T9bw86M";
 const VIDEO_S2 = "https://youtu.be/dZ0JAOajzIw";
+
+/* === Endpoints vidéo à compléter (collez l'URL YouTube entre les guillemets) === */
+const VIDEO_S3 = "";  // Formation Appro-Logistique 1/2
+const VIDEO_S4 = "";  // Formation Suivi de chantier 2/2
+const VIDEO_S5 = "";  // Formation ADV (acceptation)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -103,7 +113,67 @@ const VIDEOS = {
   "proposition-contrat":            { v: VIDEO_S2, t: 5142 },  // 1:25:42
   "regroupement-word":              { v: VIDEO_S2, t: 5577 },  // 1:32:57
   "prochaines-sessions":            { v: VIDEO_S2, t: 6125 },  // 1:42:05
-  "tarifs-particuliers":            { v: VIDEO_S2, t: 6266 }   // 1:44:26
+  "tarifs-particuliers":            { v: VIDEO_S2, t: 6266 },  // 1:44:26
+
+  /* ----- Session 3 — Formation Appro-Logistique 1/2 ----- */
+  "appro-codes-etat-intro":         { v: VIDEO_S3, t: 161 },   // 02:41
+  "appro-devis-nomenclature-plan":  { v: VIDEO_S3, t: 470 },   // 07:50
+  "appro-acceptation-aura-pro":     { v: VIDEO_S3, t: 565 },   // 09:25
+  "appro-gestion-articles-chantier":{ v: VIDEO_S3, t: 1043 },  // 17:23
+  "appro-demande-achat-auto":       { v: VIDEO_S3, t: 1231 },  // 20:31
+  "appro-acceptation-globale":      { v: VIDEO_S3, t: 1644 },  // 27:24
+  "appro-suivi-chantier-base":      { v: VIDEO_S3, t: 1899 },  // 31:39
+  "appro-notes-chantier":           { v: VIDEO_S3, t: 1964 },  // 32:44
+  "appro-recap-heures":             { v: VIDEO_S3, t: 2018 },  // 33:38
+  "appro-imputation-matiere":       { v: VIDEO_S3, t: 2710 },  // 45:10
+  "appro-reappro-auto":             { v: VIDEO_S3, t: 2922 },  // 48:42
+  "appro-historique-code-etat":     { v: VIDEO_S3, t: 3204 },  // 53:24
+  "appro-planning-reservation":     { v: VIDEO_S3, t: 3517 },  // 58:37
+  "appro-crm-prospection":          { v: VIDEO_S3, t: 3992 },  // 1:06:32
+  "appro-terminer-cloturer":        { v: VIDEO_S3, t: 4803 },  // 1:20:03
+  "appro-code-etat-auto":           { v: VIDEO_S3, t: 5149 },  // 1:25:49
+  "appro-notif-plans":              { v: VIDEO_S3, t: 5289 },  // 1:28:09
+
+  /* ----- Session 4 — Formation Suivi de chantier 2/2 ----- */
+  "chantier-presentation":          { v: VIDEO_S4, t: 278 },   // 04:38
+  "chantier-deux-appro":            { v: VIDEO_S4, t: 873 },   // 14:33
+  "chantier-recherche-filtres":     { v: VIDEO_S4, t: 1243 },  // 20:43
+  "chantier-entree-base":           { v: VIDEO_S4, t: 1403 },  // 23:23
+  "chantier-codes-etat-etapes":     { v: VIDEO_S4, t: 1441 },  // 24:01
+  "chantier-responsable":           { v: VIDEO_S4, t: 1523 },  // 25:23
+  "chantier-module-reappro":        { v: VIDEO_S4, t: 2209 },  // 36:49
+  "chantier-articles-stock":        { v: VIDEO_S4, t: 2334 },  // 38:54
+  "chantier-demande-achat":         { v: VIDEO_S4, t: 2616 },  // 43:36
+  "chantier-article-generique":     { v: VIDEO_S4, t: 2919 },  // 48:39
+  "chantier-commande-plans":        { v: VIDEO_S4, t: 3658 },  // 1:00:58
+  "chantier-suivi-code-etat":       { v: VIDEO_S4, t: 3891 },  // 1:04:51
+  "chantier-imputation":            { v: VIDEO_S4, t: 4715 },  // 1:18:35
+  "chantier-planification":         { v: VIDEO_S4, t: 5293 },  // 1:28:13
+  "chantier-reservation":           { v: VIDEO_S4, t: 5516 },  // 1:31:56
+  "chantier-rdv-mail":              { v: VIDEO_S4, t: 6037 },  // 1:40:37
+
+  /* ----- Session 5 — Formation ADV (acceptation) ----- */
+  "adv-introduction":               { v: VIDEO_S5, t: 253 },   // 04:13
+  "adv-contrat-vs-sav":             { v: VIDEO_S5, t: 289 },   // 04:49
+  "adv-creation-client":            { v: VIDEO_S5, t: 428 },   // 07:08
+  "adv-mises-a-jour":               { v: VIDEO_S5, t: 473 },   // 07:53
+  "adv-type-affaire-siret":         { v: VIDEO_S5, t: 655 },   // 10:55
+  "adv-code-reglement-tva":         { v: VIDEO_S5, t: 831 },   // 13:51
+  "adv-remise-bpu":                 { v: VIDEO_S5, t: 1040 },  // 17:20
+  "adv-creation-contact":           { v: VIDEO_S5, t: 1168 },  // 19:28
+  "adv-creation-devis":             { v: VIDEO_S5, t: 1416 },  // 23:36
+  "adv-devis-sav-commercial":       { v: VIDEO_S5, t: 1552 },  // 25:52
+  "adv-chiffrage":                  { v: VIDEO_S5, t: 1954 },  // 32:34
+  "adv-sous-totaux-options":        { v: VIDEO_S5, t: 2450 },  // 40:50
+  "adv-arrondi-remise":             { v: VIDEO_S5, t: 2737 },  // 45:37
+  "adv-descriptif-commercial":      { v: VIDEO_S5, t: 2875 },  // 47:55
+  "adv-modeles-mail-signature":     { v: VIDEO_S5, t: 3191 },  // 53:11
+  "adv-historique-mails":           { v: VIDEO_S5, t: 3398 },  // 56:38
+  "adv-acceptation-devis":          { v: VIDEO_S5, t: 3658 },  // 1:00:58
+  "adv-validation-prospect-client": { v: VIDEO_S5, t: 3916 },  // 1:05:16
+  "adv-fiche-technique":            { v: VIDEO_S5, t: 4318 },  // 1:11:58
+  "adv-devis-adjonction":           { v: VIDEO_S5, t: 4391 },  // 1:13:11
+  "adv-acceptation-globale-chantier":{ v: VIDEO_S5, t: 4673 }  // 1:17:53
 };
 
 const DOC = [
@@ -1704,6 +1774,1154 @@ const DOC = [
                 <span class="ic">!</span>
                 <div>Pré-requis pour les cas pratiques : chaque participant doit avoir accès à sa
                 <strong>base test</strong> (à voir avec le service informatique).</div>
+              </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — APPRO-LOGISTIQUE (Session 3 — Appro-Logistique 1/2)
+     ============================================================== */
+  {
+    category: "Appro-Logistique",
+    icon: "📦",
+    groups: [
+
+      {
+        name: "Du devis au chantier",
+        items: [
+
+          {
+            id: "appro-codes-etat-intro",
+            title: "Codes d'état : la base du suivi",
+            lead: "Pourquoi créer ses propres codes d'état pour suivre l'avancement.",
+            html: `
+              <h2>À quoi servent les codes d'état ?</h2>
+              <p>Le <strong>code d'état</strong> est, pour l'équipe, le <strong>seul moyen de suivre
+              l'avancement des chantiers</strong> (relevé planifié, relevé transmis, maquette,
+              retour maquette, impression OK, etc.).</p>
+              <ul>
+                <li>On n'est <strong>pas limité</strong> en nombre de codes d'état : il faut les créer.</li>
+                <li>Il vaut mieux en avoir <strong>trop</strong> et épurer ensuite que l'inverse.</li>
+                <li>Chaque scénario doit devenir un code d'état « théorique » pour le retrouver dans la liste.</li>
+              </ul>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Travail à faire en interne : <strong>checklister</strong> tous les codes d'état nécessaires,
+                puis les paramétrer sur la base de production.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-devis-nomenclature-plan",
+            title: "Devis d'installation avec nomenclature « plan »",
+            lead: "Préparer le devis en amont : matériel + nomenclature des plans.",
+            html: `
+              <h2>Structurer le devis</h2>
+              <p>Le devis d'installation se compose de plusieurs paragraphes, par exemple :</p>
+              <ul>
+                <li>un paragraphe <strong>matériel / main d'œuvre / déplacement</strong> ;</li>
+                <li>un paragraphe avec une <strong>nomenclature « plan »</strong> regroupant les articles
+                liés aux plans (cadre, relevé, dessin, impression…).</li>
+              </ul>
+              <p>La nomenclature va <strong>s'éclater</strong> à l'acceptation : on retrouvera dans le
+              suivi de chantier le détail de tous les articles qui la composent.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div><strong>Tout part du devis.</strong> Les articles de la nomenclature doivent être
+                correctement créés, avec le <strong>bon fournisseur</strong>, car c'est lui qui
+                conditionnera la demande d'achat.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-acceptation-aura-pro",
+            title: "Acceptation « hors appro » vs globale (plans)",
+            lead: "Choisir le fournisseur des articles du plan via le mode hors approvisionnement.",
+            html: `
+              <h2>Deux modes d'acceptation</h2>
+              <table>
+                <tr><th>Mode</th><th>Effet</th></tr>
+                <tr><td>Acceptation <strong>globale</strong></td><td>Lance la demande d'achat sur le
+                <strong>fournisseur principal</strong> de la fiche article (pas de choix).</td></tr>
+                <tr><td>Acceptation <strong>hors appro</strong> (aura pro)</td><td>On garde la
+                <strong>main</strong> dans le suivi de chantier pour choisir un autre fournisseur
+                rattaché à l'article avant de lancer la demande d'achat.</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le hors appro est utile quand un article (ex. cadre) peut être commandé chez
+                <strong>plusieurs fournisseurs</strong> : clic droit sur l'article →
+                modifier le fournisseur affecté → lancer la demande d'achat.</div>
+              </div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Si un article a toujours le <strong>même fournisseur unique</strong>, l'acceptation
+                globale suffit.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-gestion-articles-chantier",
+            title: "Gestion des articles dans le chantier",
+            lead: "Retrouver et vérifier les articles issus de la proposition.",
+            html: `
+              <h2>Onglet « Gestion des articles »</h2>
+              <p>Après acceptation, le suivi de chantier affiche les articles de la proposition
+              (extincteurs, main d'œuvre, déplacement) et, en dessous, le <strong>détail de la
+              nomenclature</strong> acceptée.</p>
+              <p>C'est ici qu'on peut :</p>
+              <ul>
+                <li>vérifier que les articles correspondent bien à la proposition ;</li>
+                <li><strong>ajouter des articles</strong> non prévus initialement (clic droit → ajout d'article) ;</li>
+                <li>lancer/valider les demandes d'achat selon le mode choisi.</li>
+              </ul>
+            `
+          },
+
+          {
+            id: "appro-demande-achat-auto",
+            title: "Demande d'achat automatique à l'acceptation",
+            lead: "Paramétrer le lancement auto des demandes d'achat sur les articles « plan ».",
+            html: `
+              <h2>Automatiser la demande d'achat</h2>
+              <p>Sur la fiche article, deux coches déterminent le comportement à l'acceptation :</p>
+              <table>
+                <tr><th>Coche</th><th>Effet</th></tr>
+                <tr><td><strong>Réappro auto</strong> + <strong>réappro chantier</strong></td>
+                    <td>Lance la demande d'achat <strong>dès l'acceptation</strong> du devis.</td></tr>
+                <tr><td><strong>Réappro chantier</strong> seul</td>
+                    <td>Article géré en stock, calculé dans le module réappro (commande par semaine).</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le process retenu : acceptation globale → les articles « plan » génèrent
+                automatiquement une <strong>demande d'achat à traiter</strong> (vue le lendemain dans
+                le module fournisseur), où l'on peut conserver ou changer le fournisseur.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-acceptation-globale",
+            title: "Accepter le devis (exemple complet)",
+            lead: "Dérouler l'acceptation globale de bout en bout.",
+            html: `
+              <h2>Étapes d'acceptation</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <strong>Renseigner le prévisionnel</strong> dates de travaux, responsable (département
+                technicien travaux).</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <strong>Cocher « fiche technique »</strong> pour créer l'installation du client.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <strong>Acceptation globale</strong> le hors appro est grisé pour éviter les erreurs.</div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <strong>Valider</strong> double-clic sur l'installation pour la créer, enregistrer,
+                ressortir et valider — une demande d'achat est lancée pour les articles « plan ».</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Selon le fournisseur de chaque article, vous pouvez obtenir <strong>plusieurs
+                demandes d'achat</strong> (une par fournisseur).</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Suivi & planification",
+        items: [
+
+          {
+            id: "appro-suivi-chantier-base",
+            title: "Onglet base & dates de travaux",
+            lead: "Les informations remontées de la proposition et le rôle des dates.",
+            html: `
+              <h2>Onglet « Base »</h2>
+              <p>On y retrouve les infos de la proposition. Les <strong>dates prévisionnelles de
+              début et fin de travaux</strong> sont importantes : elles servent au calcul du module
+              réappro (date d'arrêté).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Indiquez toujours des dates prévisionnelles cohérentes : c'est ce qui permet de
+                faire remonter les bons besoins au bon moment.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-notes-chantier",
+            title: "Notes du chantier",
+            lead: "Saisir une note interne visible dès l'ouverture du chantier.",
+            html: `
+              <h2>Deux façons de noter</h2>
+              <ul>
+                <li>L'onglet <strong>Note</strong> (page blanche, titre + texte) : la note apparaît en bas
+                à gauche, <strong>visible dès l'ouverture</strong> du chantier.</li>
+                <li>Le picto <strong>note interne</strong> : pratique mais il faut rentrer dedans pour la voir.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Exemple : « Dispo client le 6 juillet à 14h00 ». Pas d'impact sur le planning,
+                c'est une simple note interne au chantier.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-recap-heures",
+            title: "Récap des heures (vendu / planifié / reste)",
+            lead: "Suivre les heures directement depuis l'onglet planification du chantier.",
+            html: `
+              <h2>Le petit récap en bas</h2>
+              <p>Dès qu'il y a des heures planifiées, l'onglet planification affiche un récapitulatif :</p>
+              <ul>
+                <li><strong>Total des heures vendues</strong></li>
+                <li><strong>Déjà planifié</strong></li>
+                <li><strong>Reste à planifier</strong></li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Plus besoin d'aller dans la planification multiple : ce récap remonte directement
+                sur le chantier (paramétrage à activer).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-imputation-matiere",
+            title: "Imputation de la matière",
+            lead: "Sortir le matériel du stock vers l'installation du client.",
+            html: `
+              <h2>Imputer = sortir du stock</h2>
+              <p>L'imputation déplace informatiquement le matériel <strong>du dépôt vers
+              l'installation</strong> du client. Elle alimente la <strong>fiche technique</strong>
+              (parc matériel).</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Vérifier la colonne <strong>stock en cours</strong> sur le dépôt sélectionné.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Accès au détail des imputations → choisir le technicien et la date de sortie.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Sélectionner les lignes → clic droit <strong>validation</strong> → valider en bas à droite.</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Ne pas oublier l'imputation quand vous sortez le matériel : c'est elle qui tient
+                à jour le parc matériel (utile ensuite pour le SAV et les contrats).</div>
+              </div>
+              <p>Un <strong>bon de livraison interne</strong> peut être édité pour accompagner la préparation.</p>
+            `
+          },
+
+          {
+            id: "appro-reappro-auto",
+            title: "Coches « fiche technique » & réappro auto",
+            lead: "Les bons réglages sur la fiche article pour que tout remonte.",
+            html: `
+              <h2>À vérifier sur chaque article</h2>
+              <table>
+                <tr><th>Coche</th><th>Quand l'utiliser</th></tr>
+                <tr><td><strong>Fiche technique</strong></td><td>Articles à faire remonter sur
+                l'installation (pas le petit matériel / outillage).</td></tr>
+                <tr><td><strong>Réappro auto + réappro chantier</strong></td><td>Lance la demande
+                d'achat dès l'acceptation (articles « plan »).</td></tr>
+                <tr><td><strong>Réappro chantier</strong> seul</td><td>Articles gérés en stock (ex.
+                extincteurs) → calcul des quantités dans le module réappro.</td></tr>
+              </table>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>En cas d'import de base article, vérifiez que la colonne <strong>fiche technique</strong>
+                est bien taguée pour les bons articles.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-historique-code-etat",
+            title: "Historique des codes d'état",
+            lead: "Tracer qui a modifié un code d'état et quand.",
+            html: `
+              <h2>Suivre les modifications</h2>
+              <p>À côté du code d'état, un petit picto donne l'<strong>historique des modifications</strong> :
+              par date/heure et par profil utilisateur.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Utile quand un code d'état est changé par erreur : on retrouve qui l'a modifié et
+                quand, pour rétablir le bon avancement.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-planning-reservation",
+            title: "Planning & réservations",
+            lead: "Paramétrer le planning et bloquer un créneau en attente de confirmation.",
+            html: `
+              <h2>Paramétrer le planning</h2>
+              <p>Dans <em>Fichier → Paramétrage</em>, par utilisateur : bornage de journée (début/fin),
+              nombre de jours affichés (5 ou 7), couleurs (centralisées pour tous ou laissées libres).</p>
+              <h2>Réservation</h2>
+              <p>Clic droit → <strong>ajouter une réservation</strong> : bloque un créneau
+              <strong>en attente de confirmation du client</strong>. En la rattachant à un numéro de
+              chantier/devis, on peut ensuite la <strong>transformer en planification</strong>
+              (clic droit → valider la réservation).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Sans rattachement à une affaire, il faut supprimer la réservation puis replanifier.
+                Avec rattachement, la conversion en planification de chantier est directe.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-crm-prospection",
+            title: "CRM & prospection",
+            lead: "Quand utiliser le CRM plutôt qu'une simple réservation.",
+            html: `
+              <h2>Le CRM pour la vraie prospection</h2>
+              <p>Le planning gère tout (chantiers, SAV, réunions, événements). Pour la
+              <strong>prospection terrain</strong>, mieux vaut le <strong>CRM</strong> :</p>
+              <ul>
+                <li>créer un prospect / client, un projet, des actions (appels, RDV) ;</li>
+                <li>planning commercial en lien avec <strong>Outlook</strong> ;</li>
+                <li>historique de ce qui s'est passé sur le client/prospect.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le CRM peut être déclenché dans un second temps (pour ne pas activer tous les
+                modules d'un coup). Une formation spécifique pourra y être consacrée.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-terminer-cloturer",
+            title: "Chantier terminé vs clôturé",
+            lead: "Deux notions différentes — et pourquoi penser à clôturer.",
+            html: `
+              <h2>Terminé ≠ clôturé</h2>
+              <table>
+                <tr><th>État</th><th>Effet</th></tr>
+                <tr><td><strong>Terminé</strong></td><td>Disparaît de la liste des chantiers en cours ;
+                on peut encore le ré-ouvrir, ajouter planifications/articles, imputer.</td></tr>
+                <tr><td><strong>Clôturé</strong></td><td>Interdit toute saisie ultérieure (à faire quand
+                les fonds sont reçus).</td></tr>
+              </table>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Pensez à <strong>clôturer</strong> au fur et à mesure pour épurer la liste.
+                La facturation reste possible à tout moment (avancement, global, 100 %) — ce n'est pas lié
+                à l'état « terminé ».</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-code-etat-auto",
+            title: "Code d'état automatique à la planification",
+            lead: "Faire basculer le code d'état tout seul quand on planifie.",
+            html: `
+              <h2>Automatiser l'avancement</h2>
+              <p>On peut paramétrer le passage automatique du code d'état (ex. « chantier planifié »)
+              dès qu'une planification est créée — pour ne pas oublier de le changer à la main.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Demande fréquente : beaucoup pensent que le code d'état évolue tout seul. Sans
+                paramétrage, c'est une <strong>action manuelle</strong>. Maximisez l'automatisation des
+                étapes qui peuvent l'être.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro-notif-plans",
+            title: "Informer le service plans",
+            lead: "Transmettre les demandes d'achat « plan » aux bonnes personnes.",
+            html: `
+              <h2>Demande d'achat « plan » → service interne</h2>
+              <p>Depuis le module fournisseur, chaque demande d'achat concernant les plans peut être
+              <strong>envoyée en PDF / par mail</strong> aux contacts internes concernés.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Alternative préférée : créer un <strong>type de commande « plan »</strong> ; le service
+                filtre par type de commande et retrouve directement ses demandes d'achat — sans dépendre
+                d'un mail (suivi en temps réel dans le module).</div>
+              </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — SUIVI DE CHANTIER (Session 4 — Suivi de chantier 2/2)
+     ============================================================== */
+  {
+    category: "Suivi de chantier",
+    icon: "🏗️",
+    groups: [
+
+      {
+        name: "Principes & approvisionnement",
+        items: [
+
+          {
+            id: "chantier-presentation",
+            title: "Qu'est-ce que le suivi de chantier ?",
+            lead: "Une vision globale : articles, approvisionnement et planification.",
+            html: `
+              <h2>Un module global</h2>
+              <p>Le suivi de chantier regroupe :</p>
+              <ul>
+                <li>la <strong>gestion des articles</strong> issus de la proposition acceptée
+                (commander ? récupérer sur stock ?) ;</li>
+                <li>la <strong>planification</strong> du chantier (heures vendues vs heures réalisées) ;</li>
+                <li>la sortie de matériel pour alimenter la <strong>fiche technique</strong> (parc matériel).</li>
+              </ul>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Pensez « <strong>qui fait quoi</strong> » : segmentez les tâches (gestion articles,
+                planification, imputation) pour ne pas se marcher dessus.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-deux-appro",
+            title: "Deux types d'approvisionnement",
+            lead: "Approvisionnement global vs hors approvisionnement.",
+            html: `
+              <h2>Comprendre les 2 modes</h2>
+              <table>
+                <tr><th>Mode</th><th>Fonctionnement</th></tr>
+                <tr><td><strong>Global</strong></td><td>Utilise le <strong>module réappro</strong> en
+                parallèle : vue de l'état du stock sur l'ensemble des affaires, demandes d'achat
+                groupées (un peu automatisé).</td></tr>
+                <tr><td><strong>Hors appro</strong></td><td>Action <strong>manuelle</strong> chantier
+                par chantier : on valide les articles dans le suivi de chantier (récupérer sur stock
+                ou demande d'achat).</td></tr>
+              </table>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Lors d'une acceptation, c'est <strong>soit l'un, soit l'autre</strong> — on ne
+                cumule pas les deux modes.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-recherche-filtres",
+            title: "Recherche, filtres & codes d'état",
+            lead: "Retrouver ses chantiers par responsable, activité, code d'état.",
+            html: `
+              <h2>Filtrer la liste des chantiers</h2>
+              <p>Le suivi de chantier liste tous les devis acceptés. On peut filtrer par :</p>
+              <ul>
+                <li><strong>responsable</strong> (le chargé d'affaires voit ses chantiers le matin) ;</li>
+                <li><strong>activité</strong> (extincteur, etc.) ;</li>
+                <li><strong>code d'état</strong> (en cours, en attente, en commande…).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Les codes d'état sont <strong>standard</strong> (communs à toutes les activités) : on
+                ne peut pas les différencier par activité.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-entree-base",
+            title: "Entrer dans un chantier — onglet base",
+            lead: "Les informations en lecture seule remontées de la proposition.",
+            html: `
+              <h2>Onglet « Base »</h2>
+              <p>En haut, des informations en <strong>fond bleu non modifiables</strong> :
+              proposition, client, chantier, commercial, activité. C'est là aussi qu'on retrouve
+              le <strong>code d'état</strong> du chantier.</p>
+            `
+          },
+
+          {
+            id: "chantier-codes-etat-etapes",
+            title: "Codes d'état : structurer les étapes",
+            lead: "Construire la check-list d'avancement (relevé, dessin, maquette…).",
+            html: `
+              <h2>Structurer de A à Z</h2>
+              <p>C'est dans le paramétrage des codes d'état qu'on définit toutes les étapes :
+              relevé, dessin, envoi de maquette, retour maquette, impression OK…</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Le suivi des plans se fait <strong>uniquement</strong> par code d'état (action
+                humaine). C'est la fusion des codes d'état « Sage » et « production » à checklister
+                ensemble.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-responsable",
+            title: "Technicien responsable / chargé d'affaires",
+            lead: "Qui est en charge du chantier — et ce n'est pas la planification.",
+            html: `
+              <h2>Responsable ≠ planification</h2>
+              <p>Le <strong>technicien responsable</strong> (= chargé d'affaires) est la personne en
+              charge du chantier : il vérifie les articles, organise, planifie. Un bouton permet de
+              l'<strong>avertir par mail</strong> que le chantier lui a été affecté.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>La <strong>planification</strong> à un ou plusieurs techniciens est une étape
+                distincte (picto planification). On peut aussi mettre un <strong>service</strong> en
+                responsable plutôt qu'une personne.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Réappro, commandes & plans",
+        items: [
+
+          {
+            id: "chantier-module-reappro",
+            title: "Module réapprovisionnement",
+            lead: "Date d'arrêté, choix du dépôt, vision globale des besoins.",
+            html: `
+              <h2>Vue globale des besoins</h2>
+              <p>Le module réappro (menu Fournisseur) donne une vision sur l'ensemble des affaires et
+              la disponibilité des stocks. On choisit une <strong>date d'arrêté</strong> et un
+              <strong>dépôt</strong> (vous travaillez par dépôt/agence).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Avant de démarrer en production, le <strong>stock doit être à jour</strong> sur les
+                articles, et chaque article doit être <strong>géré en stock</strong> (sinon la réception
+                n'alimente pas le stock).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-articles-stock",
+            title: "Articles, stock & proposition de commande",
+            lead: "Commande client, stock en cours, stock mini/maxi.",
+            html: `
+              <h2>Lire la proposition</h2>
+              <ul>
+                <li><strong>Commande client</strong> : quantité réellement nécessaire pour les affaires.</li>
+                <li><strong>Stock en cours</strong> : ce qu'il reste en stock.</li>
+                <li><strong>Proposition</strong> : calculée automatiquement (et selon stock mini/maxi de
+                la fiche article).</li>
+              </ul>
+              <p>On peut <strong>modifier les quantités</strong> proposées avant de générer la demande
+              d'achat. Une vue « par chantier » regroupe l'ensemble des articles par affaire.</p>
+            `
+          },
+
+          {
+            id: "chantier-demande-achat",
+            title: "Générer la demande d'achat",
+            lead: "De la proposition à la demande d'achat fournisseur.",
+            html: `
+              <h2>Toujours une demande d'achat</h2>
+              <p>Dans WIPSOS, c'est toujours d'abord une <strong>demande d'achat à traiter</strong>
+              (jamais directement une commande).</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Sélectionner l'article → clic droit <strong>effectuer les propositions de commande</strong>.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Cocher la génération → clic droit <strong>générer les commandes sélectionnées</strong>.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                La demande d'achat apparaît dans <em>Fournisseur → Commande et gestion</em>.</div></div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Ensuite, un simple interrupteur permet de basculer la demande d'achat en
+                <strong>commande</strong> (avec ou sans demande de prix au fournisseur).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-article-generique",
+            title: "Le cas de l'article générique",
+            lead: "Pourquoi le générique n'apparaît pas dans le module réappro.",
+            html: `
+              <h2>Générique = non géré en stock</h2>
+              <p>Un article <strong>générique</strong> (Artegen) n'est pas géré en stock : il
+              <strong>n'apparaît pas</strong> dans le module réappro. On le retrouve dans le
+              <strong>suivi de chantier</strong> (onglet gestion des articles) où il faut le traiter
+              directement.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Conseil : limiter le générique et alimenter la base d'articles au fur et à mesure
+                pour chiffrer avec des <strong>articles réels</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-commande-plans",
+            title: "Commander les plans",
+            lead: "Passer la commande de plans en interne/externe et la rattacher au chantier.",
+            html: `
+              <h2>Commande dédiée « plan »</h2>
+              <p>Le service plans (créé comme un <strong>fournisseur</strong>, même interne — PSL plan)
+              passe sa commande depuis le module fournisseur, avec un <strong>type de commande « plan »</strong>
+              distinct de l'achat de matériel.</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Créer manuellement la commande, détailler les articles.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <strong>Rattacher chaque article au numéro de chantier</strong>.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                À la réception, les articles s'imputent automatiquement → la rentabilité est juste.</div></div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Pour la rentabilité, bien définir la <strong>prestation</strong> de chaque article
+                (0 = matière, 1 = main d'œuvre, 5 = prestation…) : le tableau de bord analyse par prestation.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-suivi-code-etat",
+            title: "Suivre l'avancement des plans (code d'état)",
+            lead: "Dessin, envoi maquette, BAT… tout passe par le code d'état.",
+            html: `
+              <h2>Les étapes d'un plan</h2>
+              <p>Un plan « simple » peut compter ~8 étapes : reçu non traité, pris en compte, dessin
+              envoyé, relevé fait, relevé transmis, maquette, retour maquette, impression…</p>
+              <p>Chaque étape = une <strong>mise à jour du code d'état</strong>, faite par la personne
+              concernée (ex. le dessinateur), ce qui donne la visibilité aux autres.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>C'est une <strong>action humaine</strong> : au moment d'un transfert (remise main
+                ou mail), penser à changer le code d'état. À cadrer en interne : qui change quoi, et quand.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Imputation & planning",
+        items: [
+
+          {
+            id: "chantier-imputation",
+            title: "Imputation & bon de livraison",
+            lead: "Sortir le matériel, alimenter la fiche technique, éditer le BL interne.",
+            html: `
+              <h2>Imputer la matière</h2>
+              <p>Deux systèmes d'imputation :</p>
+              <table>
+                <tr><th>Mode</th><th>Effet</th></tr>
+                <tr><td><strong>Automatique</strong> (à la réception)</td><td>Les articles basculent de
+                la réception vers l'installation, sans action.</td></tr>
+                <tr><td><strong>Manuel</strong></td><td>On sort le matériel du dépôt vers l'installation
+                en s'appuyant sur la colonne <strong>stock en cours</strong>.</td></tr>
+              </table>
+              <p>L'imputation alimente la <strong>fiche technique</strong> (parc matériel) et permet
+              d'éditer un <strong>bon de livraison interne</strong> pour la préparation.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Tant qu'on n'a pas imputé, on peut quand même planifier — mais l'imputation reste
+                <strong>obligatoire</strong> pour tenir à jour le parc (impact SAV / contrats).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-planification",
+            title: "Planifier le chantier",
+            lead: "Planification simple, sur plusieurs jours ou distribution multiple.",
+            html: `
+              <h2>Plusieurs façons de planifier</h2>
+              <ul>
+                <li><strong>Simple</strong> : clic droit → ajouter la planification (journée entière,
+                matin, après-midi ou horaires définis).</li>
+                <li><strong>Sur plusieurs jours</strong> : distribuer entre deux dates.</li>
+                <li><strong>Distribution multiple</strong> : répartir entre plusieurs techniciens avec
+                un <strong>décompte des heures</strong> en bas à droite (vendu / planifié / reste).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Les heures de fin et la pause déjeuner peuvent être saisies manuellement, mais
+                remontent surtout automatiquement quand le technicien clôture via l'application
+                <strong>IP Connect</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-reservation",
+            title: "Réservations dans le planning",
+            lead: "Bloquer un créneau et le transformer en planification de chantier.",
+            html: `
+              <h2>Réserver avant de planifier</h2>
+              <p>Clic droit → <strong>ajouter une réservation</strong> (période, département, descriptif,
+              événement). En rattachant un <strong>chantier</strong>, on peut ensuite
+              <strong>valider la réservation</strong> pour la convertir en planification.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le technicien ne voit sur son téléphone que ce qui est <strong>validé</strong> : la
+                réservation reste interne tant qu'elle n'est pas confirmée.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "chantier-rdv-mail",
+            title: "Rendez-vous, mail client & pièces jointes",
+            lead: "Prévenir le client et joindre les documents au bon endroit.",
+            html: `
+              <h2>Prévenir le client</h2>
+              <p>À la planification, un bouton permet d'<strong>envoyer un mail au client</strong>
+              (modèle à paramétrer). On peut joindre une pièce depuis le bureau ou depuis les
+              <strong>documents électroniques</strong> du client.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Centralisez les documents du chantier dans WIPSOS (sous-dossiers) : on les
+                retrouve pour les joindre aux mails sans aller les chercher ailleurs.</div>
+              </div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un même chantier peut être planifié à <strong>plusieurs techniciens</strong> ;
+                un technicien peut aussi en ajouter un autre depuis l'application (le planning se met à jour).</div>
+              </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — ADV (Session 5 — Acceptation des propositions)
+     ============================================================== */
+  {
+    category: "ADV (Acceptation)",
+    icon: "✅",
+    groups: [
+
+      {
+        name: "Avant le devis",
+        items: [
+
+          {
+            id: "adv-introduction",
+            title: "Introduction à l'ADV",
+            lead: "L'acceptation des propositions (DV) : le point de bascule devis → chantier.",
+            html: `
+              <h2>De quoi parle-t-on ?</h2>
+              <p>L'<strong>ADV</strong> (ou « DV ») désigne l'<strong>acceptation des propositions</strong> :
+              c'est l'étape, dans WIPSOS, où l'on enregistre qu'un devis a été signé par le client.
+              Elle ouvre le <strong>chantier</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le module chiffrage est partagé : commerce, contrats, correctifs et chantier 9
+                peuvent tous être amenés à chiffrer — d'où une session ouverte à tout le commerce.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-contrat-vs-sav",
+            title: "Où créer quoi : contrat vs SAV",
+            lead: "Maintenance dans Contrat, correctifs/réparations dans SAV.",
+            html: `
+              <h2>Le bon module</h2>
+              <table>
+                <tr><th>Besoin</th><th>Module</th></tr>
+                <tr><td>Contrat de maintenance (chiffrage récurrent)</td><td><strong>Contrat</strong></td></tr>
+                <tr><td>Correctif / réparation (matériel cassé à changer)</td><td><strong>SAV</strong>
+                (bons d'intervention, génération de visites, devis de réparation)</td></tr>
+                <tr><td>Devis d'installation</td><td><strong>Commercial</strong></td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>L'ADV intervient une fois le devis <strong>accepté</strong>, quel que soit le module
+                d'origine.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-creation-client",
+            title: "Créer un prospect / client",
+            lead: "La page blanche pour créer, le type prospect ↔ client.",
+            html: `
+              <h2>Création</h2>
+              <p>Dans <em>Commercial → Client</em>, la <strong>page blanche</strong> sert à créer.
+              Prospect et client se créent de la même façon : on s'arrête simplement sur le
+              <strong>type de client</strong> (prospect dans un premier temps).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Travaillez toujours sur la <strong>base test</strong> (bandeau rouge en haut) pour
+                vos essais — vérifiez avant de saisir.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-mises-a-jour",
+            title: "Mises à jour du logiciel",
+            lead: "Appliquer les mises à jour (lot 5) et donner la main à distance.",
+            html: `
+              <h2>Tenir WIPSOS à jour</h2>
+              <p>Des mises à jour sortent environ <strong>tous les 2 mois</strong>
+              (<em>Outils logiciels → Téléchargement des mises à jour</em>), avec un code reçu par mail.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>À faire quand il n'y a personne de connecté (ex. 12h00) pour ne pas éjecter les
+                utilisateurs. Pour le support, donnez la main via <strong>AnyDesk / TeamViewer</strong>
+                (Outils logiciels → autres options de connexion).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-type-affaire-siret",
+            title: "Type d'affaire & SIRET",
+            lead: "Le type d'affaire (facturation électronique) conditionne le SIRET.",
+            html: `
+              <h2>Nouveau champ « type d'affaire »</h2>
+              <p>Lié à la <strong>facturation électronique</strong> (lot 5) :</p>
+              <table>
+                <tr><th>Type</th><th>SIRET</th></tr>
+                <tr><td>Particulier</td><td>Non obligatoire.</td></tr>
+                <tr><td>B2B / professionnel France</td><td><strong>Obligatoire</strong>.</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le SIRET évite les doublons : chaque client est unique. Un blocage peut être
+                activé sur le code SIRET.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-code-reglement-tva",
+            title: "Code règlement & TVA",
+            lead: "Renseigner le code règlement et le bon taux de TVA.",
+            html: `
+              <h2>Éléments financiers</h2>
+              <p>Le <strong>code règlement</strong> (ex. virement 210 / 30 jours) remonte par défaut
+              s'il est saisi sur la fiche client (modifiable avant facturation).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Attention à la <strong>TVA</strong> : sans valeur, c'est du 20 %. Pour du 10 %,
+                pensez à changer la valeur. On peut aller jusqu'à 3 taux de TVA sur un chiffrage.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-remise-bpu",
+            title: "Remise générale & tarifs particuliers (BPU)",
+            lead: "Remise au niveau client, ou prix préférentiels par BPU.",
+            html: `
+              <h2>Deux logiques</h2>
+              <ul>
+                <li><strong>Remise générale</strong> (fiche client) : appliquée à chaque devis (en %
+                ou en coefficient).</li>
+                <li><strong>Tarifs particuliers / BPU</strong> : prix préférentiels par article pour
+                certains clients.</li>
+              </ul>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Les BPU peuvent être <strong>importés via un fichier Excel</strong> (trame
+                prédéfinie) pour gagner du temps quand il y a beaucoup d'articles.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-creation-contact",
+            title: "Créer un contact",
+            lead: "Contact principal, accès portail client, habilitation SAV.",
+            html: `
+              <h2>Le contact</h2>
+              <p>Page blanche → nom, fonction, téléphone, mail. Cochez selon le rôle :</p>
+              <ul>
+                <li><strong>Installation / habilitation appel SAV</strong> : ces contacts remontent sur
+                l'application des techniciens.</li>
+                <li><strong>Facturation / comptabilité</strong> : ne pas cocher SAV (pas d'intérêt).</li>
+                <li><strong>Contact principal</strong> : à cocher pour qu'il apparaisse par défaut.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>L'« accès portail » concerne le <strong>portail client</strong> (factures,
+                demandes de dépannage, contrats, installations).</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Devis & chiffrage",
+        items: [
+
+          {
+            id: "adv-creation-devis",
+            title: "Créer le devis d'installation",
+            lead: "Sélectionner le client, remplir l'en-tête (généralités, facturation).",
+            html: `
+              <h2>En-tête du devis</h2>
+              <p><em>Commercial → Devis</em> → rechercher le prospect → page blanche. Deux onglets
+              à renseigner :</p>
+              <ul>
+                <li><strong>Généralités</strong> : intitulé, date, relance, activité, contact,
+                % de réussite, remise / TVA globales.</li>
+                <li><strong>Facturation & comptabilité</strong> : type de facturation (chantier),
+                conditions de règlement, acompte (affichage), commentaire de facturation.</li>
+              </ul>
+            `
+          },
+
+          {
+            id: "adv-devis-sav-commercial",
+            title: "Devis SAV simplifié vs commercial",
+            lead: "Deux façons de chiffrer un correctif depuis le module SAV.",
+            html: `
+              <h2>Deux options de devis SAV</h2>
+              <table>
+                <tr><th>Option</th><th>Caractéristiques</th></tr>
+                <tr><td><strong>Devis SAV simplifié</strong></td><td>Un seul modèle PDF, recherche
+                d'articles + petit texte.</td></tr>
+                <tr><td><strong>Devis commercial (depuis SAV)</strong></td><td>Même visuel et même
+                chiffrage que le commerce, avec choix du modèle.</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>On part toujours d'un <strong>bon d'intervention</strong> que l'on bascule en devis SAV.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-chiffrage",
+            title: "Chiffrer : colis, accès rapide, nomenclature",
+            lead: "Insérer des articles et des nomenclatures dans le paragraphe.",
+            html: `
+              <h2>Insérer des articles</h2>
+              <ul>
+                <li><strong>Accès rapide</strong> : taper la désignation, quantité, Entrée → l'article
+                s'ajoute.</li>
+                <li><strong>Colis</strong> (onglet recherche) : rechercher par désignation ou code
+                article, double-clic, quantité, enregistrer.</li>
+                <li><strong>Nomenclature</strong> (prestation 9) : insérée puis personnalisée (nombre
+                d'heures, déplacements) → le prix de vente se calcule. Elle s'éclatera à l'acceptation.</li>
+              </ul>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Attention au <strong>positionnement</strong> : l'article s'insère sous la ligne
+                sélectionnée. Travaillez de préférence en <strong>paragraphes</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-sous-totaux-options",
+            title: "Sous-totaux & options",
+            lead: "Structurer le chiffrage et proposer des options.",
+            html: `
+              <h2>Sous-totaux</h2>
+              <p>Le picto « + » insère un <strong>sous-total</strong> de paragraphe (sous-total
+              progressif possible).</p>
+              <h2>Options</h2>
+              <p>Le picto « puzzle » crée un paragraphe <strong>Options</strong> (toujours en fin de
+              chiffrage). Les options n'entrent pas dans le montant.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Si le client accepte une option, <strong>remontez l'article dans un paragraphe</strong>
+                (copier la ligne) avant d'accepter — sinon l'option ne sera pas facturée. Utilisez les
+                modèles <strong>5 et 6</strong> pour éditer les options séparées.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-arrondi-remise",
+            title: "Arrondi & remise commerciale",
+            lead: "Forcer un montant HT : coefficient de vente ou article arrondi.",
+            html: `
+              <h2>Modifier le montant HT</h2>
+              <p>En cliquant sur le montant HT, on peut le forcer. WIPSOS propose alors :</p>
+              <table>
+                <tr><th>Mode</th><th>Effet</th></tr>
+                <tr><td><strong>Coefficient de vente</strong></td><td>Recalcule les prix des articles
+                pour atteindre le montant.</td></tr>
+                <tr><td><strong>Article arrondi</strong></td><td>Crée une ligne « remise commerciale »
+                (différence entre le prix initial et le prix cible).</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>À réserver à des cas précis — c'est une alternative à la remise globale de l'en-tête.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-descriptif-commercial",
+            title: "Descriptif commercial & modèles",
+            lead: "Texte d'introduction avec variables qui se mettent à jour.",
+            html: `
+              <h2>Descriptif commercial</h2>
+              <p>Petit texte avant le chiffrage : saisi à la main ou via des <strong>modèles
+              prédéfinis</strong> contenant des <strong>variables</strong> (client, n° de proposition…)
+              qui se remplissent à l'édition PDF.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>À côté, le <strong>descriptif technique</strong> sert à transmettre des consignes
+                au chargé d'affaires / au technicien (lien avec le suivi de chantier et l'application).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-modeles-mail-signature",
+            title: "Modèles de devis, envoi mail & signature",
+            lead: "Choisir un modèle PDF et envoyer le devis depuis WIPSOS.",
+            html: `
+              <h2>Édition & envoi</h2>
+              <p>Un <strong>modèle par défaut</strong> est paramétré (modifiable). L'envoi par mail
+              ouvre une fenêtre avec le PDF joint.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Paramétrez un <strong>modèle de mail</strong> commun et une
+                <strong>signature</strong> par utilisateur (récupérées depuis Outlook) pour ne pas
+                retaper à chaque fois.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-historique-mails",
+            title: "Historique des mails",
+            lead: "Tout est tracé dans WIPSOS, peu importe l'utilisateur.",
+            html: `
+              <h2>Tracer les envois</h2>
+              <p>Depuis la fiche client, un picto donne accès à l'<strong>historique des mails
+              envoyés</strong> (filtrable par objet, destinataire, période).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Envoyez les mails <strong>depuis WIPSOS</strong> (pas depuis votre boîte perso) :
+                tout est centralisé et accessible même si la personne est absente. Le SMTP permet
+                d'envoyer depuis n'importe quel poste.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Acceptation & fiche technique",
+        items: [
+
+          {
+            id: "adv-acceptation-devis",
+            title: "Accepter le devis (code d'état)",
+            lead: "Le blocage volontaire qui force à passer le devis en « accepté ».",
+            html: `
+              <h2>Passer en « devis accepté »</h2>
+              <p>Sur l'en-tête, changez le <strong>code d'état</strong> en « devis accepté » avant de
+              cliquer sur <strong>Acceptation</strong> (petit pouce).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Un <strong>blocage volontaire</strong> empêche l'acceptation si le code d'état n'est
+                pas mis à jour — pour garantir un suivi fiable (éditions, portefeuille de commandes).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-validation-prospect-client",
+            title: "Valider le prospect en client",
+            lead: "WIPSOS demande de compléter la fiche avant d'ouvrir le chantier.",
+            html: `
+              <h2>Prospect → client</h2>
+              <p>À l'acceptation, WIPSOS demande de <strong>basculer le prospect en client</strong> et
+              de compléter :</p>
+              <ul>
+                <li><strong>Secteur géographique</strong> (devient obligatoire — utile au SAV pour
+                facturer le déplacement) ;</li>
+                <li><strong>Code règlement</strong> (par défaut, modifiable avant facturation).</li>
+              </ul>
+              <p>On bascule alors automatiquement sur la partie <strong>ADV / acceptation</strong>.</p>
+            `
+          },
+
+          {
+            id: "adv-fiche-technique",
+            title: "Créer la fiche technique (installation)",
+            lead: "L'étape clé : créer l'enveloppe « installation » du client.",
+            html: `
+              <h2>La fiche technique = installation</h2>
+              <p>Cochez <strong>fiche technique</strong> avant d'accepter : WIPSOS crée l'installation
+              (ex. « extincteur ») rattachée au client. Elle est <strong>vide au départ</strong> ; le
+              parc matériel s'alimente ensuite via les <strong>imputations / réceptions</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Tout part de là : le parc matériel alimente le <strong>SAV</strong>, les
+                <strong>contrats</strong> de maintenance et l'<strong>application technicien</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-devis-adjonction",
+            title: "Devis d'adjonction (travaux supplémentaires)",
+            lead: "Ne pas recréer l'installation pour un devis complémentaire.",
+            html: `
+              <h2>Éviter les doublons d'installation</h2>
+              <p>Pour un <strong>devis complémentaire</strong> (TS) sur un client qui a déjà une
+              installation de la même activité : <strong>ne pas cocher fiche technique</strong> — on
+              <strong>rattache l'installation existante</strong> (champ « installation principale
+              d'adjonction »).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Recréer une fiche technique à chaque devis crée des <strong>doublons
+                d'installation</strong> : matériel dispersé, SAV faussé. C'est ~60 % de la bonne
+                utilisation du soft.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "adv-acceptation-globale-chantier",
+            title: "Acceptation globale → ouverture du chantier",
+            lead: "Valider l'acceptation et ouvrir le chantier (code C…).",
+            html: `
+              <h2>Finaliser</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Renseigner le <strong>responsable</strong> du futur chantier.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <strong>Acceptation globale</strong> (le hors appro est masqué pour éviter les erreurs).</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Double-clic sur l'installation à créer → enregistrer → <strong>valider</strong>.</div></div>
+              <p>La proposition est acceptée et porte un <strong>code chantier</strong> (ex. C 8A). Elle
+              disparaît des devis en cours (filtre « devis accepté » pour la revoir, coche
+              <strong>Accepté</strong>).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>La suite (réappro, imputations, planification) se fait dans le
+                <strong>suivi de chantier</strong>.</div>
               </div>
             `
           }
