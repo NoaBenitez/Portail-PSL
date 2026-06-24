@@ -43,9 +43,10 @@
    Enregistrements de formation :
      VIDEO_S1 = Formation Commercial 1/2 (groupe 1) — YouTube
      VIDEO_S2 = Formation Commercial 2/2 (groupe 1) — YouTube
-     VIDEO_S3 = Formation Appro-Logistique 1/2 — (lien à venir)
-     VIDEO_S4 = Formation Suivi de chantier 2/2 — (lien à venir)
-     VIDEO_S5 = Formation ADV (acceptation) — (lien à venir)
+     VIDEO_S3 = Formation Appro-Logistique 1/2 — YouTube
+     VIDEO_S4 = Formation Suivi de chantier 2/2 — YouTube
+     VIDEO_S5 = Formation ADV (acceptation) — YouTube
+     VIDEO_S6 = Formation Appro-Logistique 2/2 — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -70,6 +71,7 @@ const VIDEO_S2 = "https://youtu.be/dZ0JAOajzIw";
 const VIDEO_S3 = "https://youtu.be/cZpWBm-PrZY";  // Formation Appro-Logistique 1/2
 const VIDEO_S4 = "https://youtu.be/bcjeamMXmOE";  // Formation Suivi de chantier 2/2
 const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
+const VIDEO_S6 = "";  // Formation Appro-Logistique 2/2  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -173,7 +175,30 @@ const VIDEOS = {
   "adv-validation-prospect-client": { v: VIDEO_S5, t: 3916 },  // 1:05:16
   "adv-fiche-technique":            { v: VIDEO_S5, t: 4318 },  // 1:11:58
   "adv-devis-adjonction":           { v: VIDEO_S5, t: 4391 },  // 1:13:11
-  "adv-acceptation-globale-chantier":{ v: VIDEO_S5, t: 4673 }  // 1:17:53
+  "adv-acceptation-globale-chantier":{ v: VIDEO_S5, t: 4673 },  // 1:17:53
+
+  /* ----- Session 6 — Formation Appro-Logistique 2/2 ----- */
+  "appro2-import-stock":            { v: VIDEO_S6, t: 161 },   // 02:41
+  "appro2-module-reappro":          { v: VIDEO_S6, t: 303 },   // 05:03
+  "appro2-date-arrete":             { v: VIDEO_S6, t: 483 },   // 08:03
+  "appro2-choix-depot":             { v: VIDEO_S6, t: 520 },   // 08:40
+  "appro2-lecture-proposition":     { v: VIDEO_S6, t: 559 },   // 09:19
+  "appro2-vue-chantier":            { v: VIDEO_S6, t: 689 },   // 11:29
+  "appro2-generer-demande-achat":   { v: VIDEO_S6, t: 800 },   // 13:20
+  "appro2-demande-achat-entete":    { v: VIDEO_S6, t: 918 },   // 15:18
+  "appro2-type-commande":           { v: VIDEO_S6, t: 1009 },  // 16:49
+  "appro2-ajout-articles":          { v: VIDEO_S6, t: 1248 },  // 20:48
+  "appro2-copier-demande":          { v: VIDEO_S6, t: 1732 },  // 28:52
+  "appro2-valoriser-commande":      { v: VIDEO_S6, t: 2075 },  // 34:35
+  "appro2-fusionner":               { v: VIDEO_S6, t: 2379 },  // 39:39
+  "appro2-commande-manuelle":       { v: VIDEO_S6, t: 3029 },  // 50:29
+  "appro2-reception":               { v: VIDEO_S6, t: 3264 },  // 54:24
+  "appro2-reception-reliquat":      { v: VIDEO_S6, t: 3376 },  // 56:16
+  "appro2-historique":              { v: VIDEO_S6, t: 3728 },  // 1:02:08
+  "appro2-inventaire-stock":        { v: VIDEO_S6, t: 3918 },  // 1:05:18
+  "appro2-reception-imputation":    { v: VIDEO_S6, t: 4435 },  // 1:13:55
+  "appro2-import-fichier":          { v: VIDEO_S6, t: 4760 },  // 1:19:20
+  "appro2-prestation-0-5":          { v: VIDEO_S6, t: 5085 }   // 1:24:45
 };
 
 const DOC = [
@@ -2155,6 +2180,377 @@ const DOC = [
                 filtre par type de commande et retrouve directement ses demandes d'achat — sans dépendre
                 d'un mail (suivi en temps réel dans le module).</div>
               </div>
+            `
+          }
+
+        ]
+      },
+
+      /* ===== Session 6 — Appro-Logistique 2/2 ===== */
+
+      {
+        name: "Réappro & demandes d'achat (2/2)",
+        items: [
+
+          {
+            id: "appro2-import-stock",
+            title: "Import base article & stock",
+            lead: "Le stock n'est pas intégré en même temps que la base article.",
+            html: `
+              <h2>Deux temps distincts</h2>
+              <p>On intègre d'abord les <strong>articles par fournisseur</strong> (fichier Excel).
+              Le <strong>stock</strong> (et les dépôts) se renseigne <strong>ensuite</strong> — ce n'est
+              pas bloquant à l'import.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Comme vous travaillez <strong>par dépôt</strong>, les stocks mini/maxi sont à
+                définir par dépôt. Un article unique est rattaché à plusieurs dépôts (et plusieurs
+                fournisseurs) — on ne <strong>duplique pas</strong> les articles.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-module-reappro",
+            title: "Le module réapprovisionnement",
+            lead: "Le module central : prévisionnel des demandes d'achat par dépôt.",
+            html: `
+              <h2>À quoi il sert</h2>
+              <p>Dans <em>Fournisseur → Réapprovisionnement</em>, on visualise l'ensemble des
+              <strong>commandes client</strong> et la disponibilité en stock, pour lancer les
+              <strong>demandes d'achat à traiter</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Process retenu : lancer le réappro <strong>une fois par semaine</strong>. WIPSOS
+                calcule le prévisionnel selon une date, puis génère les demandes d'achat.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-date-arrete",
+            title: "Date d'arrêté (prévision)",
+            lead: "Filtrer par date prévisionnelle — ou la bypasser.",
+            html: `
+              <h2>La date de prévision</h2>
+              <p>Le module demande une <strong>date d'arrêté</strong> (issue des dates de travaux
+              prévisionnelles). Un <strong>paramétrage</strong> permet de la <strong>bypasser</strong> :
+              WIPSOS calcule alors le besoin global, toutes affaires confondues.</p>
+            `
+          },
+
+          {
+            id: "appro2-choix-depot",
+            title: "Choisir un dépôt",
+            lead: "La sélection d'un dépôt est obligatoire (travail par agence).",
+            html: `
+              <h2>Sélection du dépôt</h2>
+              <p>Choisir un <strong>dépôt</strong> est <strong>obligatoire</strong> : on visualise alors
+              les articles de ce dépôt sur lesquels lancer des demandes d'achat. Les colonnes sont
+              filtrables (clic droit → filtrer « contient », comme dans Excel).</p>
+            `
+          },
+
+          {
+            id: "appro2-lecture-proposition",
+            title: "Lire la proposition (commande client, stock, mini/maxi)",
+            lead: "Comprendre comment la proposition est calculée.",
+            html: `
+              <h2>Les colonnes clés</h2>
+              <ul>
+                <li><strong>Commande client</strong> : besoin réel issu des affaires.</li>
+                <li><strong>Stock en cours / prévisionnel</strong> : ce qu'il reste / projeté.</li>
+                <li><strong>Proposition</strong> : calculée automatiquement (et selon
+                <strong>stock mini/maxi</strong> de la fiche article — on se base sur le maxi).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Ex. besoin 9, stock 0 → proposition 9. Avec un maxi à 10 → proposition 19. Les
+                quantités restent <strong>modifiables</strong> à la main.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-vue-chantier",
+            title: "Vue globale vs vue par chantier",
+            lead: "Le bouton « chantier » pour voir le besoin par affaire.",
+            html: `
+              <h2>Deux vues</h2>
+              <p>L'écran réappro centralise tout (vue globale). Le bouton <strong>chantier</strong>
+              affiche le besoin <strong>par affaire</strong> (check-list par chantier). On peut basculer
+              entre les deux avec le bouton réappro.</p>
+            `
+          },
+
+          {
+            id: "appro2-generer-demande-achat",
+            title: "Générer la demande d'achat",
+            lead: "Cocher les articles, puis générer la demande d'achat à traiter.",
+            html: `
+              <h2>Lancer la demande</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Cocher (ou sélectionner avec Ctrl) les articles voulus.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Clic droit → <strong>effectuer les propositions de commande</strong>.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Cocher « génération » → clic droit → <strong>générer les demandes sélectionnées</strong>.</div></div>
+              <p>On retrouve la demande dans <em>Commande et gestion</em> (petit cadenas = demande d'achat).</p>
+            `
+          },
+
+          {
+            id: "appro2-demande-achat-entete",
+            title: "Demande d'achat : en-tête & détail",
+            lead: "Dépôt de rattachement, lieu de livraison, commentaire.",
+            html: `
+              <h2>Contenu de la demande</h2>
+              <p>Le double-clic ouvre la demande : date, <strong>dépôt de rattachement</strong>, code
+              règlement, <strong>type de commande</strong>, lieu de livraison (stock, client, enlèvement,
+              adresse de mise à disposition), commentaire (affiché sur le PDF).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le dépôt est repris automatiquement du module réappro (lien entre les deux écrans),
+                mais reste modifiable.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-type-commande",
+            title: "Type de commande (plan, demande de prix)",
+            lead: "Le type de commande s'affiche sur le PDF et sert de filtre.",
+            html: `
+              <h2>Choisir le type</h2>
+              <p>Le <strong>type de commande</strong> (achat matériel, <strong>plan</strong>,
+              <strong>demande de prix</strong>…) titre le PDF et permet de <strong>filtrer</strong> les
+              demandes. Ex. : le service plans filtre par type « plan » pour retrouver ses demandes.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Le type de commande est une <strong>action manuelle</strong> : par défaut une demande
+                d'achat est « achat matière ». Ne pas oublier de la basculer (ex. en « plan »).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-ajout-articles",
+            title: "Ajouter des articles (réf. fournisseur)",
+            lead: "Compléter une demande, y compris un article non référencé chez le fournisseur.",
+            html: `
+              <h2>Enrichir la demande</h2>
+              <p>Dans l'onglet <strong>détail</strong>, on peut ajouter d'autres articles (page blanche →
+              recherche). Si l'article n'est pas référencé chez ce fournisseur, WIPSOS demande de saisir
+              la <strong>référence fournisseur</strong> et le prix d'achat (non bloquant).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Si la base article est bien tenue (tous les fournisseurs rattachés), cette saisie
+                manuelle est rarement nécessaire.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Commandes, réception & stock (2/2)",
+        items: [
+
+          {
+            id: "appro2-copier-demande",
+            title: "Copier / dupliquer une demande d'achat",
+            lead: "Refaire une demande chez un autre fournisseur en cas de rupture.",
+            html: `
+              <h2>Dupliquer</h2>
+              <p>Clic droit → <strong>copier</strong> une demande d'achat, puis
+              <strong>changer le fournisseur</strong> sur la copie → on obtient 2 demandes de prix.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Cas d'usage : un fournisseur en rupture / délai trop long → on annule d'un côté et
+                on duplique pour solliciter un autre fournisseur. Si les articles ne sont pas référencés
+                chez le nouveau fournisseur, saisir les références.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-valoriser-commande",
+            title: "Recevoir les prix & basculer en commande",
+            lead: "Mettre à jour les prix d'achat puis passer la demande en commande.",
+            html: `
+              <h2>De la demande de prix à la commande</h2>
+              <p>Une <strong>demande de prix</strong> s'édite <strong>sans valorisation</strong> (pas de
+              prix). Au retour du fournisseur :</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Double-clic sur chaque ligne → saisir le <strong>prix d'achat</strong> réel.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                En-tête : type de commande « achat matériel » → <strong>copier commande</strong> → enregistrer.</div></div>
+              <p>La demande d'achat devient une <strong>commande</strong> (on ne réceptionne que des
+              commandes). Le PDF s'édite alors <strong>avec valorisation</strong> et s'envoie par mail.</p>
+            `
+          },
+
+          {
+            id: "appro2-fusionner",
+            title: "Fusionner des demandes d'achat",
+            lead: "Regrouper plusieurs demandes d'un même fournisseur en une commande.",
+            html: `
+              <h2>Fusion</h2>
+              <p>Pour un <strong>même fournisseur</strong> : sélectionner les demandes (Ctrl) → clic droit
+              → <strong>fusionner les demandes d'achat sélectionnées</strong> → une seule demande à traiter.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Utile pour éviter les frais de port et regrouper des demandes traitées au fil de l'eau.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-commande-manuelle",
+            title: "Créer une commande manuelle",
+            lead: "Commander pour le stock sans passer par le module réappro.",
+            html: `
+              <h2>Commande directe</h2>
+              <p>Positionné sur <strong>Commande</strong> (et non demande d'achat), la page blanche crée
+              une commande : choisir le <strong>fournisseur</strong>, le <strong>dépôt</strong>, puis dans
+              l'onglet détail rechercher et ajouter les articles (quantité, date de livraison souhaitée,
+              prix d'achat, destination stock).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un picto <strong>enveloppe @</strong> apparaît sur la ligne quand le mail a été envoyé
+                au fournisseur depuis WIPSOS (suivi en temps réel).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-reception",
+            title: "Réceptionner une commande",
+            lead: "Enregistrer la réception de la marchandise au dépôt.",
+            html: `
+              <h2>Réception gestion</h2>
+              <p>Dans <em>Réception → Gestion</em>, double-clic sur la commande. On peut saisir le
+              <strong>numéro d'accusé / BL</strong>, puis valider la réception.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>C'est la <strong>réception</strong> qui fait monter le <strong>stock en cours</strong>.
+                Inutile d'imprimer le bon de réception WIPSOS : conservez plutôt le <strong>BL
+                fournisseur</strong> dans les documents électroniques.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-reception-reliquat",
+            title: "Réception totale, reliquat ou abandon",
+            lead: "Gérer une réception partielle.",
+            html: `
+              <h2>Trois cas</h2>
+              <table>
+                <tr><th>Cas</th><th>Action</th></tr>
+                <tr><td>Tout reçu</td><td><strong>Validation globale</strong> de la réception.</td></tr>
+                <tr><td>Partiel → <strong>reliquat</strong></td><td>Clic droit → modification → saisir la
+                quantité reçue ; le reste reste à recevoir (commande non historisée).</td></tr>
+                <tr><td>Partiel → <strong>abandon</strong></td><td>Le reste est abandonné (ex. rupture
+                fournisseur).</td></tr>
+              </table>
+            `
+          },
+
+          {
+            id: "appro2-historique",
+            title: "Commande en historique",
+            lead: "Une commande totalement reçue bascule en historique.",
+            html: `
+              <h2>Épurer le visuel</h2>
+              <p>Une commande <strong>reçue en totalité</strong> bascule en <strong>historique</strong>
+              (paramétrage conseillé) — elle disparaît des commandes en cours pour ne pas polluer le visuel.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Depuis l'historique, on peut <strong>consulter</strong>, rééditer le bon, ou
+                <strong>dupliquer</strong> une commande (recopiée en demande d'achat avec les
+                <strong>tarifs actualisés</strong>) — pratique pour les commandes récurrentes.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-inventaire-stock",
+            title: "Stock en cours & inventaire",
+            lead: "Mettre le stock à jour au démarrage et le maintenir fiable.",
+            html: `
+              <h2>Tenir le stock à jour</h2>
+              <p>Au démarrage, le stock doit être <strong>initialisé</strong> (inventaire ponctuel ou
+              import de fichier). Sinon le module réappro lancerait des commandes sans tenir compte de
+              l'existant.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Pas de blocage par défaut → un stock négatif est possible. On peut activer un
+                <strong>blocage / seuil mini</strong> plus tard. Beaucoup d'entreprises initialisent lors
+                d'une <strong>clôture</strong> (situation / bilan) et ressaisissent les commandes en cours.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-reception-imputation",
+            title: "Réception = imputation au chantier",
+            lead: "La réception alimente le chantier (et le suivi des plans).",
+            html: `
+              <h2>Lien avec le chantier</h2>
+              <p>Réceptionner une commande rattachée à un chantier <strong>impute l'affaire</strong> :
+              les articles remontent sur le chantier. Pour les <strong>plans</strong>, la réception
+              matérialise l'avancement (un point de contrôle).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Quand le technicien clôture sa mission via <strong>IP Connect</strong>, le chantier
+                passe en <strong>terminé</strong> automatiquement (code d'état mis à jour) — ce qui évite
+                les mails internes « c'est posé ».</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-import-fichier",
+            title: "Vérifier le fichier d'import (base article)",
+            lead: "Colonnes clés : désignation, fournisseur, mini/maxi, fiche technique.",
+            html: `
+              <h2>Contrôle avant import</h2>
+              <p>Le fichier d'import concerne la <strong>matière (prestation 0)</strong>. Points de
+              vigilance :</p>
+              <ul>
+                <li><strong>Désignation</strong> limitée (≈ 40 caractères) ;</li>
+                <li><strong>Gestion de stock</strong> (1 = oui), <strong>stock mini / maxi</strong> ;</li>
+                <li><strong>Fiche technique</strong> cochée pour les articles à faire remonter sur
+                l'installation ;</li>
+                <li>code fournisseur, famille, gamme, code fabricant.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Les <strong>mains d'œuvre</strong>, <strong>prestations</strong> et
+                <strong>nomenclatures « plan »</strong> ne passent pas par cet import : ils se créent
+                à part (manuellement ou import dédié).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "appro2-prestation-0-5",
+            title: "Prestations 0 & 5 (sous-traitance, location)",
+            lead: "Bien typer les articles pour les commander et analyser la rentabilité.",
+            html: `
+              <h2>Les codes prestation</h2>
+              <table>
+                <tr><th>Code</th><th>Nature</th></tr>
+                <tr><td><strong>0</strong></td><td>Matière (commandable).</td></tr>
+                <tr><td><strong>1</strong></td><td>Main d'œuvre interne (technicien).</td></tr>
+                <tr><td><strong>5</strong></td><td>Sous-traitance / location (commandable).</td></tr>
+              </table>
+              <p>On peut intégrer matière, main d'œuvre, prestations et articles dans une
+              <strong>nomenclature</strong>. Les prestations <strong>0 et 5</strong> peuvent être
+              commandées auprès du fournisseur rattaché ; on peut aussi les ajouter dans le suivi de
+              chantier puis lancer la demande d'achat.</p>
             `
           }
 
