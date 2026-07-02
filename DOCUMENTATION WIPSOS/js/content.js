@@ -50,6 +50,7 @@
      VIDEO_S7 = Formation Contrat 1/2 — YouTube
      VIDEO_S8 = Formation Contrat 2/2 — YouTube
      VIDEO_S9 = Formation SAV 1/2 — (lien à venir)
+     VIDEO_S10 = Formation SAV 2/2 — YouTube
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -78,6 +79,7 @@ const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 
 const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 const VIDEO_S8 = "https://youtu.be/7Mo7G2PHDa0";  // Formation Contrat 2/2
 const VIDEO_S9 = "";  // Formation SAV 1/2  (collez l'URL YouTube ici)
+const VIDEO_S10 = "https://youtu.be/oYsNnYJjUXw";  // Formation SAV 2/2
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -286,7 +288,34 @@ const VIDEOS = {
   "sav-planif-volee":                  { v: VIDEO_S9, t: 6075 },  // 1:41:15
   "sav-planif-manuelle":               { v: VIDEO_S9, t: 6302 },  // 1:45:02
   "sav-distribution-multiple":         { v: VIDEO_S9, t: 6449 },  // 1:47:29
-  "sav-controle-puits":                { v: VIDEO_S9, t: 6755 }   // 1:52:35
+  "sav-controle-puits":                { v: VIDEO_S9, t: 6755 },  // 1:52:35
+
+  /* ----- Session 10 — Formation SAV 2/2 (mise en pratique) ----- */
+  "sav2-cycle-complet":                { v: VIDEO_S10, t: 1022 },  // 17:02
+  "sav2-creer-contrat":                { v: VIDEO_S10, t: 1183 },  // 19:43
+  "sav2-type-activite":                { v: VIDEO_S10, t: 1491 },  // 24:51
+  "sav2-codifier":                     { v: VIDEO_S10, t: 1567 },  // 26:07
+  "sav2-parc-materiel":                { v: VIDEO_S10, t: 1804 },  // 30:04
+  "sav2-facture-visite":               { v: VIDEO_S10, t: 2100 },  // 35:00
+  "sav2-onglet-facturation":           { v: VIDEO_S10, t: 2166 },  // 36:06
+  "sav2-previsionnel-visite":          { v: VIDEO_S10, t: 2234 },  // 37:14
+  "sav2-affecter-parc-visite":         { v: VIDEO_S10, t: 2502 },  // 41:42
+  "sav2-generer-visite":               { v: VIDEO_S10, t: 2726 },  // 45:26
+  "sav2-appels-vs-visites":            { v: VIDEO_S10, t: 3060 },  // 51:00
+  "sav2-creation-bon":                 { v: VIDEO_S10, t: 3173 },  // 52:53
+  "sav2-retrouver-bon":                { v: VIDEO_S10, t: 3330 },  // 55:30
+  "sav2-planifier-visite":             { v: VIDEO_S10, t: 3653 },  // 1:00:53
+  "sav2-alerte-autres-visites":        { v: VIDEO_S10, t: 3762 },  // 1:02:42
+  "sav2-planning-avance":              { v: VIDEO_S10, t: 3990 },  // 1:06:30
+  "sav2-note-recurrente":              { v: VIDEO_S10, t: 4856 },  // 1:20:56
+  "sav2-fiche-rubriques":              { v: VIDEO_S10, t: 4941 },  // 1:22:21
+  "sav2-suite-technique":              { v: VIDEO_S10, t: 5635 },  // 1:33:55
+  "sav2-devis-commercial":             { v: VIDEO_S10, t: 6057 },  // 1:40:57
+  "sav2-devis-acceptation":            { v: VIDEO_S10, t: 6274 },  // 1:44:34
+  "sav2-bon-preparation":              { v: VIDEO_S10, t: 6376 },  // 1:46:16
+  "sav2-imputation":                   { v: VIDEO_S10, t: 6933 },  // 1:55:33
+  "sav2-imputation-timing":            { v: VIDEO_S10, t: 7386 },  // 2:03:06
+  "sav2-blocage-compta":               { v: VIDEO_S10, t: 7862 }   // 2:11:02
 };
 
 const DOC = [
@@ -4768,6 +4797,386 @@ const DOC = [
                 <span class="ic">★</span>
                 <div>Contrôle indispensable : s'il reste des bons dans le puits, c'est qu'ils n'ont jamais
                 été traités.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      /* ===== Session 10 — SAV 2/2 (mise en pratique) ===== */
+
+      {
+        name: "Cycle complet : contrat → visite (2/2)",
+        items: [
+
+          {
+            id: "sav2-cycle-complet",
+            title: "Le cycle complet",
+            lead: "Contrat → génération de la visite → planification → SAV.",
+            html: `
+              <h2>Un cas pratique de bout en bout</h2>
+              <p>Cette session déroule tout le cycle : créer le <strong>contrat de maintenance</strong>
+              avec son prévisionnel, <strong>générer</strong> la visite, la <strong>planifier</strong>, puis
+              la traiter dans le <strong>module SAV</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Contrat et SAV sont liés : la visite prévisionnelle du contrat bascule dans le SAV une
+                fois générée. Votre travail s'arrête à la <strong>planification</strong> ; le technicien
+                prend le relais sur l'application.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-creer-contrat",
+            title: "Créer le contrat (rappel)",
+            lead: "Mode contrat → rechercher le client → page blanche.",
+            html: `
+              <h2>Point de départ</h2>
+              <p><em>Contrat → Fiche</em> (double-clic), <strong>mode contrat</strong>, coche du client pour
+              la recherche (étoile + raison sociale), double-clic pour rattacher, puis <strong>page
+              blanche</strong> pour créer le contrat.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Toujours sur un <strong>client site</strong> (sauf si le payeur a lui-même un site à
+                gérer).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-type-activite",
+            title: "Type & activité",
+            lead: "Maintenance + activité ; en cascade du haut vers le bas.",
+            html: `
+              <h2>Renseigner l'en-tête</h2>
+              <p>Type = <strong>maintenance</strong>, puis rattacher l'<strong>activité</strong> (ex.
+              extincteur). On remplit « en cascade » : Généralités puis Facturation.</p>
+            `
+          },
+
+          {
+            id: "sav2-codifier",
+            title: "Codifier l'installation",
+            lead: "Numéro du client + numéro d'ordre de l'installation.",
+            html: `
+              <h2>Installation existante ou codifiée</h2>
+              <p>Si l'installation existe (devis accepté), on la sélectionne. Sinon (reprise), on
+              <strong>codifie</strong> : <em>n° client + numéro d'ordre</em> (ex. 4ᵉ installation → « …4 »).
+              Tab → « installation n'existe pas » → <strong>créer l'installation</strong> → fiche technique
+              (champ <strong>système</strong> = titre).</p>
+            `
+          },
+
+          {
+            id: "sav2-parc-materiel",
+            title: "Alimenter le parc matériel",
+            lead: "Page blanche → article → date de mise en service → quantité.",
+            html: `
+              <h2>Le parc sous contrat</h2>
+              <p>Page blanche du parc → recherche article (désignation) → Tab → date de mise en service +
+              <strong>quantité sous contrat</strong> → disquette.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Pensez à <strong>enregistrer</strong> : sans cela l'article disparaît (erreur vue en
+                séance).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-facture-visite",
+            title: "Cocher « facturé à la visite »",
+            lead: "Sinon le contrat est traité comme un abonnement.",
+            html: `
+              <h2>Onglet facturation à la visite</h2>
+              <p>Cocher <strong>« contrat facturé à la visite »</strong>. Sans cette case, WIPSOS considère
+              le contrat comme un <strong>abonnement</strong> → incidence directe sur la facturation.</p>
+            `
+          },
+
+          {
+            id: "sav2-onglet-facturation",
+            title: "Onglet facturation",
+            lead: "Formule obligatoire + périodicité annuelle ; montant vide.",
+            html: `
+              <h2>Champs à la visite</h2>
+              <p><strong>Formule</strong> (en gras, obligatoire) = sans augmentation ;
+              <strong>périodicité</strong> = annuel. Pas de début/prochaine facturation (réservé à
+              l'abonnement), <strong>montant vide</strong> (facturation au réel via SAV).</p>
+            `
+          },
+
+          {
+            id: "sav2-previsionnel-visite",
+            title: "Prévisionnel de visite",
+            lead: "Bloc-notes → clic droit → gestion des visites → code visite + mois.",
+            html: `
+              <h2>Programmer les visites</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Bloc-notes (visites d'entretien) → clic droit sur l'installation → gestion des visites.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Page blanche → <strong>code visite</strong> (annuelle) + <strong>mois</strong> (ex. juillet).</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                1 h + 1 technicien par défaut (prévisionnel) → disquette.</div></div>
+            `
+          },
+
+          {
+            id: "sav2-affecter-parc-visite",
+            title: "Affecter le parc à la visite",
+            lead: "Onglet « parc installé » → clic droit → affecter à la visite.",
+            html: `
+              <h2>Étape à ne pas oublier</h2>
+              <p>Dans la gestion des visites, onglet <strong>parc installé</strong> → clic droit →
+              <strong>affecter la totalité des articles à la visite</strong>. Un <strong>stylo</strong>
+              confirme que les articles sont tagués.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>À faire <strong>avant de générer</strong>. Sinon le technicien ne verra pas les articles
+                à contrôler, et il faudra supprimer le bon puis régénérer.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-generer-visite",
+            title: "Générer la visite (ciblée)",
+            lead: "Visites d'entretien → gestion → cibler par contrat.",
+            html: `
+              <h2>Générer pour un contrat précis</h2>
+              <p><em>Visite d'entretien → Gestion</em> : travailler <strong>par mois/année</strong>. Pour un
+              contrat créé au fil de l'eau, <strong>cibler le numéro de contrat</strong> (ou le client) avant
+              <em>Générer la liste préparatoire</em> — sinon toutes les visites du mois s'affichent.</p>
+            `
+          },
+
+          {
+            id: "sav2-appels-vs-visites",
+            title: "Appels = dépannage seulement",
+            lead: "Interdit de créer une visite via les appels.",
+            html: `
+              <h2>Rappel important</h2>
+              <p>Le module <strong>Appels</strong> sert uniquement aux <strong>dépannages</strong>. Les
+              <strong>visites se génèrent</strong> (elles ne se créent pas en bon via les appels).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Créer un bon d'appel « pour faire une visite » casse le lien au contrat → pas de
+                <strong>rentabilité</strong> calculée. À proscrire.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-creation-bon",
+            title: "Créer les bons de visite",
+            lead: "Sélectionner les lignes → création du bon (un n° par ligne).",
+            html: `
+              <h2>Liste préparatoire → bons</h2>
+              <p>Cocher (ou clic droit → sélectionner tout) → clic droit → <strong>création du bon</strong> :
+              chaque ligne reçoit un <strong>numéro de bon SAV</strong>. La visite disparaît alors de la
+              liste préparatoire (contrôle : plus rien ne doit y rester).</p>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Planifier, devis SAV & imputation (2/2)",
+        items: [
+
+          {
+            id: "sav2-retrouver-bon",
+            title: "Retrouver le bon généré",
+            lead: "SAV → Intervention société → n° ou filtres.",
+            html: `
+              <h2>Recherche</h2>
+              <p><em>SAV → Intervention société</em> : taper le <strong>numéro d'intervention</strong> pour
+              ouvrir le bon directement, ou filtrer (visites uniquement, non traitées, noms affectés, date de
+              création).</p>
+            `
+          },
+
+          {
+            id: "sav2-planifier-visite",
+            title: "Planifier la visite",
+            lead: "Ouvrir le bon → planning → clic droit → ajouter planification.",
+            html: `
+              <h2>Poser l'intervention</h2>
+              <p>Double-clic sur le bon → l'onglet <strong>visite</strong> rappelle l'heure/technicien
+              prévisionnels (repère). Picto <strong>planning</strong> → se positionner sur le technicien →
+              clic droit → <strong>ajouter la planification</strong> (durée modifiable, matin/journée).</p>
+            `
+          },
+
+          {
+            id: "sav2-alerte-autres-visites",
+            title: "Alerte « autres visites »",
+            lead: "WIPSOS signale les autres visites du même client.",
+            html: `
+              <h2>Éviter les allers-retours</h2>
+              <p>À la planification, une alerte prévient qu'il existe <strong>d'autres visites (ou
+              dépannages) non planifiés</strong> pour ce client — pratique pour regrouper les passages.</p>
+            `
+          },
+
+          {
+            id: "sav2-planning-avance",
+            title: "Planning avancé",
+            lead: "Basculer de l'ancien planning vers le planning avancé.",
+            html: `
+              <h2>La bonne version du planning</h2>
+              <p>Il existe deux plannings : l'ancien (obsolète) et le <strong>planning avancé</strong>
+              (nouveau, à utiliser). Paramétrage : <em>Fichier → Paramétrage</em> (bornage horaire), picto
+              techniciens, picto filtre (valider), puis redémarrer WIPSOS.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Point à vérifier avec Noa/Sylvain : faire passer tous les intervenants en
+                <strong>planning avancé</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-note-recurrente",
+            title: "Note de visite récurrente",
+            lead: "Une note sur le prévisionnel se répète chaque année.",
+            html: `
+              <h2>Infos qui reviennent (codes d'accès…)</h2>
+              <p>Sur le prévisionnel (clic droit sur la visite → <strong>note de visite</strong>), la note est
+              reprise chaque année sur le bon généré → le technicien la voit. Idéal pour les
+              <strong>codes d'accès</strong> et infos récurrentes, sans les retaper à chaque planification.</p>
+            `
+          },
+
+          {
+            id: "sav2-fiche-rubriques",
+            title: "Rubriques de la fiche technique",
+            lead: "Champs complémentaires par activité (code d'accès, IP…).",
+            html: `
+              <h2>Enrichir l'installation</h2>
+              <p>Sur chaque <strong>fiche technique</strong> (par activité) on peut ajouter des
+              <strong>rubriques</strong> : code d'accès, adresse IP externe, etc. Le technicien les consulte
+              et peut les mettre à jour (selon paramétrage).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Mieux vaut mettre ces infos sur l'<strong>installation</strong> : rattachée au client,
+                elle est toujours visible.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-suite-technique",
+            title: "Suite technique (depuis l'appli)",
+            lead: "Le technicien déclenche une demande de devis en temps réel.",
+            html: `
+              <h2>Le lien terrain ↔ back-office</h2>
+              <p>Sur site, le technicien crée une <strong>suite technique</strong> (avec photos du matériel
+              défectueux) : elle remonte <strong>instantanément</strong> dans un tableau en page d'accueil.
+              Double-clic → transformer en <strong>bon SAV</strong> → devis.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Avantage : pas besoin d'attendre le retour du technicien. Le motif et les photos
+                remontent automatiquement. Alternative : créer le bon manuellement via les Appels.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-devis-commercial",
+            title: "Devis SAV commercial",
+            lead: "Transformer le bon en devis (version commerciale).",
+            html: `
+              <h2>Faire le devis de réparation</h2>
+              <p>Enregistrer le bon → l'ouvrir → picto <strong>« transformer en devis de SAV »</strong> →
+              choisir <strong>devis commercial</strong> : même écran que les devis d'installation
+              (pourcentage de réussite, <strong>facture détaillée</strong>, type <strong>correctif</strong>,
+              chiffrage, articles, main d'œuvre, déplacement, sous-totaux).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Même ergonomie et mêmes éditions que les autres devis → cohérence des documents client.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-devis-acceptation",
+            title: "Acceptation du devis SAV",
+            lead: "Le devis accepté redevient un bon à planifier (pas de chantier).",
+            html: `
+              <h2>À l'acceptation</h2>
+              <p>Bouton <strong>acceptation</strong> → date d'acceptation. Le devis SAV
+              <strong>ne crée pas de chantier</strong> : il se <strong>retransforme en bon SAV</strong> à
+              planifier. Un bouton « voir le devis d'origine » reste accessible.</p>
+            `
+          },
+
+          {
+            id: "sav2-bon-preparation",
+            title: "Bon de préparation (magasinier)",
+            lead: "Édition facultative pour préparer la matière.",
+            html: `
+              <h2>Préparer la matière</h2>
+              <p>À l'acceptation, on peut éditer un <strong>bon de préparation</strong> (technicien, dépôt de
+              sortie, date d'intervention, commentaire) : un PDF pour le magasinier.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Ce document est une <strong>édition</strong>, pas une sortie de stock. À déclencher au
+                bon moment du process (pas forcément dès l'acceptation).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-imputation",
+            title: "Imputer la matière (SAV)",
+            lead: "Magasin → Imputation : sortie de stock + bon de livraison.",
+            html: `
+              <h2>Sortir la matière du stock</h2>
+              <p><em>Magasin → Imputation</em> : rechercher le bon (sélection des bons) → double-clic →
+              <strong>saisie des imputations</strong> → valider les lignes → <strong>bon de livraison</strong>
+              interne. C'est ce qui sort réellement la matière du dépôt vers l'affaire.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Étape <strong>obligatoire</strong> (comme pour les chantiers) : sans imputation, les
+                stocks ne sont pas à jour.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-imputation-timing",
+            title: "Quand imputer ?",
+            lead: "L'imputation impacte le stock — choisir le bon moment.",
+            html: `
+              <h2>Stock prévisionnel vs réel</h2>
+              <p>L'imputation se fait <strong>informatiquement</strong> à tout moment et décompte le
+              <strong>stock en cours</strong>. La faire trop tôt fausse le stock (sorties théoriques).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Bonne pratique : imputer au moment de la <strong>planification / préparation réelle</strong>
+                de l'intervention, pas à l'enregistrement de la commande. Le stock négatif ne sera pas
+                bloqué (régularisation au fil de l'eau).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav2-blocage-compta",
+            title: "Blocage compta & recouvrement",
+            lead: "Bloquer un client selon son solde ou son statut.",
+            html: `
+              <h2>Maîtriser les impayés</h2>
+              <p>Sur la fiche client, on peut poser des <strong>avertissements</strong> ou des
+              <strong>blocages</strong> (SAV, négoce, devis, acceptation, création de contrat), ou un blocage
+              par <strong>solde débiteur</strong> (ex. au-delà de 10 000 €).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Utile même si le recouvrement est externalisé : le client en impayé est signalé dans
+                WIPSOS pour arrêter devis et interventions. (Détaillé en formation Compta tiers client.)</div>
               </div>
             `
           }
