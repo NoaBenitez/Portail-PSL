@@ -48,7 +48,8 @@
      VIDEO_S5 = Formation ADV (acceptation) — YouTube
      VIDEO_S6 = Formation Appro-Logistique 2/2 — YouTube
      VIDEO_S7 = Formation Contrat 1/2 — YouTube
-     VIDEO_S8 = Formation Contrat 2/2 — (lien à venir)
+     VIDEO_S8 = Formation Contrat 2/2 — YouTube
+     VIDEO_S9 = Formation SAV 1/2 — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -76,6 +77,7 @@ const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 2/2
 const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 const VIDEO_S8 = "https://youtu.be/7Mo7G2PHDa0";  // Formation Contrat 2/2
+const VIDEO_S9 = "";  // Formation SAV 1/2  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -252,7 +254,39 @@ const VIDEOS = {
   "contrat2-changer-payeur":           { v: VIDEO_S8, t: 6405 },  // 1:46:45
   "contrat2-pas-blocage":              { v: VIDEO_S8, t: 6511 },  // 1:48:31
   "contrat2-heures-previsionnelles":   { v: VIDEO_S8, t: 6587 },  // 1:49:47
-  "contrat2-lien-sav":                 { v: VIDEO_S8, t: 6850 }   // 1:54:10
+  "contrat2-lien-sav":                 { v: VIDEO_S8, t: 6850 },  // 1:54:10
+
+  /* ----- Session 9 — Formation SAV 1/2 ----- */
+  "sav-module-apercu":                 { v: VIDEO_S9, t: 516 },   // 08:36
+  "sav-appels-depannage":              { v: VIDEO_S9, t: 719 },   // 11:59
+  "sav-alertes":                       { v: VIDEO_S9, t: 764 },   // 12:44
+  "sav-creer-bon-gravite":             { v: VIDEO_S9, t: 855 },   // 14:15
+  "sav-contact":                       { v: VIDEO_S9, t: 892 },   // 14:52
+  "sav-motif":                         { v: VIDEO_S9, t: 1030 },  // 17:10
+  "sav-code-provenance":               { v: VIDEO_S9, t: 1062 },  // 17:42
+  "sav-documents":                     { v: VIDEO_S9, t: 1119 },  // 18:39
+  "sav-note-technicien":               { v: VIDEO_S9, t: 1355 },  // 22:35
+  "sav-intervention-societe":          { v: VIDEO_S9, t: 1547 },  // 25:47
+  "sav-planning-parametrage":          { v: VIDEO_S9, t: 1891 },  // 31:31
+  "sav-heure-affectee-debut":          { v: VIDEO_S9, t: 2138 },  // 35:38
+  "sav-planning-web":                  { v: VIDEO_S9, t: 2266 },  // 37:46
+  "sav-terminer-bon":                  { v: VIDEO_S9, t: 2667 },  // 44:27
+  "sav-terminer-suivre":               { v: VIDEO_S9, t: 2876 },  // 47:56
+  "sav-premiere-intervention":         { v: VIDEO_S9, t: 2959 },  // 49:19
+  "sav-mails-auto":                    { v: VIDEO_S9, t: 3053 },  // 50:53
+  "sav-suivi-numero":                  { v: VIDEO_S9, t: 3166 },  // 52:46
+  "sav-devis-transformer":             { v: VIDEO_S9, t: 3514 },  // 58:34
+  "sav-devis-simplifie":               { v: VIDEO_S9, t: 4037 },  // 1:07:17
+  "sav-devis-commercial":              { v: VIDEO_S9, t: 4311 },  // 1:11:51
+  "sav-devis-acceptation":             { v: VIDEO_S9, t: 4429 },  // 1:13:49
+  "sav-devis-reappro":                 { v: VIDEO_S9, t: 4573 },  // 1:16:13
+  "sav-generation-visites":            { v: VIDEO_S9, t: 5116 },  // 1:25:16
+  "sav-generation-filtres":            { v: VIDEO_S9, t: 5193 },  // 1:26:33
+  "sav-creation-bons-visite":          { v: VIDEO_S9, t: 5665 },  // 1:34:25
+  "sav-planif-volee":                  { v: VIDEO_S9, t: 6075 },  // 1:41:15
+  "sav-planif-manuelle":               { v: VIDEO_S9, t: 6302 },  // 1:45:02
+  "sav-distribution-multiple":         { v: VIDEO_S9, t: 6449 },  // 1:47:29
+  "sav-controle-puits":                { v: VIDEO_S9, t: 6755 }   // 1:52:35
 };
 
 const DOC = [
@@ -4215,6 +4249,525 @@ const DOC = [
                 <span class="ic">★</span>
                 <div>Le SAV couvre aussi le <strong>curatif</strong> (dépannages) et les
                 <strong>devis correctifs</strong> — vu dans la formation SAV.</div>
+              </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — SAV (Session 9 — SAV 1/2)
+     ============================================================== */
+  {
+    category: "SAV (dépannages & visites)",
+    icon: "🛠️",
+    groups: [
+
+      {
+        name: "Dépannages : création & planification",
+        items: [
+
+          {
+            id: "sav-module-apercu",
+            title: "Le module SAV (aperçu)",
+            lead: "Dépannages, planification, devis de réparation et visites.",
+            html: `
+              <h2>Ce que couvre le SAV</h2>
+              <ul>
+                <li><strong>Créations de dépannage</strong> et leur planification ;</li>
+                <li><strong>Devis de SAV</strong> (réparation) ;</li>
+                <li><strong>Génération des visites</strong> de maintenance (issues des contrats).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Les <strong>retours</strong> de bons (facturation) et l'historique sont traités dans
+                la formation SAV 2/2.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-appels-depannage",
+            title: "Appels = dépannages (pas les visites)",
+            lead: "Ne jamais mélanger un bon de dépannage et une visite.",
+            html: `
+              <h2>Le menu « Appels »</h2>
+              <p>On passe par <em>SAV → Appels</em> (double-clic) pour créer un <strong>bon de
+              dépannage</strong>, qu'il vienne d'un appel téléphonique ou d'un mail.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Les <strong>visites</strong> ne se créent pas par les appels : elles se
+                <strong>génèrent</strong> depuis les contrats. Créer un bon SAV pour faire une visite
+                ne fonctionnera pas.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-alertes",
+            title: "Alertes personnalisables",
+            lead: "Chaque utilisateur coche les alertes qui l'intéressent.",
+            html: `
+              <h2>Onglet alertes</h2>
+              <p>À la création d'un bon, WIPSOS affiche les <strong>alertes</strong> du client (à
+              paramétrer par utilisateur) : interventions non traitées en cours, solde comptable, etc.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Cochez les alertes voulues puis ressortez pour les activer. Utile pour repérer
+                qu'un client a déjà une intervention en cours.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-creer-bon-gravite",
+            title: "Créer un bon (installation & gravité)",
+            lead: "Double-clic sur l'installation concernée, puis majeur / mineur.",
+            html: `
+              <h2>Lancer le dépannage</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Rechercher le client → ses installations (sous contrat) s'affichent.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Double-clic sur l'installation concernée (ex. extincteur).</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Choisir la <strong>gravité</strong> (majeur / mineur) → on arrive sur le bon.</div></div>
+            `
+          },
+
+          {
+            id: "sav-contact",
+            title: "Le contact appelant",
+            lead: "Créer / sélectionner le contact, habilitation appel SAV.",
+            html: `
+              <h2>Qui a appelé ?</h2>
+              <p>On sélectionne le contact ou on le <strong>crée</strong> (page blanche) : fonction,
+              téléphone, mail. Cocher <strong>« habilitation appel SAV »</strong> pour qu'il remonte sur
+              l'application du technicien.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Ne pas écraser un contact existant en tapant par-dessus : cela ne crée pas de
+                contact. Créez-le proprement avec la page blanche, puis sélectionnez-le.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-motif",
+            title: "Motif de l'intervention",
+            lead: "Attention : le motif finira sur un PDF non modifiable.",
+            html: `
+              <h2>Décrire la demande</h2>
+              <p>Le <strong>motif</strong> se saisit à la main (ou copier-coller depuis un mail). Il
+              servira au technicien et apparaîtra sur le <strong>rapport d'intervention</strong>.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Le rapport devient un <strong>PDF non modifiable</strong> — faites attention à ce que
+                vous écrivez.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-code-provenance",
+            title: "Code provenance (mail / appel)",
+            lead: "À rendre obligatoire pour un bon pilotage.",
+            html: `
+              <h2>D'où vient la demande ?</h2>
+              <p>Le <strong>code provenance</strong> (appel, mail…) alimente des états de pilotage (ratio
+              d'appels vs mails).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Conseil : laisser le champ <strong>vide et obligatoire</strong> plutôt qu'une valeur
+                par défaut — sinon on oublie de la changer.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-documents",
+            title: "Documents électroniques",
+            lead: "Sous-dossiers « mail client » et « BC facturation ».",
+            html: `
+              <h2>Centraliser les pièces</h2>
+              <p>Dans les documents du bon, glisser le <strong>mail de demande</strong> et le
+              <strong>bon de commande</strong>. La personne qui facture retrouve ainsi le n° d'ordre de
+              service / BC.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Sous-dossiers conseillés : <strong>« Mail demande d'intervention »</strong> et
+                <strong>« Bon de commande facturation »</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-note-technicien",
+            title: "Note pour le technicien",
+            lead: "Via le picto note, rattachée au bon (avec suivi).",
+            html: `
+              <h2>Deux systèmes de notes</h2>
+              <p>Une note peut être saisie sur le <strong>bon</strong> (picto note) ou sur la
+              <strong>planification</strong>. Les deux remontent sur l'application du technicien.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Préférez la note du <strong>bon</strong> : elle est horodatée et suivie ; le
+                technicien peut aussi y répondre. Les notes sont <strong>internes</strong> (le client ne
+                les voit pas).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-intervention-societe",
+            title: "Retrouver un bon (intervention société)",
+            lead: "Filtrer par état : non traités, en cours, à suivre, terminés…",
+            html: `
+              <h2>Rechercher / suivre</h2>
+              <p><em>SAV → Intervention société</em> permet de filtrer les bons par <strong>état</strong>
+              (non traités, en cours, à suivre, terminés, visites, devis), par date d'appel, et de ne
+              prendre que les <strong>bons affectés</strong> à un technicien.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Deux points d'entrée pour retrouver un bon : <strong>intervention société</strong> ou
+                le <strong>planning</strong> (clic droit → ouvrir le bon).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-planning-parametrage",
+            title: "Paramétrer le planning",
+            lead: "Bornage horaire, techniciens, filtre — à faire une fois par profil.",
+            html: `
+              <h2>Première utilisation</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <em>Fichier → Paramétrage</em> : bornage de la journée (ex. 8 h – 18 h), semaine 5/7 jours.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Picto <strong>techniciens</strong> : basculer à droite ceux avec qui on travaille.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Picto <strong>filtre</strong> : valider l'ordre d'affichage (obligatoire pour prise en compte).</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Sans ce paramétrage, le planning reste <strong>gris</strong>. C'est à faire par profil.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-heure-affectee-debut",
+            title: "Heure affectée vs heure de début",
+            lead: "La distinction qui pilote l'état « non traité » / « en cours ».",
+            html: `
+              <h2>Deux notions à ne pas confondre</h2>
+              <table>
+                <tr><th>Cas</th><th>État du bon</th></tr>
+                <tr><td>Heure affectée ≠ heure de début</td><td><strong>Non traité</strong> : c'est le
+                technicien qui, en démarrant l'intervention, met le planning à jour.</td></tr>
+                <tr><td>Heure affectée = heure de début</td><td><strong>En cours</strong> dès la
+                validation.</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Vous saisissez l'heure d'affectation + la durée. Le passage « en cours » et l'heure
+                réelle viennent de la synchro du technicien (« je commence l'intervention »).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-planning-web",
+            title: "Planning web & astreinte",
+            lead: "Le technicien voit son planning ; il peut créer une astreinte.",
+            html: `
+              <h2>Côté technicien</h2>
+              <p>Le <strong>planning web</strong> (depuis l'application) montre au technicien ses
+              interventions <strong>déjà planifiées</strong>. Il ne voit pas les bons non traités des
+              autres.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Pour une urgence, c'est le bureau qui <strong>ajoute le bon</strong> à la journée du
+                technicien. Le module <strong>astreinte</strong> permet au technicien de créer lui-même une
+                intervention quand il est prévenu directement.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Terminer, devis SAV & visites",
+        items: [
+
+          {
+            id: "sav-terminer-bon",
+            title: "Terminer un bon (≠ clôture)",
+            lead: "Terminer = intervention faite ; la clôture, c'est la facturation.",
+            html: `
+              <h2>Terminer</h2>
+              <p>Le technicien termine le bon depuis l'application ; on peut aussi le faire manuellement
+              (clic droit → clôture) : dates début/fin, compte-rendu. Le bon passe en
+              <strong>terminé</strong> (vert) sur le planning.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>« Terminer » ≠ « clôturer » : la <strong>clôture</strong> se fait à la
+                <strong>facturation</strong> (le bon part alors en historique — vu en SAV 2/2).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-terminer-suivre",
+            title: "Terminé ou à suivre",
+            lead: "« À suivre » quand l'intervention n'est pas finie.",
+            html: `
+              <h2>Le choix à la fin</h2>
+              <table>
+                <tr><th>Choix</th><th>Quand</th></tr>
+                <tr><td><strong>Terminé</strong></td><td>Intervention finie → facturable.</td></tr>
+                <tr><td><strong>À suivre</strong></td><td>Manque de matériel, retour nécessaire, devis à
+                faire → facturation à la fin.</td></tr>
+              </table>
+            `
+          },
+
+          {
+            id: "sav-premiere-intervention",
+            title: "Première intervention facturable",
+            lead: "Chez PSL : le dépannage est facturé à chaque intervention.",
+            html: `
+              <h2>Règle retenue</h2>
+              <p>La <strong>première intervention</strong> est toujours mise en <strong>terminé</strong>
+              (donc facturable). S'il faut réparer ensuite, on crée un <strong>nouveau bon</strong> via les
+              appels et on le transforme en <strong>devis de SAV</strong>.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Un bon « à suivre » ne peut pas être facturé : il faut qu'il soit terminé.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-mails-auto",
+            title: "Mails automatiques selon l'état",
+            lead: "Accusé de réception, terminé… paramétrables.",
+            html: `
+              <h2>Avertir le client</h2>
+              <p>À chaque étape (création, à suivre, terminé), WIPSOS peut <strong>envoyer un mail</strong>
+              au client. La fenêtre s'ouvre : on choisit d'envoyer (picto enveloppe @) ou de continuer sans
+              mail.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Les modèles de mail se paramètrent (à voir avec Noa). On peut même rendre l'envoi
+                quasi obligatoire en masquant le bouton « quitter sans envoyer ».</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-suivi-numero",
+            title: "Suivre un bon par numéro",
+            lead: "Le numéro d'intervention permet de retrouver le bon à tout moment.",
+            html: `
+              <h2>Numéro d'intervention</h2>
+              <p>L'accusé de réception envoie un <strong>numéro de bon</strong>. Le client rappelle avec ce
+              numéro → <em>Intervention société</em> → champ numéro → on ouvre le bon et on voit son état.</p>
+            `
+          },
+
+          {
+            id: "sav-devis-transformer",
+            title: "Transformer une intervention en devis SAV",
+            lead: "Le picto « stylo » apparaît une fois le bon enregistré.",
+            html: `
+              <h2>Créer un devis de réparation</h2>
+              <p>On crée un nouveau bon (appels), on l'enregistre, puis on l'ouvre : le picto
+              <strong>« transformer l'intervention en devis de SAV »</strong> apparaît.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un paramètre propose alors <strong>deux versions</strong> : devis SAV
+                <strong>simplifié</strong> ou devis <strong>commercial</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-devis-simplifie",
+            title: "Devis SAV simplifié",
+            lead: "Recherche d'articles + caddie ; un seul modèle de PDF.",
+            html: `
+              <h2>Version simplifiée</h2>
+              <p>Onglet articles → clic droit gestion → rechercher les articles (extincteur, main d'œuvre,
+              déplacement…). Le <strong>caddie</strong> permet d'accumuler plusieurs articles avant de les
+              générer.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un <strong>seul modèle</strong> de PDF (pas de choix de mise en page). Envoi possible
+                par mail au client directement depuis l'écran.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-devis-commercial",
+            title: "Devis SAV version commerciale",
+            lead: "Même ergonomie que les devis d'installation.",
+            html: `
+              <h2>Version commerciale</h2>
+              <p>Reprend l'écran des <strong>devis commerciaux</strong> : paragraphes, sous-totaux, choix
+              de <strong>modèle</strong> (bibliothèque), facture globale ou détaillée. Type = correctif
+              (SAV), pas chantier.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Plus de main sur la présentation. Conseil : choisir <strong>une seule</strong> façon de
+                faire pour toute l'entreprise (éviter d'envoyer 2 présentations différentes au même client).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-devis-acceptation",
+            title: "Acceptation d'un devis SAV",
+            lead: "Le devis accepté redevient un bon à planifier (pas de chantier).",
+            html: `
+              <h2>À l'acceptation</h2>
+              <p>On saisit la <strong>date d'acceptation</strong> (impression / mail / sans envoi). Le devis
+              de SAV <strong>ne crée pas de chantier</strong> : il se <strong>retransforme en bon SAV</strong>
+              à planifier.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un bouton permet de revoir le <strong>devis d'origine</strong> avec les articles
+                validés par le client, puis de revenir au bon pour imputer et planifier.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-devis-reappro",
+            title: "Acceptation & réapprovisionnement",
+            lead: "Pas de demande d'achat directe : tout passe par le réappro.",
+            html: `
+              <h2>Approvisionnement</h2>
+              <p>À l'acceptation, un paramètre peut lancer une demande d'achat. Chez PSL, on le
+              <strong>désactive</strong> : les besoins remontent dans le <strong>module réappro</strong>
+              (cumul de quantités par client), comme pour les chantiers.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un <strong>bon de préparation</strong> peut être édité pour le magasinier (sortir
+                l'article du dépôt si en stock).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-generation-visites",
+            title: "Générer les visites de maintenance",
+            lead: "Les visites prévisionnelles des contrats doivent être générées.",
+            html: `
+              <h2>De la prévision au bon</h2>
+              <p>Les visites définies sur les contrats sont <strong>prévisionnelles</strong> : il faut les
+              <strong>générer</strong> pour les retrouver dans le SAV et pouvoir les planifier
+              (<em>Visites d'entretien → Gestion</em>).</p>
+            `
+          },
+
+          {
+            id: "sav-generation-filtres",
+            title: "Filtrer la génération",
+            lead: "Par date/mois, par activité, par contrat ou par client.",
+            html: `
+              <h2>Cibler la génération</h2>
+              <p>La génération se travaille <strong>par date</strong> (mois + année). On peut filtrer par
+              <strong>activité</strong>, par <strong>numéro de contrat</strong> ou par <strong>client</strong>
+              (ex. générer les visites d'un contrat créé après coup) → <em>Générer la liste préparatoire</em>.</p>
+            `
+          },
+
+          {
+            id: "sav-creation-bons-visite",
+            title: "Créer les bons de visite",
+            lead: "Sélectionner les lignes → un numéro de bon par ligne.",
+            html: `
+              <h2>Liste préparatoire → bons</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Cocher les visites (ou clic droit → sélectionner tout).</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Clic droit → <strong>création du bon</strong> → un n° de bon SAV par ligne.</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>La génération se <strong>cumule</strong> : si plusieurs personnes génèrent en même
+                temps, on se marche dessus. Une <strong>seule personne</strong> doit générer (souvent en
+                décembre pour l'année suivante).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-planif-volee",
+            title: "Planification à la volée (puits)",
+            lead: "Pour certains clients : un « puits » de bons par technicien.",
+            html: `
+              <h2>Le puits</h2>
+              <p>En mode table, clic droit → <strong>planification à la volée</strong> : on affecte un lot de
+              bons à <strong>un technicien</strong> sur une date. Le technicien pioche ensuite dans ce
+              <strong>puits</strong> et choisit par quel client commencer (immeubles, syndics, tournées…).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>À surveiller : un bon oublié dans le puits peut y rester des années. Le puits demande
+                une gestion rigoureuse.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-planif-manuelle",
+            title: "Planifier les visites (manuel)",
+            lead: "Les visites se génèrent auto, mais se planifient à la main.",
+            html: `
+              <h2>Planification manuelle</h2>
+              <p>Depuis <em>Intervention société</em> (visites uniquement, non traitées), on ouvre chaque
+              bon et on planifie via le planning. On peut filtrer par <strong>département</strong>,
+              <strong>code postal</strong> ou <strong>ville</strong> pour aider à organiser les tournées.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Idée reçue à corriger : les visites se <strong>génèrent</strong> automatiquement mais la
+                <strong>planification reste manuelle</strong> (sauf puits à la volée).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-distribution-multiple",
+            title: "Distribution multiple (grosses visites)",
+            lead: "Répartir automatiquement un gros volume d'heures.",
+            html: `
+              <h2>Éclater les heures</h2>
+              <p>Pour une visite à fort volume (ex. 39 h), clic droit → <strong>distribution multiple</strong>
+              → choisir la période / le bornage → WIPSOS répartit et décompte les heures sur plusieurs jours.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Pour un bon de 4–5 h, inutile : on planifie directement (heure d'affectation + durée).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "sav-controle-puits",
+            title: "Contrôler le puits",
+            lead: "Le picto « puits » sur le planning signale les bons non traités.",
+            html: `
+              <h2>Suivi</h2>
+              <p>Sur le planning, un picto <strong>puits des planifications</strong> montre les bons encore
+              en attente. Les bons traités par le technicien en <strong>disparaissent</strong> automatiquement
+              (ils passent en terminé / à suivre, avec un code couleur).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Contrôle indispensable : s'il reste des bons dans le puits, c'est qu'ils n'ont jamais
+                été traités.</div>
               </div>
             `
           }
