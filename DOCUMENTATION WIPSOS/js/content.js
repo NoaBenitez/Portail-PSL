@@ -46,7 +46,8 @@
      VIDEO_S3 = Formation Appro-Logistique 1/2 — YouTube
      VIDEO_S4 = Formation Suivi de chantier 2/2 — YouTube
      VIDEO_S5 = Formation ADV (acceptation) — YouTube
-     VIDEO_S6 = Formation Appro-Logistique 2/2 — (lien à venir)
+     VIDEO_S6 = Formation Appro-Logistique 2/2 — YouTube
+     VIDEO_S7 = Formation Contrat 1/2 — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -72,6 +73,7 @@ const VIDEO_S3 = "https://youtu.be/cZpWBm-PrZY";  // Formation Appro-Logistique 
 const VIDEO_S4 = "https://youtu.be/bcjeamMXmOE";  // Formation Suivi de chantier 2/2
 const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 2/2
+const VIDEO_S7 = "";  // Formation Contrat 1/2  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -198,7 +200,32 @@ const VIDEOS = {
   "appro2-inventaire-stock":        { v: VIDEO_S6, t: 3918 },  // 1:05:18
   "appro2-reception-imputation":    { v: VIDEO_S6, t: 4435 },  // 1:13:55
   "appro2-import-fichier":          { v: VIDEO_S6, t: 4760 },  // 1:19:20
-  "appro2-prestation-0-5":          { v: VIDEO_S6, t: 5085 }   // 1:24:45
+  "appro2-prestation-0-5":          { v: VIDEO_S6, t: 5085 },  // 1:24:45
+
+  /* ----- Session 7 — Formation Contrat 1/2 ----- */
+  "contrat-type-commande-fournisseur": { v: VIDEO_S7, t: 206 },   // 03:26
+  "contrat-creer":                     { v: VIDEO_S7, t: 252 },   // 04:12
+  "contrat-modes-affichage":           { v: VIDEO_S7, t: 353 },   // 05:53
+  "contrat-logique-installation":      { v: VIDEO_S7, t: 457 },   // 07:37
+  "contrat-onglets-type":              { v: VIDEO_S7, t: 539 },   // 08:59
+  "contrat-mono-multi":                { v: VIDEO_S7, t: 603 },   // 10:03
+  "contrat-abonnement-visite":         { v: VIDEO_S7, t: 808 },   // 13:28
+  "contrat-rattacher-codifier":        { v: VIDEO_S7, t: 867 },   // 14:27
+  "contrat-codification":              { v: VIDEO_S7, t: 1001 },  // 16:41
+  "contrat-creer-installation":        { v: VIDEO_S7, t: 1268 },  // 21:08
+  "contrat-parc-materiel":             { v: VIDEO_S7, t: 1359 },  // 22:39
+  "contrat-reprise-parc":              { v: VIDEO_S7, t: 1449 },  // 24:09
+  "contrat-dates":                     { v: VIDEO_S7, t: 1674 },  // 27:54
+  "contrat-facture-visite":            { v: VIDEO_S7, t: 1773 },  // 29:33
+  "contrat-onglet-facturation":        { v: VIDEO_S7, t: 1903 },  // 31:43
+  "contrat-abonnement":                { v: VIDEO_S7, t: 2186 },  // 36:26
+  "contrat-gestion-visites":           { v: VIDEO_S7, t: 2346 },  // 39:06
+  "contrat-creer-visite":              { v: VIDEO_S7, t: 2439 },  // 40:39
+  "contrat-affecter-parc-visite":      { v: VIDEO_S7, t: 2608 },  // 43:28
+  "contrat-generation-visites":        { v: VIDEO_S7, t: 2751 },  // 45:51
+  "contrat-multi-activites":           { v: VIDEO_S7, t: 2914 },  // 48:34
+  "contrat-associer-installations":    { v: VIDEO_S7, t: 3304 },  // 55:04
+  "contrat-annee-application":         { v: VIDEO_S7, t: 3656 }   // 1:00:56
 };
 
 const DOC = [
@@ -3318,6 +3345,437 @@ const DOC = [
                 <span class="ic">i</span>
                 <div>La suite (réappro, imputations, planification) se fait dans le
                 <strong>suivi de chantier</strong>.</div>
+              </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — CONTRATS (Session 7 — Contrat 1/2)
+     ============================================================== */
+  {
+    category: "Contrats",
+    icon: "📄",
+    groups: [
+
+      {
+        name: "Créer un contrat de maintenance",
+        items: [
+
+          {
+            id: "contrat-type-commande-fournisseur",
+            title: "Type de commande automatique (rappel)",
+            lead: "Faire remonter le type de commande automatiquement via le fournisseur.",
+            html: `
+              <h2>Automatiser le type de commande</h2>
+              <p>Réponse à la question de la veille : on peut <strong>rattacher le type de commande
+              au fournisseur</strong>. Dans chaque fiche fournisseur (onglet <strong>Commande</strong>),
+              on renseigne le type (ex. « plan »).</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>À l'acceptation, la demande d'achat portera directement le bon type de commande —
+                plus besoin de le changer à la main. C'est automatisé.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-creer",
+            title: "Créer un contrat",
+            lead: "Le module Contrat : consulter ou créer via la page blanche.",
+            html: `
+              <h2>Module Contrat</h2>
+              <p><em>Contrat → Fiche</em> permet de consulter les contrats existants ou d'en créer un.
+              La <strong>page blanche</strong> crée un nouveau contrat de maintenance.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Avant la page blanche, <strong>rechercher le client</strong> sur lequel affecter le
+                contrat.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-modes-affichage",
+            title: "Modes d'affichage (table / contrat)",
+            lead: "Deux façons de visualiser les contrats.",
+            html: `
+              <h2>Table vs Contrat</h2>
+              <table>
+                <tr><th>Mode</th><th>Affichage</th></tr>
+                <tr><td><strong>Table</strong></td><td>Clients en haut ; en cliquant sur un client, ses
+                contrats s'affichent dans la table du dessous.</td></tr>
+                <tr><td><strong>Contrat</strong></td><td>Vue centralisée de l'ensemble des contrats de la
+                base (souvent plus pratique).</td></tr>
+              </table>
+            `
+          },
+
+          {
+            id: "contrat-logique-installation",
+            title: "Logique : contrat = installation",
+            lead: "Rattacher une installation existante ou en créer une.",
+            html: `
+              <h2>Le principe</h2>
+              <p>Un contrat de maintenance vient <strong>rattacher une installation</strong> :</p>
+              <ul>
+                <li><strong>Installation existante</strong> : issue d'un devis d'installation accepté
+                dans WIPSOS (fiche technique déjà créée) ;</li>
+                <li><strong>Créer l'installation</strong> à la volée et alimenter le
+                <strong>parc matériel</strong> (cas d'une reprise de parc).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le parc matériel = l'ensemble des articles ouverts par le contrat. C'est la base de
+                tout le suivi (visites, SAV).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-onglets-type",
+            title: "Onglets & type de maintenance",
+            lead: "Généralités et facturation ; type maintenance ou autoliquidée.",
+            html: `
+              <h2>Renseigner l'en-tête</h2>
+              <p>Deux onglets à compléter : <strong>Généralités</strong> et <strong>Facturation</strong>.
+              L'agence et le commercial remontent du client (modifiables).</p>
+              <p>Le <strong>type</strong> : « maintenance » ou « maintenance autoliquidée ».</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Méthode : remplir « en cascade » (de gauche à droite) — pas besoin de saisir chaque
+                cellule, seulement les champs en gras (obligatoires) et ceux utiles.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-mono-multi",
+            title: "Contrat mono ou multi-activités",
+            lead: "Un contrat par activité, ou un contrat regroupant plusieurs activités.",
+            html: `
+              <h2>Choisir l'activité</h2>
+              <p>L'<strong>activité</strong> du contrat est importante. Deux organisations possibles :</p>
+              <ul>
+                <li>un <strong>contrat par activité</strong> ;</li>
+                <li>un <strong>contrat multi-activités</strong> (majoritaire) : plusieurs installations
+                rattachées, chacune avec ses propres visites.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>En multi-activités, WIPSOS génère les visites <strong>par installation et mois par
+                mois</strong> automatiquement — l'oubli d'une visite devient très rare.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-abonnement-visite",
+            title: "Abonnement vs facturé à la visite",
+            lead: "Les deux grands types de fonctionnement d'un contrat.",
+            html: `
+              <h2>Deux typologies</h2>
+              <table>
+                <tr><th>Type</th><th>Facturation</th></tr>
+                <tr><td><strong>Abonnement</strong></td><td>Récurrente (annuelle, mensuelle,
+                trimestrielle), montant forfaitaire.</td></tr>
+                <tr><td><strong>À la visite</strong></td><td>Au réel : on facture depuis le
+                <strong>SAV</strong> au retour de la visite (le plus courant en incendie).</td></tr>
+              </table>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le « contrat principal » permet de rattacher plusieurs contrats entre eux pour une
+                seule facture (vu plus en détail par la suite).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-rattacher-codifier",
+            title: "Rattacher ou codifier une installation",
+            lead: "Le champ installation : liste existante ou codification manuelle.",
+            html: `
+              <h2>Installation du contrat</h2>
+              <p>Dans la cellule « chantier/installation » :</p>
+              <ul>
+                <li>si l'installation existe (devis accepté), on la <strong>sélectionne</strong> dans la
+                liste ;</li>
+                <li>sinon, on la <strong>codifie manuellement</strong>.</li>
+              </ul>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Une installation issue d'un devis accepté commence par <strong>« C »</strong> (n° de
+                chantier). Ne créez pas vos codifications manuelles avec « C » pour éviter erreurs et
+                doublons.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-codification",
+            title: "Codifier manuellement (reprise de parc)",
+            lead: "Créer une installation quand le devis n'a pas été fait dans WIPSOS.",
+            html: `
+              <h2>Cas de la reprise</h2>
+              <p>Quand on arrive chez un client avec un parc existant (pas de devis WIPSOS), il faut
+              <strong>codifier l'installation</strong>. Méthode conseillée :
+              <strong>numéro de client + 1</strong> (1ʳᵉ installation), + 2 pour une 2ᵉ activité, etc.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>En tapant ce code (Tab), WIPSOS propose de <strong>créer l'installation</strong> :
+                cochez, puis accédez à la fiche technique. La fiche est rattachée à l'<strong>activité</strong>
+                renseignée. C'est le cas majoritaire (les chantiers 9 = ~10 %).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-creer-installation",
+            title: "Créer la fiche technique (installation)",
+            lead: "Accéder à l'installation créée et préparer son parc.",
+            html: `
+              <h2>La fiche technique</h2>
+              <p>Le picto <strong>accès à la fiche technique</strong> ouvre l'installation (ex.
+              « installation extincteur »). Elle est <strong>vide au départ</strong> : le parc matériel
+              va s'y ajouter.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Une liste déroulante des activités sera préparée pour éviter de retaper le libellé
+                à chaque fois.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-parc-materiel",
+            title: "Alimenter le parc matériel",
+            lead: "Ajouter les articles sous contrat à l'installation.",
+            html: `
+              <h2>Ajouter les articles</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Page blanche → rechercher l'article (ex. extincteur).</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Renseigner la <strong>date de mise en service</strong> et la <strong>quantité sous
+                contrat</strong>.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Enregistrer → le parc s'alimente (ex. 5 extincteurs sous contrat).</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Étape essentielle pour les installations <strong>non générées automatiquement</strong>
+                par WIPSOS.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-reprise-parc",
+            title: "Reprise de parc : 3 solutions",
+            lead: "Récupérer au maximum le parc pour que le technicien ne parte pas de zéro.",
+            html: `
+              <h2>Comment renseigner le parc</h2>
+              <ul>
+                <li><strong>J'ai l'info</strong> : je saisis le parc réel (manuellement).</li>
+                <li><strong>Import Excel</strong> : parc rattaché au contrat (utile au-delà de ~10 articles).</li>
+                <li><strong>Le technicien complète</strong> : sur site, via l'application, il met à jour
+                le parc — les articles remontent automatiquement sous contrat.</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Si l'info est approximative, mettre une quantité prévisionnelle (ex. 10 extincteurs) ;
+                le technicien ajustera lors de la visite.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-dates",
+            title: "Dates de signature & mise en service",
+            lead: "Renseigner les dates clés du contrat.",
+            html: `
+              <h2>Les dates</h2>
+              <ul>
+                <li><strong>Date de signature</strong> : date d'aujourd'hui ou antérieure, selon le contrat.</li>
+                <li><strong>Date de mise en service</strong> : début effectif du contrat (peut différer de
+                la signature).</li>
+              </ul>
+              <p>Un <strong>texte de facture</strong> peut être saisi (il apparaîtra sur la facture).</p>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Facturation, visites & multi-activités",
+        items: [
+
+          {
+            id: "contrat-facture-visite",
+            title: "Contrat facturé à la visite",
+            lead: "Cocher « facturé à la visite » pour facturer au réel.",
+            html: `
+              <h2>Facturer au réel</h2>
+              <p>Cocher <strong>« contrat facturé à la visite »</strong> : le contrat n'est pas facturé en
+              abonnement mais <strong>au retour de chaque visite</strong> (nombre réel d'articles posés).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>En incendie, c'est quasiment toujours ce mode (on facture le réel : s'il y a 9
+                extincteurs, on facture 9).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-onglet-facturation",
+            title: "Onglet facturation",
+            lead: "Début/prochaine facturation, périodicité, formule.",
+            html: `
+              <h2>Champs à renseigner</h2>
+              <p>Même en « à la visite », l'onglet Facturation demande : <strong>début</strong> et
+              <strong>prochaine facturation</strong>, <strong>périodicité</strong> (ex. annuel),
+              <strong>formule</strong> (sans augmentation).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>En « à la visite », ces valeurs sont obligatoires mais <strong>sans impact</strong> :
+                laissez le <strong>montant vide</strong> (la facturation se fera au retour SAV).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-abonnement",
+            title: "Contrat type abonnement",
+            lead: "Montant, périodicité, échu/à échoir et formule d'augmentation.",
+            html: `
+              <h2>Paramétrer un abonnement</h2>
+              <p>Ne pas cocher « à la visite ». Renseigner un <strong>montant HT</strong> (base et actuel),
+              la <strong>périodicité</strong>, et l'échéance :</p>
+              <ul>
+                <li><strong>À échoir</strong> : facture en début de période (même date).</li>
+                <li><strong>Échu</strong> : facture en fin de période (année suivante).</li>
+              </ul>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div><strong>Montant de base</strong> reste figé ; <strong>montant actuel</strong> évolue
+                avec la formule d'augmentation (non augmentable / augmentable / jamais augmentable).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-gestion-visites",
+            title: "Gestion des visites (prévisionnel)",
+            lead: "Indiquer les visites à faire par installation.",
+            html: `
+              <h2>Le calendrier des visites</h2>
+              <p>Depuis le contrat, le <strong>bloc-notes</strong> ouvre la gestion des visites. Pour
+              chaque installation, on définit un <strong>prévisionnel</strong> qui permettra de générer
+              les bons de visite à planifier.</p>
+            `
+          },
+
+          {
+            id: "contrat-creer-visite",
+            title: "Créer une visite (code visite, mois)",
+            lead: "Définir le type de visite et le mois d'intervention.",
+            html: `
+              <h2>Créer une visite d'entretien</h2>
+              <p>Page blanche → <strong>code visite</strong> (ex. annuelle, mensuelle) → choisir le
+              <strong>mois</strong> de la visite. On peut indiquer un nombre d'heures et de techniciens
+              (prévisionnel).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Ces heures/techniciens sont <strong>théoriques</strong> (un repère visuel sur le banc
+                de visite) — sans impact sur la planification. 1 h + 1 technicien suffit pour générer.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-affecter-parc-visite",
+            title: "Affecter le parc à la visite",
+            lead: "Étape obligatoire avant de générer la visite.",
+            html: `
+              <h2>Rattacher les articles à checker</h2>
+              <p>Dans la gestion des visites, onglet <strong>parc installé</strong> → clic droit →
+              <strong>affecter la totalité des articles à la visite</strong>. Les articles remonteront sur
+              l'application du technicien (à vérifier sur site).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div><strong>Action obligatoire avant de générer la visite.</strong> Sans elle, les
+                articles ne sont pas pris en compte et le rapport d'intervention est vide.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-generation-visites",
+            title: "Générer les visites",
+            lead: "Générer mois par mois ou sur l'année.",
+            html: `
+              <h2>Générer les bons de visite</h2>
+              <p>Une fois le prévisionnel posé, on <strong>génère les visites</strong> pour les retrouver
+              dans le module SAV et les planifier au technicien.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Deux stratégies : générer <strong>mois par mois</strong> (anticiper le mois suivant)
+                ou <strong>toute l'année</strong> d'un coup — à choisir selon l'organisation interne.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-multi-activites",
+            title: "Contrat multi-activités",
+            lead: "Créer plusieurs installations pour un même contrat.",
+            html: `
+              <h2>Plusieurs installations</h2>
+              <p>Type = <strong>multi-activités</strong>. Via le picto <strong>accès aux fiches
+              techniques</strong>, la page blanche permet de créer chaque installation (extincteur, alarme
+              incendie, bloc autonome…) avec la codification <em>n° client + numéro d'ordre</em>.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Ne passez pas par le champ unique « installation » (un seul champ) : utilisez le picto
+                fiches techniques pour créer <strong>plusieurs</strong> installations, chacune avec son parc.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-associer-installations",
+            title: "Associer les installations au contrat",
+            lead: "Rattacher toutes les installations créées au contrat.",
+            html: `
+              <h2>Rattachement final</h2>
+              <p>En multi-activités, après avoir créé les installations, cliquez sur le bouton latéral pour
+              <strong>affecter le numéro du contrat</strong> à toutes les installations (elles passent
+              « sous contrat »).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Sans cette étape, les installations restent <strong>hors contrat</strong>. Chaque
+                activité aura ensuite son <strong>propre rapport d'intervention</strong> et son
+                calendrier de visites.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat-annee-application",
+            title: "Année d'application des visites",
+            lead: "Décaler le déclenchement d'une visite à l'année suivante.",
+            html: `
+              <h2>Anticiper une visite</h2>
+              <p>Le champ <strong>année d'application</strong> permet de saisir une visite qui se déclenche
+              l'<strong>année suivante</strong> (ex. 2027) plutôt que l'année en cours.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Laissé vide, WIPSOS prend l'<strong>année en cours</strong> — inutile de saisir 2026 si
+                vous démarrez en 2026.</div>
               </div>
             `
           }
