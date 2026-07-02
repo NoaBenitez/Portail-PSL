@@ -49,8 +49,8 @@
      VIDEO_S6 = Formation Appro-Logistique 2/2 — YouTube
      VIDEO_S7 = Formation Contrat 1/2 — YouTube
      VIDEO_S8 = Formation Contrat 2/2 — YouTube
-     VIDEO_S9 = Formation SAV 1/2 — (lien à venir)
-     VIDEO_S10 = Formation SAV 2/2 — YouTube
+     VIDEO_S9 = Formation SAV 1/2 — YouTube
+     VIDEO_S10 = Formation SAV 2/2 — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -78,8 +78,8 @@ const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 2/2
 const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 const VIDEO_S8 = "https://youtu.be/7Mo7G2PHDa0";  // Formation Contrat 2/2
-const VIDEO_S9 = "";  // Formation SAV 1/2  (collez l'URL YouTube ici)
-const VIDEO_S10 = "https://youtu.be/oYsNnYJjUXw";  // Formation SAV 2/2
+const VIDEO_S9 = "https://youtu.be/oYsNnYJjUXw";  // Formation SAV 1/2
+const VIDEO_S10 = "";  // Formation SAV 2/2  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
