@@ -51,6 +51,7 @@
      VIDEO_S8 = Formation Contrat 2/2 — YouTube
      VIDEO_S9 = Formation SAV 1/2 — YouTube
      VIDEO_S10 = Formation SAV 2/2 — (lien à venir)
+     VIDEO_S11 = Formation Compta. Tiers Clients (Facturation) — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -80,6 +81,7 @@ const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 const VIDEO_S8 = "https://youtu.be/7Mo7G2PHDa0";  // Formation Contrat 2/2
 const VIDEO_S9 = "https://youtu.be/oYsNnYJjUXw";  // Formation SAV 1/2
 const VIDEO_S10 = "";  // Formation SAV 2/2  (collez l'URL YouTube ici)
+const VIDEO_S11 = "";  // Formation Compta. Tiers Clients / Facturation  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -315,7 +317,36 @@ const VIDEOS = {
   "sav2-bon-preparation":              { v: VIDEO_S10, t: 6376 },  // 1:46:16
   "sav2-imputation":                   { v: VIDEO_S10, t: 6933 },  // 1:55:33
   "sav2-imputation-timing":            { v: VIDEO_S10, t: 7386 },  // 2:03:06
-  "sav2-blocage-compta":               { v: VIDEO_S10, t: 7862 }   // 2:11:02
+  "sav2-blocage-compta":               { v: VIDEO_S10, t: 7862 },  // 2:11:02
+
+  /* ----- Session 11 — Formation Compta. Tiers Clients (Facturation) ----- */
+  "fact-module-apercu":                { v: VIDEO_S11, t: 68 },    // 01:08
+  "fact-facturer-contrats":            { v: VIDEO_S11, t: 307 },   // 05:07
+  "fact-date-echeance":                { v: VIDEO_S11, t: 348 },   // 05:48
+  "fact-electronique":                 { v: VIDEO_S11, t: 405 },   // 06:45
+  "fact-execution":                    { v: VIDEO_S11, t: 634 },   // 10:34
+  "fact-controle-ligne":               { v: VIDEO_S11, t: 654 },   // 10:54
+  "fact-apercu-valider":               { v: VIDEO_S11, t: 738 },   // 12:18
+  "fact-envoi-factures":               { v: VIDEO_S11, t: 938 },   // 15:38
+  "fact-contact-mail":                 { v: VIDEO_S11, t: 1066 },  // 17:46
+  "fact-piece-jointe-bc":              { v: VIDEO_S11, t: 1482 },  // 24:42
+  "fact-envoi-masse":                  { v: VIDEO_S11, t: 1526 },  // 25:26
+  "fact-avoir-directe":                { v: VIDEO_S11, t: 1657 },  // 27:37
+  "fact-sav-apercu":                   { v: VIDEO_S11, t: 2095 },  // 34:55
+  "fact-sav-retours":                  { v: VIDEO_S11, t: 2180 },  // 36:20
+  "fact-sav-controle-fleche":          { v: VIDEO_S11, t: 2234 },  // 37:14
+  "fact-sav-rapport":                  { v: VIDEO_S11, t: 2564 },  // 42:44
+  "fact-sav-articles-imputes":         { v: VIDEO_S11, t: 2637 },  // 43:57
+  "fact-sav-automatisation":           { v: VIDEO_S11, t: 2872 },  // 47:52
+  "fact-sav-facturation-immediate":    { v: VIDEO_S11, t: 3597 },  // 59:57
+  "fact-sav-edition-chiffree":         { v: VIDEO_S11, t: 3772 },  // 1:02:52
+  "fact-chantiers":                    { v: VIDEO_S11, t: 4902 },  // 1:21:42
+  "fact-code-etat":                    { v: VIDEO_S11, t: 5027 },  // 1:23:47
+  "fact-consulter-client":             { v: VIDEO_S11, t: 5083 },  // 1:24:43
+  "fact-avancement":                   { v: VIDEO_S11, t: 5176 },  // 1:26:16
+  "fact-valider-situation":            { v: VIDEO_S11, t: 5739 },  // 1:35:39
+  "fact-definitive-reste":             { v: VIDEO_S11, t: 5870 },  // 1:37:50
+  "fact-avoir-chantier":               { v: VIDEO_S11, t: 6015 }   // 1:40:15
 };
 
 const DOC = [
@@ -5178,6 +5209,444 @@ const DOC = [
                 <div>Utile même si le recouvrement est externalisé : le client en impayé est signalé dans
                 WIPSOS pour arrêter devis et interventions. (Détaillé en formation Compta tiers client.)</div>
               </div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
+  /* ==============================================================
+     CATÉGORIE — FACTURATION (Session 11 — Compta. Tiers Clients)
+     ============================================================== */
+  {
+    category: "Facturation",
+    icon: "🧾",
+    groups: [
+
+      {
+        name: "Facturer les contrats & envoyer",
+        items: [
+
+          {
+            id: "fact-module-apercu",
+            title: "Le module Facturation",
+            lead: "Chaque type de facturation a son module dédié.",
+            html: `
+              <h2>Vue d'ensemble</h2>
+              <p>WIPSOS n'a pas un module unique : la facturation est <strong>segmentée par nature</strong>.</p>
+              <table>
+                <tr><th>Nature</th><th>Où facturer</th></tr>
+                <tr><td>Contrat abonnement</td><td>Contrat → <strong>Facturer les contrats</strong></td></tr>
+                <tr><td>Dépannage / visite</td><td>SAV → <strong>Retours</strong></td></tr>
+                <tr><td>Installation neuve</td><td>Facturation → <strong>Facturation des chantiers</strong></td></tr>
+              </table>
+            `
+          },
+
+          {
+            id: "fact-facturer-contrats",
+            title: "Facturer les contrats (abonnement)",
+            lead: "Uniquement pour les contrats type abonnement (forfait).",
+            html: `
+              <h2>Le module « Facturer les contrats »</h2>
+              <p>Réservé aux <strong>contrats abonnement</strong> (les contrats « à la visite » se facturent
+              au retour SAV). Une fenêtre de recherche par <strong>date d'échéance</strong> permet de sortir
+              d'un coup tous les contrats à facturer sur une période.</p>
+            `
+          },
+
+          {
+            id: "fact-date-echeance",
+            title: "Date d'échéance & période",
+            lead: "La date d'échéance vient du contrat (début de facturation).",
+            html: `
+              <h2>Travailler par période</h2>
+              <p>Plutôt que de cibler un client à la fois, on saisit une <strong>période</strong> (ex. mois)
+              pour lister les abonnements à facturer. La <strong>date de facture</strong> est modifiable —
+              pour l'instant.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Ces dates permettent d'anticiper et de déclencher la facturation en début de période.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-electronique",
+            title: "Facturation électronique (à venir)",
+            lead: "En septembre, la date de facture ne sera plus modifiable.",
+            html: `
+              <h2>Ce qui change</h2>
+              <p>Avec la <strong>facturation électronique</strong>, la <strong>date de facture</strong> ne
+              sera plus modifiable. Le dépôt sur plateformes puis l'envoi seront progressivement
+              <strong>automatisés</strong> (centralisation des entrées/sorties de factures).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Point à préparer : paramétrage des fiches clients (codes, adresse électronique) pour
+                l'automatisation.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-execution",
+            title: "Exécution & factures à contrôler",
+            lead: "Un onglet intermédiaire « facture à contrôler » avant production.",
+            html: `
+              <h2>Deux étapes</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <strong>Exécution de la facturation</strong> → un onglet <strong>« facture à contrôler »</strong>
+                apparaît avec toutes les lignes.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Contrôler les montants avant de passer en production.</div></div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>À ce stade ce ne sont pas encore des factures, juste des <strong>lignes remontées</strong>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-controle-ligne",
+            title: "Corriger une ligne erronée",
+            lead: "Clic droit → supprimer la ligne du puits, corriger le contrat.",
+            html: `
+              <h2>En cas d'erreur de montant</h2>
+              <p>Sur une ligne au montant incorrect : clic droit → <strong>supprimer</strong> (on retire la
+              ligne du puits, pas une facture). On rentre alors dans le <strong>contrat</strong> pour corriger
+              le montant, puis on relance la recherche.</p>
+            `
+          },
+
+          {
+            id: "fact-apercu-valider",
+            title: "Aperçu PDF & validation",
+            lead: "Toujours contrôler l'aperçu avant de passer en production.",
+            html: `
+              <h2>Contrôler puis valider</h2>
+              <p>Clic droit → <strong>aperçu du PDF</strong> pour vérifier périodes, TVA, montants. Puis
+              sélectionner les lignes → clic droit → <strong>valider</strong> → ça passe en
+              <strong>production</strong>.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Une fois validé, une erreur impose un <strong>avoir</strong> → contrôler en amont. On
+                peut « initialiser la sélection » pour revenir à l'état de départ tant que non facturé.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-envoi-factures",
+            title: "Envoyer les factures",
+            lead: "Facturation → Originaux / Duplicata → clic droit → par mail.",
+            html: `
+              <h2>Éditer / envoyer</h2>
+              <p>Les factures émises se retrouvent dans <em>Facturation → Originaux / Duplicata</em>. Colonne
+              <strong>facture numéro</strong> → clic droit → impression de l'original → <strong>imprimer, PDF
+              ou envoyer par mail</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Fait à la main, ligne par ligne, c'est long → voir l'envoi automatisé et l'envoi en masse.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-contact-mail",
+            title: "Contact : envoi auto par mail",
+            lead: "Taguer le contact « envoi par mail de facture ».",
+            html: `
+              <h2>Automatiser l'envoi</h2>
+              <p>Sur le <strong>contact</strong> d'une fiche client, cocher <strong>« envoi par mail de
+              facture »</strong>. Les factures de ces contacts remontent alors dans un puits d'envoi en masse.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Prérequis : la <strong>reprise des contacts</strong> doit être faite (sans contacts
+                tagués, pas d'automatisation possible).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-piece-jointe-bc",
+            title: "Joindre le bon de commande",
+            lead: "Rattacher le BC client au contrat / à l'envoi.",
+            html: `
+              <h2>Facture + bon de commande</h2>
+              <p>Certains clients exigent la facture <strong>accompagnée de leur bon de commande</strong>. Sur
+              le contrat (ou lors de l'envoi mail depuis originaux/duplicata), un picto permet d'<strong>ajouter
+              une pièce jointe</strong> (le BC en PDF).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Ce seront alors 2 pièces jointes (facture + BC). L'envoi automatisé en masse, lui, ne
+                permet pas d'ajouter une pièce à la main.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-envoi-masse",
+            title: "Envoi en masse des factures",
+            lead: "Un puits pour envoyer toutes les factures du jour d'un coup.",
+            html: `
+              <h2>Gagner du temps</h2>
+              <p><em>Facturation → Envoi par mail des factures</em> : toutes les factures émises (contacts
+              tagués) s'accumulent dans un <strong>puits</strong>. On filtre par utilisateur et on
+              <strong>envoie tout d'un coup</strong> — pratique pour de gros volumes.</p>
+            `
+          },
+
+          {
+            id: "fact-avoir-directe",
+            title: "Avoir & facture directe (contrat)",
+            lead: "Complément de facture ou avoir sur une période.",
+            html: `
+              <h2>Corriger un abonnement</h2>
+              <p>Dans le module contrat, <strong>« avoir / facture directe »</strong> travaille
+              <strong>par période</strong>. Une <strong>calculette</strong> dispatche le montant selon le
+              contrat.</p>
+              <table>
+                <tr><th>Signe</th><th>Effet</th></tr>
+                <tr><td>Montant positif</td><td>Complément de facture (période oubliée).</td></tr>
+                <tr><td>Montant en « moins »</td><td>Avoir (avec code avoir + motif).</td></tr>
+              </table>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Facturer le SAV (dépannages & visites)",
+        items: [
+
+          {
+            id: "fact-sav-apercu",
+            title: "Facturer le SAV",
+            lead: "Deux natures : dépannage et visite de maintenance.",
+            html: `
+              <h2>Le module SAV → Retours</h2>
+              <p>La facturation SAV couvre les <strong>dépannages</strong> et les <strong>visites de
+              maintenance</strong>. Objectif : passer d'un rôle de saisie à un rôle de
+              <strong>contrôle</strong> grâce à l'automatisation.</p>
+            `
+          },
+
+          {
+            id: "fact-sav-retours",
+            title: "Retours : terminé = facturable",
+            lead: "Seul un bon terminé peut être facturé.",
+            html: `
+              <h2>État du bon</h2>
+              <p><em>SAV → Retours</em> : filtrer sur les bons <strong>terminés</strong> (par le technicien).
+              Dans WIPSOS, un bon <strong>« à suivre » n'est pas facturable</strong> — il faut terminer
+              l'intervention.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>C'est pour ça que la 1ʳᵉ intervention (facturable) doit être passée en « terminé ».</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-sav-controle-fleche",
+            title: "Contrôle & flèche verte",
+            lead: "Un bon vérifié passe à l'état « retourné ».",
+            html: `
+              <h2>Deux process possibles</h2>
+              <p>Une personne (chef SAV) peut <strong>vérifier</strong> chaque bon terminé et l'enregistrer :
+              il passe en <strong>« retourné »</strong> (petite flèche verte). La personne qui facture ne
+              traite alors que les bons tagués.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Si c'est la même personne qui vérifie et facture, cette étape « retourné » n'est pas
+                indispensable.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-sav-rapport",
+            title: "Le rapport d'intervention",
+            lead: "PDF non modifiable, dans les documents électroniques du bon.",
+            html: `
+              <h2>Contrôler le rapport</h2>
+              <p>Dans le bon (en-tête), le picto <strong>documents électroniques</strong> contient le
+              <strong>rapport d'intervention PDF</strong> du technicien (avec photos, nomenclature du parc).
+              À contrôler car c'est un <strong>PDF non modifiable</strong>.</p>
+            `
+          },
+
+          {
+            id: "fact-sav-articles-imputes",
+            title: "Articles imputés (onglet Détails)",
+            lead: "Les articles saisis par le technicien remontent automatiquement.",
+            html: `
+              <h2>Remontée automatique</h2>
+              <p>Onglet <strong>Détails</strong> : les articles imputés par le technicien sur l'application
+              (vérifications, pièces…) remontent <strong>automatiquement</strong> dans le retour, avec leur
+              prix. Sinon, il faudrait tout ressaisir à la main.</p>
+            `
+          },
+
+          {
+            id: "fact-sav-automatisation",
+            title: "Automatiser les articles de service",
+            lead: "Actions par article → article de service associé automatiquement.",
+            html: `
+              <h2>Le paramétrage clé (incendie)</h2>
+              <p>Sur chaque article (ex. extincteur), on paramètre des <strong>actions</strong> (vérification
+              annuelle, recharge, remplacement…). Quand le technicien choisit une action, l'<strong>article de
+              service associé</strong> (avec son montant) remonte automatiquement dans le retour.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Gros travail de fond au départ (chaque codification), mais c'est là qu'on gagne le plus
+                de temps ensuite : plus de saisie manuelle article par article.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-sav-facturation-immediate",
+            title: "Facturation immédiate / au flot",
+            lead: "Une facture par bon, ou une facture pour plusieurs interventions.",
+            html: `
+              <h2>Facturer le bon</h2>
+              <p>Après contrôle : <strong>facturation immédiate</strong> (une facture par bon). La
+              <strong>facturation au flot</strong> regroupe plusieurs interventions d'un client sur
+              <strong>une seule facture</strong> (selon le type de client).</p>
+            `
+          },
+
+          {
+            id: "fact-sav-edition-chiffree",
+            title: "Édition chiffrée (accord client)",
+            lead: "Envoyer un BL chiffré à valider avant de facturer.",
+            html: `
+              <h2>Faire valider avant facture</h2>
+              <p>L'<strong>édition chiffrée</strong> permet d'envoyer au client un devis/BL chiffré pour
+              <strong>accord</strong> avant facturation (utile quand un bon de commande au même montant est
+              exigé).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un module dédié suit toutes les éditions chiffrées envoyées, permet de les
+                <strong>relancer</strong>, puis de facturer une fois l'accord reçu.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Facturer les chantiers & avoirs",
+        items: [
+
+          {
+            id: "fact-chantiers",
+            title: "Facturer les chantiers",
+            lead: "Pour les installations neuves (devis acceptés).",
+            html: `
+              <h2>Facturation des chantiers</h2>
+              <p><em>Facturation → Facturation des chantiers</em> : concerne les <strong>installations
+              neuves</strong> (devis d'installation acceptés → chantier). On y retrouve la même mise en forme
+              que le devis d'origine.</p>
+            `
+          },
+
+          {
+            id: "fact-code-etat",
+            title: "Filtrer par code état",
+            lead: "Repérer les chantiers terminés à facturer.",
+            html: `
+              <h2>Piloter par état</h2>
+              <p>Le <strong>code état</strong> (mis à jour au fil de l'avancement) permet de filtrer, par
+              exemple, les <strong>chantiers terminés à facturer</strong> — pour avoir sa liste du jour.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Ce sont les codes état (ex. « facture partielle », « chantier terminé ») qui indiquent
+                à qui de facturer et quand.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-consulter-client",
+            title: "Consulter les factures d'un client",
+            lead: "Tout est centralisé dans la fiche client.",
+            html: `
+              <h2>Vue par client</h2>
+              <p>Un module d'affichage est <strong>segmenté par nature</strong> (contrat, SAV, chantier). Pour
+              voir <strong>toutes</strong> les factures d'un client (tous modules), passer par la
+              <strong>fiche client</strong> → picto de consultation des factures.</p>
+            `
+          },
+
+          {
+            id: "fact-avancement",
+            title: "Facturer en % ou en totalité",
+            lead: "100 % = facture définitive ; sinon facture d'avancement.",
+            html: `
+              <h2>Le pourcentage d'avancement</h2>
+              <p>On facture en <strong>pourcentage</strong> selon l'avancement du chantier.</p>
+              <table>
+                <tr><th>Choix</th><th>Résultat</th></tr>
+                <tr><td>100 %</td><td>Bouton <strong>« facture définitive »</strong>.</td></tr>
+                <tr><td>60 %, 80 %…</td><td>Bouton <strong>« facture d'avancement »</strong> (situation).</td></tr>
+              </table>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Le petit œil donne un aperçu ; « bordereau avec bas de page simplifié » sort une édition
+                allégée.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-valider-situation",
+            title: "Valider la situation",
+            lead: "Tant qu'une situation n'est pas validée, elle est invisible.",
+            html: `
+              <h2>Passage en production</h2>
+              <p>Après une facture d'avancement, l'onglet <strong>Avancement</strong> montre la situation
+              <strong>non validée</strong>. Il faut <strong>clic droit → acceptation</strong> pour la passer
+              en production.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Non validée = introuvable (ni originaux/duplicata, ni fiche client). Avantage : tant que
+                non validée, on peut <strong>modifier le pourcentage</strong> sans faire d'avoir.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-definitive-reste",
+            title: "Solder après avancement",
+            lead: "On met 100 % (pas le reste) pour la facture définitive.",
+            html: `
+              <h2>Piège fréquent</h2>
+              <p>Après une 1ʳᵉ facture à 60 %, pour solder on remet <strong>100 %</strong> (et non 40 %) :
+              WIPSOS facture alors le <strong>reste</strong> et le bouton devient « facture définitive ».</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Erreur classique : croire qu'il faut saisir 40 %. C'est bien <strong>100 %</strong> du
+                total.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "fact-avoir-chantier",
+            title: "Avoir sur chantier (totalité)",
+            lead: "L'avoir chantier porte sur la facture entière, pas un article.",
+            html: `
+              <h2>Faire un avoir</h2>
+              <p>Sur un chantier, l'<strong>avoir se fait sur la totalité</strong> de la facture (pas article
+              par article) : il remet à 0, puis on refacture ce qu'il faut. Une 3ᵉ ligne « avoir » apparaît,
+              à valider comme les autres situations.</p>
             `
           }
 
