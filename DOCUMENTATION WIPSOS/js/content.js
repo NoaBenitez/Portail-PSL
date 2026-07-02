@@ -73,7 +73,7 @@ const VIDEO_S3 = "https://youtu.be/cZpWBm-PrZY";  // Formation Appro-Logistique 
 const VIDEO_S4 = "https://youtu.be/bcjeamMXmOE";  // Formation Suivi de chantier 2/2
 const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 2/2
-const VIDEO_S7 = "";  // Formation Contrat 1/2  (collez l'URL YouTube ici)
+const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
