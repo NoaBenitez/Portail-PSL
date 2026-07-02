@@ -50,7 +50,7 @@
      VIDEO_S7 = Formation Contrat 1/2 — YouTube
      VIDEO_S8 = Formation Contrat 2/2 — YouTube
      VIDEO_S9 = Formation SAV 1/2 — YouTube
-     VIDEO_S10 = Formation SAV 2/2 — (lien à venir)
+     VIDEO_S10 = Formation SAV 2/2 — YouTube
      VIDEO_S11 = Formation Compta. Tiers Clients (Facturation) — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
@@ -80,7 +80,7 @@ const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 
 const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
 const VIDEO_S8 = "https://youtu.be/7Mo7G2PHDa0";  // Formation Contrat 2/2
 const VIDEO_S9 = "https://youtu.be/oYsNnYJjUXw";  // Formation SAV 1/2
-const VIDEO_S10 = "";  // Formation SAV 2/2  (collez l'URL YouTube ici)
+const VIDEO_S10 = "https://youtu.be/oZnjbmCERLE";  // Formation SAV 2/2
 const VIDEO_S11 = "";  // Formation Compta. Tiers Clients / Facturation  (collez l'URL YouTube ici)
 
 const VIDEOS = {
