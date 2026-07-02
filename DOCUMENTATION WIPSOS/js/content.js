@@ -47,7 +47,8 @@
      VIDEO_S4 = Formation Suivi de chantier 2/2 — YouTube
      VIDEO_S5 = Formation ADV (acceptation) — YouTube
      VIDEO_S6 = Formation Appro-Logistique 2/2 — YouTube
-     VIDEO_S7 = Formation Contrat 1/2 — (lien à venir)
+     VIDEO_S7 = Formation Contrat 1/2 — YouTube
+     VIDEO_S8 = Formation Contrat 2/2 — (lien à venir)
    (Le bouton « Voir la vidéo » s'adapte automatiquement à la plateforme.)
    Tant qu'une URL VIDEO_Sx est vide (""), le bouton « Voir la vidéo »
    ne s'affiche pas : il suffira de coller le lien YouTube pour l'activer.
@@ -74,6 +75,7 @@ const VIDEO_S4 = "https://youtu.be/bcjeamMXmOE";  // Formation Suivi de chantier
 const VIDEO_S5 = "https://youtu.be/AgzK3FgM460";  // Formation ADV (acceptation)
 const VIDEO_S6 = "https://youtu.be/g8ZY23PiNL0";  // Formation Appro-Logistique 2/2
 const VIDEO_S7 = "https://youtu.be/FhKXDrhyN5g";  // Formation Contrat 1/2
+const VIDEO_S8 = "";  // Formation Contrat 2/2  (collez l'URL YouTube ici)
 
 const VIDEOS = {
   /* ----- Session 1 — Formation Commercial 1/2 ----- */
@@ -225,7 +227,32 @@ const VIDEOS = {
   "contrat-generation-visites":        { v: VIDEO_S7, t: 2751 },  // 45:51
   "contrat-multi-activites":           { v: VIDEO_S7, t: 2914 },  // 48:34
   "contrat-associer-installations":    { v: VIDEO_S7, t: 3304 },  // 55:04
-  "contrat-annee-application":         { v: VIDEO_S7, t: 3656 }   // 1:00:56
+  "contrat-annee-application":         { v: VIDEO_S7, t: 3656 },  // 1:00:56
+
+  /* ----- Session 8 — Formation Contrat 2/2 (mise en pratique) ----- */
+  "contrat2-acceder-module":           { v: VIDEO_S8, t: 307 },   // 05:07
+  "contrat2-rechercher-client":        { v: VIDEO_S8, t: 429 },   // 07:09
+  "contrat2-type-activite":            { v: VIDEO_S8, t: 890 },   // 14:50
+  "contrat2-codifier-installation":    { v: VIDEO_S8, t: 987 },   // 16:27
+  "contrat2-fiche-technique":          { v: VIDEO_S8, t: 1464 },  // 24:24
+  "contrat2-alimenter-parc":           { v: VIDEO_S8, t: 1535 },  // 25:35
+  "contrat2-enregistrer-sortir":       { v: VIDEO_S8, t: 1981 },  // 33:01
+  "contrat2-texte-facture":            { v: VIDEO_S8, t: 2186 },  // 36:26
+  "contrat2-facture-visite":           { v: VIDEO_S8, t: 2318 },  // 38:38
+  "contrat2-onglet-facturation":       { v: VIDEO_S8, t: 2392 },  // 39:52
+  "contrat2-visite-vs-abonnement":     { v: VIDEO_S8, t: 2846 },  // 47:26
+  "contrat2-devis-commercial":         { v: VIDEO_S8, t: 2960 },  // 49:20
+  "contrat2-phase-acceptation":        { v: VIDEO_S8, t: 3154 },  // 52:34
+  "contrat2-calendrier-visites":       { v: VIDEO_S8, t: 3461 },  // 57:41
+  "contrat2-multi-activites":          { v: VIDEO_S8, t: 4600 },  // 1:16:40
+  "contrat2-associer-installations":   { v: VIDEO_S8, t: 4766 },  // 1:19:26
+  "contrat2-abonnement":               { v: VIDEO_S8, t: 5227 },  // 1:27:07
+  "contrat2-abonnement-montant":       { v: VIDEO_S8, t: 5893 },  // 1:38:13
+  "contrat2-client-payeur":            { v: VIDEO_S8, t: 6142 },  // 1:42:22
+  "contrat2-changer-payeur":           { v: VIDEO_S8, t: 6405 },  // 1:46:45
+  "contrat2-pas-blocage":              { v: VIDEO_S8, t: 6511 },  // 1:48:31
+  "contrat2-heures-previsionnelles":   { v: VIDEO_S8, t: 6587 },  // 1:49:47
+  "contrat2-lien-sav":                 { v: VIDEO_S8, t: 6850 }   // 1:54:10
 };
 
 const DOC = [
@@ -3776,6 +3803,418 @@ const DOC = [
                 <span class="ic">i</span>
                 <div>Laissé vide, WIPSOS prend l'<strong>année en cours</strong> — inutile de saisir 2026 si
                 vous démarrez en 2026.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      /* ===== Session 8 — Contrat 2/2 (mise en pratique) ===== */
+
+      {
+        name: "Créer un contrat pas à pas (2/2)",
+        items: [
+
+          {
+            id: "contrat2-acceder-module",
+            title: "Accéder au module Contrat",
+            lead: "Contrat → Fiche, en double-clic.",
+            html: `
+              <h2>Ouvrir la gestion des contrats</h2>
+              <p>Menu <em>Contrat → Gestion → Fiche</em> : un <strong>double-clic</strong> sur le
+              sous-menu ouvre la table de recherche des contrats.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Basculez en <strong>mode contrat</strong> (en haut) puis cliquez la
+                <strong>coche verte</strong> pour afficher l'ensemble des contrats de la base.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-rechercher-client",
+            title: "Rechercher le client",
+            lead: "La petite coche « client » n'apparaît qu'en mode contrat.",
+            html: `
+              <h2>Sélectionner le client</h2>
+              <p>Pour créer un contrat, il faut d'abord un <strong>client</strong>. La petite coche
+              d'ouverture de la recherche client n'est disponible qu'en <strong>mode contrat</strong>
+              (pas en mode table).</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Cliquer la coche à côté de « client » → recherche.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <strong>Raison sociale *</strong> + coche verte, ou choisir dans la liste.</div></div>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Chaque personne prend un <strong>client différent</strong> pour ne pas se marcher
+                dessus (évite les doublons dans la base test).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-type-activite",
+            title: "Type & activité",
+            lead: "Maintenance (ou autoliquidée) + l'activité concernée.",
+            html: `
+              <h2>Renseigner l'en-tête</h2>
+              <p>Page blanche → <strong>type</strong> = « maintenance ». L'« autoliquidée » concerne la
+              TVA (sous-traitance) — chez PSL ce sera toujours « maintenance ».</p>
+              <p>À droite, choisir l'<strong>activité</strong> (ex. extincteur) pour un contrat mono-activité.</p>
+            `
+          },
+
+          {
+            id: "contrat2-codifier-installation",
+            title: "Codifier une installation",
+            lead: "Si la liste est vide : numéro du client + 1.",
+            html: `
+              <h2>Créer l'installation manuellement</h2>
+              <p>Sous l'activité, la liste montre les installations existantes du client. Si elle est
+              <strong>vide</strong>, l'installation n'existe pas dans WIPSOS → on la
+              <strong>codifie</strong> : <em>numéro du client + 1</em> (puis + 2, + 3…).</p>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Taper le code, puis <strong>Tab</strong> (ou cliquer ailleurs).</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Message « l'installation n'existe pas » → <strong>Créer l'installation</strong>.</div></div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Si l'installation vient d'un devis accepté dans WIPSOS, elle est déjà dans la liste :
+                il suffit de la <strong>sélectionner</strong> (pas de codification).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-fiche-technique",
+            title: "Ouvrir la fiche technique",
+            lead: "Le picto puzzle donne accès à l'installation.",
+            html: `
+              <h2>La fiche technique</h2>
+              <p>Après création, le <strong>picto fiche technique</strong> (petit puzzle) ouvre
+              l'installation. En haut, le champ <strong>système</strong> = le titre de l'installation
+              (à quoi elle correspond).</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Toujours mettre un titre : sans lui, l'installation n'a pas de libellé (juste le code
+                activité).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-alimenter-parc",
+            title: "Alimenter le parc matériel",
+            lead: "Recherche d'article, ou code générique « artgen » en dépannage.",
+            html: `
+              <h2>Ajouter les articles</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Page blanche du parc → la ligne de recherche s'active en bas.</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                Rechercher par <strong>désignation</strong> (ex. « extincteur ») + coche verte.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Double-clic sur l'article, <strong>Tab</strong>, quantité, enregistrer (disquette).</div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Astuce base test : taper <strong>artgen</strong> (article générique) puis Tab, et
+                renommer la désignation. À n'utiliser que pour dépanner — en réel, prendre le vrai article.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-enregistrer-sortir",
+            title: "Enregistrer & sortir proprement",
+            lead: "Disquette pour sauvegarder, flèche bleue pour quitter (jamais la croix).",
+            html: `
+              <h2>Bonnes habitudes</h2>
+              <ul>
+                <li><strong>Disquette</strong> (haut gauche) = sauvegarder.</li>
+                <li><strong>Flèches bleues</strong> = quitter un écran.</li>
+              </ul>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Ne pas quitter avec la <strong>croix</strong> : le travail non enregistré risque de ne
+                pas être sauvegardé. Prendre l'habitude d'enregistrer au fur et à mesure.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-texte-facture",
+            title: "Texte de facture & bloc-notes",
+            lead: "3 lignes de texte + un descriptif imprimable ; note interne séparée.",
+            html: `
+              <h2>Textes du contrat</h2>
+              <p>Le <strong>texte de facture</strong> (3 lignes) apparaît sur la facture. Un
+              <strong>descriptif</strong> plus long peut être imprimé en plus si besoin.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le <strong>bloc-notes</strong> (fond bleu) est <strong>interne</strong> : on y accède
+                via son picto, il ne sort pas sur les documents client. Le fond bleu bloque la saisie
+                directe (anti-fausse manip).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-facture-visite",
+            title: "Cocher « facturé à la visite »",
+            lead: "L'étape qu'on oublie facilement.",
+            html: `
+              <h2>Ne pas oublier</h2>
+              <p>Dans <strong>Généralités</strong>, onglet <strong>facturation à la visite</strong> :
+              cocher <strong>« contrat facturé à la visite »</strong>. C'est ce qui distingue un contrat
+              « à la visite » d'un contrat « abonnement ».</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Si on va vite, on l'oublie — et le contrat serait traité comme un abonnement.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-onglet-facturation",
+            title: "Onglet facturation (à la visite)",
+            lead: "Formule obligatoire, périodicité, montant laissé à 0.",
+            html: `
+              <h2>Champs à la visite</h2>
+              <p>La <strong>formule</strong> (en gras) est obligatoire → « sans augmentation ».
+              <strong>Périodicité</strong> = annuel. Pas besoin de dates de début / prochaine
+              facturation, et le <strong>montant reste à 0</strong>.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Le chiffrage se fera au retour de visite (SAV), selon le réel posé par le technicien.</div>
+              </div>
+            `
+          }
+
+        ]
+      },
+
+      {
+        name: "Facturation, abonnement & visites (2/2)",
+        items: [
+
+          {
+            id: "contrat2-visite-vs-abonnement",
+            title: "À la visite vs abonnement",
+            lead: "Deux circuits de facturation différents.",
+            html: `
+              <h2>La différence clé</h2>
+              <table>
+                <tr><th>Type</th><th>Facturation</th></tr>
+                <tr><td><strong>À la visite</strong></td><td>On génère un <strong>bon de visite</strong> à
+                planifier ; facturé au retour SAV (réel).</td></tr>
+                <tr><td><strong>Abonnement</strong></td><td>Facturation lancée depuis le <strong>module
+                contrat</strong> (montant récurrent).</td></tr>
+              </table>
+            `
+          },
+
+          {
+            id: "contrat2-devis-commercial",
+            title: "Contrat ≠ devis commercial",
+            lead: "Le montant vendu au client vit dans le module Commercial.",
+            html: `
+              <h2>Deux choses distinctes</h2>
+              <p>Le contrat de maintenance créé ici est un <strong>contrat de support</strong> (il génère
+              les visites et permet la facturation au réel). Le <strong>montant vendu</strong> au client
+              (devis de contrat accepté) se trouve dans le <strong>module Commercial</strong>
+              (portefeuille des commandes).</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un chiffrage commercial peut viser une <strong>installation</strong> ou un
+                <strong>contrat de maintenance</strong> — c'est là qu'on retrouve les montants acceptés.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-phase-acceptation",
+            title: "Où on se situe : l'acceptation",
+            lead: "On enregistre un contrat déjà négocié et accepté.",
+            html: `
+              <h2>Phase du process</h2>
+              <p>La négociation/proposition est déjà faite : ici on est en phase
+              <strong>acceptation</strong>. On crée le contrat + le <strong>parc</strong>, ce qui
+              alimentera tout le reste (visites, bons SAV, facturation réelle) de façon automatisée.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>C'est l'équivalent, côté maintenance, de l'ADV / acceptation : on saisit le détail
+                matériel une fois pour que tout s'enchaîne ensuite.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-calendrier-visites",
+            title: "Calendrier des visites",
+            lead: "Bloc-notes → clic droit → gestion des visites.",
+            html: `
+              <h2>Ouvrir le prévisionnel</h2>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                Cliquer le <strong>bloc-notes</strong> (liste des visites d'entretien).</div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <strong>Clic droit</strong> sur la ligne de l'installation → <strong>gestion des visites</strong>.</div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                Page blanche → code visite (annuelle) + mois → enregistrer.</div></div>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Deux clics à ne pas confondre : un clic ouvre la fenêtre, le clic droit accède à la
+                gestion. On ne clique pas directement sur les mois (encadré bleu).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-multi-activites",
+            title: "Contrat multi-activités",
+            lead: "Type = multi-activités, puis créer chaque installation.",
+            html: `
+              <h2>Plusieurs installations</h2>
+              <p>Activité = <strong>multi-activités</strong>. On passe par le <strong>picto fiche
+              technique</strong> et la page blanche pour créer chaque installation (extincteur, bloc
+              autonome, désenfumage…) avec la codification <em>n° client + numéro d'ordre</em>.</p>
+            `
+          },
+
+          {
+            id: "contrat2-associer-installations",
+            title: "Associer les installations au contrat",
+            lead: "Le bouton d'affectation du numéro de contrat.",
+            html: `
+              <h2>Rattacher</h2>
+              <p>Les installations créées sont d'abord <strong>hors contrat</strong>. On utilise le bouton
+              latéral <strong>« affectation du numéro de contrat »</strong> → <strong>tout affecter</strong>,
+              puis on alimente le parc de chacune.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Sans cette affectation, les installations restent hors contrat et ne remonteront pas
+                dans le prévisionnel de visites.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-abonnement",
+            title: "Contrat type abonnement",
+            lead: "Ne pas cocher « à la visite » ; saisir un montant.",
+            html: `
+              <h2>Créer un abonnement</h2>
+              <p>Pour un forfait récurrent (grands comptes, marchés) : <strong>ne pas cocher</strong>
+              « facturé à la visite ». Dans <strong>facturation</strong>, saisir le
+              <strong>montant HT annuel</strong>, la <strong>périodicité</strong> (annuel, trimestriel,
+              mensuel) et les dates.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div><strong>Début / prochaine facturation</strong> : à échoir = même date (facturé en
+                début de période) ; échu = période suivante. « Prochaine facturation » = la
+                <strong>première</strong> facture dans WIPSOS.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-abonnement-montant",
+            title: "Montant de base / actuel & augmentation",
+            lead: "Saisir le même montant dans les deux zones la 1ʳᵉ fois.",
+            html: `
+              <h2>Les deux montants</h2>
+              <p>Saisir le <strong>montant de base</strong> et le <strong>montant actuel</strong>
+              (identiques au départ, ex. 1000 € HT/an). Le montant de base reste figé ; le montant actuel
+              évoluera avec la <strong>formule d'augmentation</strong>.</p>
+              <table>
+                <tr><th>Choix</th><th>Effet</th></tr>
+                <tr><td>Non augmentable la 1ʳᵉ fois</td><td>1ʳᵉ facture au montant saisi, puis augmentation.</td></tr>
+                <tr><td>Augmentable dès la 1ʳᵉ</td><td>Indice appliqué dès la première facture.</td></tr>
+                <tr><td>Jamais augmentable</td><td>Montant figé.</td></tr>
+              </table>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Pour les augmentations automatiques, penser à tenir à jour les <strong>indices</strong>
+                dans le paramétrage WIPSOS.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-client-payeur",
+            title: "Client payeur & structure des sites",
+            lead: "Chaque site = un client = un contrat (logique Dash).",
+            html: `
+              <h2>Comprendre la macro</h2>
+              <p>Dans WIPSOS, chaque <strong>site</strong> est un <strong>client</strong> et porte son
+              propre <strong>contrat</strong> — comme le Dash. Un grand compte (ex. Engie) est renseigné
+              en <strong>client payeur</strong> au-dessus.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un compte avec 50 sites/rapports = <strong>50 contrats</strong> (au sens Dash, pas au
+                sens commercial), avec leur parc matériel rattaché. Ils ont été importés depuis le Dash.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-changer-payeur",
+            title: "Changer le payeur / dupliquer",
+            lead: "Le client payeur est modifiable à tout moment.",
+            html: `
+              <h2>Souplesse</h2>
+              <p>Si un site change de donneur d'ordre (ex. passe de Spie à Engie), on
+              <strong>change le client payeur</strong> dans l'administratif — pas besoin de tout recréer.
+              On peut aussi <strong>dupliquer</strong> un contrat.</p>
+            `
+          },
+
+          {
+            id: "contrat2-pas-blocage",
+            title: "Pas de blocage : suivre le process",
+            lead: "WIPSOS ne bloque pas les oublis d'étapes non obligatoires.",
+            html: `
+              <h2>Attention aux oublis</h2>
+              <p>WIPSOS est un outil large (multi-secteurs) : il ne met pas de blocage partout. On peut
+              créer un contrat <strong>sans date de visite</strong> sans alerte.</p>
+              <div class="callout warn">
+                <span class="ic">!</span>
+                <div>Conséquence : si le prévisionnel n'est pas saisi, la visite ne remonte pas et n'est
+                pas planifiée. D'où l'importance de <strong>suivre le process interne</strong> étape par
+                étape (à mettre sur papier).</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-heures-previsionnelles",
+            title: "Heures prévisionnelles = saisie manuelle",
+            lead: "Le temps de visite se saisit à la main (pas de calcul auto natif).",
+            html: `
+              <h2>Temps de visite</h2>
+              <p>Dans la gestion des visites, le nombre d'heures / techniciens est
+              <strong>prévisionnel</strong> et se saisit <strong>manuellement</strong> (par défaut 1 h,
+              1 technicien) — sans impact sur la planification.</p>
+              <div class="callout info">
+                <span class="ic">i</span>
+                <div>Un calcul automatique du temps (ex. 15 min × nombre d'extincteurs) a été demandé —
+                point <strong>à vérifier</strong> côté paramétrage / SAV.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "contrat2-lien-sav",
+            title: "Lien avec le module SAV",
+            lead: "La visite prévisionnelle devient un bon SAV à planifier.",
+            html: `
+              <h2>La suite</h2>
+              <p>Le prévisionnel permet de <strong>générer les visites</strong> dans le module
+              <strong>SAV</strong> : chaque visite devient un <strong>bon</strong> à planifier au
+              technicien, puis facturé au réel au retour.</p>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Le SAV couvre aussi le <strong>curatif</strong> (dépannages) et les
+                <strong>devis correctifs</strong> — vu dans la formation SAV.</div>
               </div>
             `
           }
