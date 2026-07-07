@@ -346,10 +346,380 @@ const VIDEOS = {
   "fact-avancement":                   { v: VIDEO_S11, t: 5176 },  // 1:26:16
   "fact-valider-situation":            { v: VIDEO_S11, t: 5739 },  // 1:35:39
   "fact-definitive-reste":             { v: VIDEO_S11, t: 5870 },  // 1:37:50
-  "fact-avoir-chantier":               { v: VIDEO_S11, t: 6015 }   // 1:40:15
+  "fact-avoir-chantier":               { v: VIDEO_S11, t: 6015 },  // 1:40:15
+
+  /* ----- Parcours guidés (scénarios de bout en bout) ----- */
+  /* Le bouton vidéo du scénario ouvre le point de départ du parcours. */
+  "parcours-devis":                    { v: VIDEO_S1,  t: 549 },
+  "parcours-acceptation":              { v: VIDEO_S5,  t: 3658 },
+  "parcours-contrat":                  { v: VIDEO_S8,  t: 307 },
+  "parcours-visites":                  { v: VIDEO_S10, t: 2726 },
+  "parcours-depannage":                { v: VIDEO_S9,  t: 719 },
+  "parcours-devis-sav":                { v: VIDEO_S10, t: 5635 },
+  "parcours-fact-sav":                 { v: VIDEO_S11, t: 2180 },
+  "parcours-fact-chantier":            { v: VIDEO_S11, t: 4902 },
+  "parcours-fact-contrat":             { v: VIDEO_S11, t: 307 },
+  "parcours-appro":                    { v: VIDEO_S4,  t: 2616 }
 };
 
 const DOC = [
+
+  /* ==============================================================
+     CATÉGORIE — PARCOURS GUIDÉS (scénarios de bout en bout)
+     Chaque étape renvoie (clic) vers le chapitre + sa vidéo.
+     ============================================================== */
+  {
+    category: "Parcours guidés",
+    icon: "🧭",
+    groups: [
+
+      {
+        name: "Cas pratiques (de A à Z)",
+        items: [
+
+          {
+            id: "parcours-devis",
+            title: "① Créer un devis d'installation",
+            lead: "Du client au devis envoyé : le parcours commercial complet.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Enchaînement de chapitres des formations <strong>Commerce</strong>. Cliquez une
+                étape pour l'ouvrir (avec sa vidéo). Le bouton ci-dessus démarre au tout début.</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#rechercher-client">Rechercher le client</a><span class="pform">Commerce</span>
+                <span class="pdesc">Le retrouver dans la base.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#creer-client-prospect">Créer le client / prospect</a><span class="pform">Commerce</span>
+                <span class="pdesc">S'il est nouveau.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#creer-contact">Créer le contact</a><span class="pform">Commerce</span>
+                <span class="pdesc">L'interlocuteur du devis.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#devis-selectionner-client">Démarrer la proposition</a><span class="pform">Commerce</span>
+                <span class="pdesc">Sélectionner le client.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#devis-entete">Renseigner l'en-tête</a><span class="pform">Commerce</span>
+                <span class="pdesc">Objet, rédacteur, dates…</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#chiffrage-paragraphes-articles">Chiffrer</a><span class="pform">Commerce</span>
+                <span class="pdesc">Paragraphes et articles.</span></div></div>
+              <div class="step"><div class="step-num">7</div><div class="step-body">
+                <a href="#chiffrage-caddie">Aller vite avec le caddie</a><span class="pform">Commerce</span>
+                <span class="pdesc">Packs d'articles.</span></div></div>
+              <div class="step"><div class="step-num">8</div><div class="step-body">
+                <a href="#type-facturation">Type de facturation</a><span class="pform">Commerce</span>
+                <span class="pdesc">Globale ou détaillée.</span></div></div>
+              <div class="step"><div class="step-num">9</div><div class="step-body">
+                <a href="#conditions-reglement-acompte">Règlement & acompte</a><span class="pform">Commerce</span>
+                <span class="pdesc">Conditions de paiement.</span></div></div>
+              <div class="step"><div class="step-num">10</div><div class="step-body">
+                <a href="#tva">Vérifier la TVA</a><span class="pform">Commerce</span></div></div>
+              <div class="step"><div class="step-num">11</div><div class="step-body">
+                <a href="#remises">Appliquer les remises</a><span class="pform">Commerce</span></div></div>
+              <div class="step"><div class="step-num">12</div><div class="step-body">
+                <a href="#edition-pdf-modeles">Éditer le PDF</a><span class="pform">Commerce</span>
+                <span class="pdesc">Choisir le modèle.</span></div></div>
+              <div class="step"><div class="step-num">13</div><div class="step-body">
+                <a href="#envoyer-devis">Envoyer le devis</a><span class="pform">Commerce</span>
+                <span class="pdesc">Mail / signature électronique.</span></div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Besoin de plusieurs versions ? Voir <a href="#indices-versions">les indices</a>.
+                Prochaine étape logique : <a href="#parcours-acceptation">② faire accepter le devis</a>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "parcours-acceptation",
+            title: "② Faire accepter un devis & ouvrir le chantier",
+            lead: "De l'accord client à la création automatique du chantier.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>ADV → Suivi de chantier</strong>.</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#adv-acceptation-devis">Saisir l'acceptation</a><span class="pform">ADV</span>
+                <span class="pdesc">Date d'acceptation du devis.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#adv-validation-prospect-client">Le prospect devient client</a><span class="pform">ADV</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#adv-fiche-technique">La fiche technique se crée</a><span class="pform">ADV</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#adv-acceptation-globale-chantier">Ouvrir le chantier</a><span class="pform">ADV</span>
+                <span class="pdesc">L'acceptation génère l'affaire.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#chantier-codes-etat-etapes">Suivre l'avancement</a><span class="pform">Suivi de chantier</span>
+                <span class="pdesc">Via les codes état.</span></div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Ensuite : <a href="#parcours-appro">⑩ approvisionner le chantier</a> puis
+                <a href="#parcours-fact-chantier">⑧ le facturer</a>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "parcours-contrat",
+            title: "③ Créer un contrat de maintenance",
+            lead: "Contrat, installation, parc matériel et prévisionnel de visites.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>Contrats → SAV</strong> (contrat facturé « à la visite »).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#contrat2-acceder-module">Accéder au module contrat</a><span class="pform">Contrats</span>
+                <span class="pdesc">Mode contrat, page blanche.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#contrat2-rechercher-client">Rechercher le client site</a><span class="pform">Contrats</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#contrat2-type-activite">Type maintenance + activité</a><span class="pform">Contrats</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#contrat2-codifier-installation">Codifier / créer l'installation</a><span class="pform">Contrats</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#contrat2-alimenter-parc">Alimenter le parc matériel</a><span class="pform">Contrats</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#contrat2-facture-visite">Cocher « facturé à la visite »</a><span class="pform">Contrats</span>
+                <span class="pdesc">Sinon = abonnement.</span></div></div>
+              <div class="step"><div class="step-num">7</div><div class="step-body">
+                <a href="#contrat2-onglet-facturation">Formule + périodicité annuelle</a><span class="pform">Contrats</span></div></div>
+              <div class="step"><div class="step-num">8</div><div class="step-body">
+                <a href="#contrat2-calendrier-visites">Programmer le prévisionnel</a><span class="pform">Contrats</span>
+                <span class="pdesc">Code visite + mois.</span></div></div>
+              <div class="step"><div class="step-num">9</div><div class="step-body">
+                <a href="#sav2-affecter-parc-visite">Affecter le parc à la visite</a><span class="pform">SAV</span>
+                <span class="pdesc">Indispensable avant de générer.</span></div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Suite : <a href="#parcours-visites">④ générer & planifier les visites</a>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "parcours-visites",
+            title: "④ Générer & planifier les visites",
+            lead: "Du prévisionnel du contrat à la visite planifiée au technicien.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>SAV</strong> (rappel : les visites se <em>génèrent</em>, jamais via les appels).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#sav2-generer-visite">Générer la liste préparatoire</a><span class="pform">SAV</span>
+                <span class="pdesc">Ciblée par contrat / client.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#sav2-creation-bon">Créer les bons de visite</a><span class="pform">SAV</span>
+                <span class="pdesc">Un n° par ligne.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#sav2-retrouver-bon">Retrouver le bon</a><span class="pform">SAV</span>
+                <span class="pdesc">Intervention société.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#sav2-planning-avance">Paramétrer le planning avancé</a><span class="pform">SAV</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#sav2-planifier-visite">Planifier la visite</a><span class="pform">SAV</span>
+                <span class="pdesc">Au technicien.</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#sav-planif-volee">Variante : à la volée (puits)</a><span class="pform">SAV</span>
+                <span class="pdesc">Pour certains clients.</span></div></div>
+              <div class="step"><div class="step-num">7</div><div class="step-body">
+                <a href="#sav-controle-puits">Contrôler le puits</a><span class="pform">SAV</span>
+                <span class="pdesc">Rien ne doit y traîner.</span></div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Une fois la visite faite : <a href="#parcours-fact-sav">⑦ facturer le retour SAV</a>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "parcours-depannage",
+            title: "⑤ Traiter un dépannage SAV",
+            lead: "Créer un bon de dépannage depuis un appel et le planifier.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>SAV</strong> (dépannage = curatif, via les Appels).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#sav-appels-depannage">Passer par les Appels</a><span class="pform">SAV</span>
+                <span class="pdesc">Dépannage uniquement.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#sav-creer-bon-gravite">Créer le bon</a><span class="pform">SAV</span>
+                <span class="pdesc">Installation + gravité.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#sav-contact">Le contact appelant</a><span class="pform">SAV</span>
+                <span class="pdesc">Habilitation appel SAV.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#sav-motif">Saisir le motif</a><span class="pform">SAV</span>
+                <span class="pdesc">Attention : finit en PDF.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#sav-code-provenance">Code provenance</a><span class="pform">SAV</span>
+                <span class="pdesc">Mail / appel.</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#sav-note-technicien">Note pour le technicien</a><span class="pform">SAV</span></div></div>
+              <div class="step"><div class="step-num">7</div><div class="step-body">
+                <a href="#sav-heure-affectee-debut">Planifier</a><span class="pform">SAV</span>
+                <span class="pdesc">Heure affectée vs début.</span></div></div>
+              <div class="step"><div class="step-num">8</div><div class="step-body">
+                <a href="#sav-terminer-suivre">Clôturer : terminé / à suivre</a><span class="pform">SAV</span></div></div>
+              <div class="callout tip">
+                <span class="ic">★</span>
+                <div>Réparation à chiffrer ? <a href="#parcours-devis-sav">⑥ créer un devis SAV</a>.</div>
+              </div>
+            `
+          },
+
+          {
+            id: "parcours-devis-sav",
+            title: "⑥ Créer un devis de réparation (SAV)",
+            lead: "Du constat terrain au devis SAV accepté et imputé.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>SAV</strong> (devis correctif).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#sav2-suite-technique">Suite technique (terrain)</a><span class="pform">SAV</span>
+                <span class="pdesc">Le technicien signale + photos.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#sav-devis-transformer">Transformer en devis SAV</a><span class="pform">SAV</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#sav-devis-commercial">Chiffrer</a><span class="pform">SAV</span>
+                <span class="pdesc">Version commerciale ou <a href="#sav-devis-simplifie">simplifiée</a>.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#sav-devis-acceptation">Acceptation</a><span class="pform">SAV</span>
+                <span class="pdesc">Redevient un bon à planifier.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#sav2-bon-preparation">Bon de préparation</a><span class="pform">SAV</span>
+                <span class="pdesc">Pour le magasinier.</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#sav-devis-reappro">Réappro / demande d'achat</a><span class="pform">SAV</span></div></div>
+              <div class="step"><div class="step-num">7</div><div class="step-body">
+                <a href="#sav2-imputation">Imputer la matière</a><span class="pform">SAV</span>
+                <span class="pdesc">Sortie de stock réelle.</span></div></div>
+            `
+          },
+
+          {
+            id: "parcours-fact-sav",
+            title: "⑦ Facturer une visite / un dépannage",
+            lead: "Du retour technicien à la facture, en contrôlant.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>Facturation</strong> (retours SAV).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#fact-sav-retours">Retours : bons terminés</a><span class="pform">Facturation</span>
+                <span class="pdesc">Seul un bon terminé est facturable.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#fact-sav-controle-fleche">Contrôler → flèche verte</a><span class="pform">Facturation</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#fact-sav-rapport">Vérifier le rapport</a><span class="pform">Facturation</span>
+                <span class="pdesc">PDF d'intervention.</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#fact-sav-articles-imputes">Vérifier les articles imputés</a><span class="pform">Facturation</span>
+                <span class="pdesc">Onglet Détails.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#fact-sav-edition-chiffree">Édition chiffrée</a><span class="pform">Facturation</span>
+                <span class="pdesc">Accord client si besoin.</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#fact-sav-facturation-immediate">Facturation immédiate</a><span class="pform">Facturation</span></div></div>
+            `
+          },
+
+          {
+            id: "parcours-fact-chantier",
+            title: "⑧ Facturer un chantier (avancement)",
+            lead: "Facturer par situations puis solder, avoirs compris.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>Facturation</strong> (installations neuves).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#fact-chantiers">Facturation des chantiers</a><span class="pform">Facturation</span>
+                <span class="pdesc">Devis accepté → chantier.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#fact-code-etat">Filtrer par code état</a><span class="pform">Facturation</span>
+                <span class="pdesc">Terminés à facturer.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#fact-avancement">Facturer en % ou 100%</a><span class="pform">Facturation</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#fact-valider-situation">Valider la situation</a><span class="pform">Facturation</span>
+                <span class="pdesc">Sinon invisible.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#fact-definitive-reste">Solder</a><span class="pform">Facturation</span>
+                <span class="pdesc">Remettre 100% (pas le reste !).</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#fact-avoir-chantier">Faire un avoir</a><span class="pform">Facturation</span>
+                <span class="pdesc">Sur la totalité de la facture.</span></div></div>
+            `
+          },
+
+          {
+            id: "parcours-fact-contrat",
+            title: "⑨ Facturer les contrats d'abonnement",
+            lead: "Sortir et envoyer les factures d'abonnement par période.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>Facturation</strong> (contrats type abonnement).</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#fact-facturer-contrats">Module « Facturer les contrats »</a><span class="pform">Facturation</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#fact-date-echeance">Choisir la période d'échéance</a><span class="pform">Facturation</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#fact-execution">Exécuter → à contrôler</a><span class="pform">Facturation</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#fact-apercu-valider">Aperçu puis valider</a><span class="pform">Facturation</span>
+                <span class="pdesc">Passage en production.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#fact-contact-mail">Envoi automatique</a><span class="pform">Facturation</span>
+                <span class="pdesc">Contact tagué / en masse.</span></div></div>
+              <div class="step"><div class="step-num">6</div><div class="step-body">
+                <a href="#fact-avoir-directe">Avoir / complément</a><span class="pform">Facturation</span></div></div>
+            `
+          },
+
+          {
+            id: "parcours-appro",
+            title: "⑩ Approvisionner un chantier",
+            lead: "De la demande d'achat à la sortie de stock sur l'affaire.",
+            html: `
+              <div class="callout info">
+                <span class="ic">🧭</span>
+                <div>Parcours <strong>Suivi de chantier → Appro-Logistique</strong>.</div>
+              </div>
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <a href="#chantier-demande-achat">Demande d'achat</a><span class="pform">Suivi de chantier</span>
+                <span class="pdesc">À l'acceptation du devis.</span></div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <a href="#appro-reappro-auto">Module réappro</a><span class="pform">Appro-Logistique</span>
+                <span class="pdesc">Cumul des besoins par client.</span></div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <a href="#chantier-commande-plans">Commande fournisseur</a><span class="pform">Suivi de chantier</span></div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <a href="#chantier-imputation">Imputer la matière</a><span class="pform">Suivi de chantier</span>
+                <span class="pdesc">Sortie de stock vers le chantier.</span></div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <a href="#appro-historique-code-etat">Suivi & historique</a><span class="pform">Appro-Logistique</span>
+                <span class="pdesc">Via le code état.</span></div></div>
+            `
+          }
+
+        ]
+      }
+
+    ]
+  },
+
   {
     category: "Commerce",
     icon: "💼",

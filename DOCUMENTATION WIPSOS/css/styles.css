@@ -340,6 +340,16 @@ body {
 .step-body { padding-top: 3px; }
 .step-body strong { display: block; margin-bottom: 2px; }
 
+/* Parcours guidés — renvois cliquables vers un chapitre */
+.pform {
+  display: inline-block; margin-left: 8px; vertical-align: middle;
+  font-size: 12px; font-weight: 600; color: var(--text-muted);
+  background: #f0f1f4; border: 1px solid var(--border);
+  border-radius: 999px; padding: 1px 9px; white-space: nowrap;
+}
+.step-body a { font-weight: 600; }
+.pdesc { display: block; margin-top: 3px; font-size: 14px; color: var(--text-soft); }
+
 /* ============ MOBILE ============ */
 .menu-toggle {
   display: none;
